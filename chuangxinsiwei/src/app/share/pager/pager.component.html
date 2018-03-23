@@ -1,0 +1,14 @@
+<ul class="page-list" *ngIf="!noLists">
+  <li *ngIf="currPage !== 1" (click)="goPrePage()"><</li>
+  <li [class.active]="currPage === 1" (click)="goPage(1)">1</li>
+
+  <li *ngIf="pageCount > 10 && currPage > 4"><i class="icon-dot">...</i></li>
+
+  <li [class.active]="currPage === page" *ngFor="let page of showPageList" (click)="goPage(page)">{{page}}</li>
+
+  <li *ngIf="pageCount > 10 && currPage < pageCount-3 "><i class="icon-dot">...</i></li>
+
+  <li *ngIf="pageCount != 1" [class.active]="currPage === pageCount" (click)="goPage(pageCount)">{{pageCount}}</li>
+
+  <li *ngIf="currPage !== pageCount" (click)="goNextPage()">></li>
+</ul>

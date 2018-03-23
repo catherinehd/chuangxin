@@ -1,0 +1,48 @@
+@import "../../../assets/css/variable.styl"
+
+.page-list
+  text-align center
+  color $font-gray-color
+  font-size $font-big-size
+  padding 70px 0
+
+.page-list
+  li
+    display inline-block
+    height 31px
+    width 31px
+    line-height 30px
+    margin 0 7px
+    transition color .3s
+    cursor pointer
+    background transparent
+    border 0.5px solid rgba(52,52,52,0.3)
+
+
+.page-list
+  .active
+    color #fff
+    background-color $theme-main-deep-blue-color
+
+
+.page-list
+  li:hover
+    color $font-white-color
+    background-color $theme-main-deep-blue-color
+
+
+.page-list
+  .active:hover
+    color #fff
+
+
+.page-list
+  .icon-dot
+    cursor default
+
+
+.page-list
+  .icon-dot:hover
+    color $font-white-color
+    background $theme-main-deep-blue-color
+

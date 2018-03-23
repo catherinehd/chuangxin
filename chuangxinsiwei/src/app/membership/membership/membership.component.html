@@ -1,0 +1,128 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="membership-index wrap-box">
+  <div>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>Membership </span>
+        <span *ngFor="let list of path"> > {{list}}</span>
+      </div>
+    </section>
+  <div class="main">
+    <div class="left-box">
+      <div class="title">
+        Membership
+      </div>
+      <div class="detail system">
+        <div class="top-msg">
+          <p>
+            ChinaICAC is an organization consists of professionals serving Chinese secondary students transitioning to higher education.  Membership in ChinaICAC is now only open to school based counselors in China and college/university admission people and educators.
+          </p>
+        </div>
+        <div class="small-tit">Types of Membership</div>
+        <table class="type">
+          <tr>
+            <th>
+              Your member type would be…
+            </th>
+            <th>
+              If you work for…
+            </th>
+            <th>
+              And work as..
+            </th>
+          </tr>
+          <tr>
+            <td>
+              College/University Membership
+            </td>
+            <td>
+              A College or University or government department
+            </td>
+            <td>
+              Admission Officer/educator
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Secondary School Membership
+            </td>
+            <td>
+              A Secondary/High School
+            </td>
+            <td>
+              School based Counselor
+            </td>
+          </tr>
+        </table>
+        <div class="small-tit whatapply">
+          What to know before you apply:
+        </div>
+        <div class="readylist">
+          <span>1</span>
+          	All memberships are free (by Janurary of 2019) but subject to approval.  Once your membership application has been approved you will be notified via email.
+        </div>
+        <div class="readylist">
+          <span>2</span>
+          	Member benefits will begin once your application is approved.
+        </div>
+        <div class="readylist">
+          <span>3</span>
+          ChinaICAC's  membership cycle is Jan. 1 through Dec. 31. If joining ChinaICAC from Jan. 1 through Sept. 30 your membership will expire Dec. 31 of the same year.  Those joining after Oct. 1 membership will expire Dec. 31 of the following year.
+        </div>
+        <div class="readylist">
+          <span>4</span>
+          Prior to membership of ChinaICAC, a secondary school counselor should work in a school with College Board CEEB code, and own membership of International ACAC (highly recommended).
+        </div>
+      </div>
+      <div class="title">
+        Member Benefits
+      </div>
+      <div class="detail benefits">
+        <div class="small-tit">Why ChinaICAC?</div>
+        <p class="detail-exp">ChinaICAC is the premiere organization for professionals engaged in college counseling and admissions for Chinese secondary students.  Joining ChinaICAC is the first step to gaining access to many member benefits.  These include:</p>
+        <div class="small-tit small-tit2">Resources for Professional Development:</div>
+        <ul class="detail-exp">
+          <li>Membership Directory</li>
+          <li>High School Profiles</li>
+          <li>Webinars</li>
+          <li>Reports and Publications</li>
+        </ul>
+        <div class="small-tit small-tit2">Priority for Events' Enrollment</div>
+        <ul>
+          <li>Regional Workshops</li>
+          <li>National Conference</li>
+        </ul>
+      </div>
+      <div class="book-download">
+        <img src="../../../assets/icon/file.svg" />
+        <div class="btn-box">
+          <button *ngIf="notlogin" (click)="ifdownload('')">Membership Directory<img src="../../../assets/icon/download.svg" /></button>
+          <a *ngIf="!notlogin" href={{download1}} target="_blank">Membership Directory<img src="../../../assets/icon/download.svg" /></a>
+         <!-- <div class="upload-time">
+            Upload time: 2017-08-29
+          </div>-->
+        </div>
+        <!--<div class="note">-->
+          <!--(note: the membership address book will be updated regularly once a month)-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="right-box" id="nav-right">
+      <ul class="right-nav">
+        <li [class.active]="isshow1" (click)="show('membership')">
+          Membership
+        </li>
+        <li [class.active]="isshow2" (click)="show('benefit')">
+          Membership Benefits
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>
+<app-to-top></app-to-top>

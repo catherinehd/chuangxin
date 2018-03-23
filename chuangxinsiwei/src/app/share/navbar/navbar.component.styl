@@ -1,0 +1,60 @@
+@import "../../../assets/css/variable.styl"
+
+nav
+  width 100%
+  margin-bottom -180px
+  margin-top 120px
+  position relative
+  .bg
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    background: $theme-main-deep-blue-color;
+  .nav-box
+    width 1200px
+    margin 0 auto
+    ul
+      display flex
+      justify-content space-around
+      li
+        flex-grow 1
+        text-align center
+        line-height 18px
+        cursor pointer
+        padding 21px 20px
+        position relative
+        color $font-white-color
+        &:hover
+          background #00427d
+        .toggle
+          position absolute
+          padding-top 10px
+          top 45px
+          left 0
+          width 240px
+          z-index 999
+          background transparent
+          .triggle
+            margin-left 20px
+            display block
+            height 13px
+            text-align left
+          ul
+            display block
+            border-radius 3px
+            padding 10px 0
+            background $font-main-deep-blue-color
+            box-shadow 0 0.5px 3px 0 rgba(120, 129, 160, 0.5)
+            li
+              color #fff
+              padding 18px 0 18px 24px
+              text-align left
+              background $font-main-deep-blue-color
+              &:hover
+                border 0
+                padding-top 18px
+                color #fff
+                background #00427d
+      .active
+        background #00427d
+        color #ffffff

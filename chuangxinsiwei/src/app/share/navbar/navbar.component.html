@@ -1,0 +1,60 @@
+<nav>
+  <div class="bg"></div>
+  <div class="nav-box">
+    <ul>
+      <li (click)="gopage('./home',1)" [ngClass]="{'active': currentId === 1 }">Home</li>
+      <li [ngClass]="{'active': currentId === 2 }" (mouseover)="showToggle(2)" (mouseleave)="notShowToggle()">
+        <span>About ChinaICAC</span>
+        <div class="toggle" *ngIf="showToggleId === 2 && !hideToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <ul>
+            <li (click)="gopage('./aboutChinaIcac',2,'overview')">Overview</li>
+            <li (click)="gopage('./aboutChinaIcac',2,'committee')">Executive Committee</li>
+            <li (click)="gopage('./aboutChinaIcac',2,'advisor')">Advisor Committee</li>
+            <li (click)="gopage('./aboutChinaIcac',2,'contact-us')">Contact Us</li>
+          </ul>
+        </div>
+      </li>
+      <li [ngClass]="{'active': currentId === 3 }" (mouseover)="showToggle(3)" (mouseleave)="notShowToggle()">
+        <span>Events</span>
+        <div class="toggle" *ngIf="showToggleId === 3 && !hideToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <ul>
+            <li (click)="gopage('./events',3,'national-Conference')">National Conference</li>
+            <li (click)="gopage('./events',3,'regional-workshop')">Regional Workshop</li>
+          </ul>
+        </div>
+      </li>
+      <li [ngClass]="{'active': currentId === 4 }" (mouseover)="showToggle(4)" (mouseleave)="notShowToggle()">
+        <span>Professional Development</span>
+        <div class="toggle" *ngIf="showToggleId === 4 && !hideToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <ul>
+            <li (click)="gopage('./development/webinar',4)">Webinars</li>
+          </ul>
+        </div>
+      </li>
+      <li [ngClass]="{'active': currentId === 5 }" (mouseover)="showToggle(5)" (mouseleave)="notShowToggle()">
+        <span>Knowledge Center</span>
+        <div class="toggle" *ngIf="showToggleId === 5 && !hideToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <ul>
+            <li (click)="gopage('./knowledge-center/university',5)">University</li>
+            <li (click)="gopage('./knowledge-center/high-school',5)">High School</li>
+          </ul>
+        </div>
+      </li>
+      <li [ngClass]="{'active': currentId === 6 }" (mouseover)="showToggle(6)" (mouseleave)="notShowToggle()">
+        <span>News & Publications</span>
+        <div class="toggle" *ngIf="showToggleId === 6 && !hideToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <ul>
+            <li (click)="gopage('./news/newsroom',6)">Newsroom</li>
+            <li (click)="gopage('./news/publication',6)">Publications</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./membership',7)" [ngClass]="{'active': currentId === 7 }">Membership</li>
+    </ul>
+  </div>
+</nav>

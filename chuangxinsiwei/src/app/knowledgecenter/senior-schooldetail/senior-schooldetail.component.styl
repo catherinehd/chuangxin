@@ -1,0 +1,114 @@
+@import "../../../assets/css/variable.styl"
+
+.schoolDetail-sec
+  background $theme-main-gray-color
+  padding-bottom 70px
+  .breadcrumb-box
+    width 1200px
+    margin 0 auto
+  .main
+    position relative
+    .top-bg-img
+      width 100%
+      background-image url('../../../assets/img/school-top.png')
+      background-size cover
+      height 240px
+    .shade
+      position absolute
+      top 0
+      width 100%
+      height 240px
+      background #000000
+      opacity 0.6
+    .school-brief
+      display flex
+      width 1200px
+      position absolute
+      left 50%
+      top 35px
+      margin-left -600px
+      color $font-white-color
+      &>div:nth-child(2)
+        margin-right 355px
+      &>div
+        p
+          margin-bottom 20px
+          font-size $font-little-big-size
+        .schoolName
+          font-size $font-bigger-size
+          font-weight bold
+          height 19px
+          margin-bottom 29px
+      .school-img
+        background $hteme-white-color
+        width 170px
+        padding 25px
+        margin-right 34px
+        img
+          width 122px
+    .container
+      background  $hteme-white-color
+      width 1000px
+      margin 0 auto
+      padding 30px 40px 65px
+      .nav
+        ul
+          width 440px
+          display flex
+          border $default-light-border
+          li
+            cursor pointer
+            font-size $font-nomal-size
+            line-height 1
+            padding 18px 0
+            width 220px
+            text-align center
+            background transparent
+          .active
+            color $font-white-color
+            background $theme-main-deep-blue-color
+      .article
+        margin-top 30px
+        padding 14px 10px 37px 13px
+        border solid 0.5px rgba(28, 97, 160, 0.4)
+        p
+          margin-bottom 37px
+          font-size $font-nomal-size
+          line-height 1.57
+          color $font-gray-color
+
+      .guidance
+        padding 30px 36px 9px
+        .guidance-title
+          font-size $font-little-big-size
+          margin-bottom 30px
+          color $font-deep-gray-color
+        .info-container
+          border-top $default-input-border
+          ul
+            li
+              padding 69px 70px 44px
+              border-bottom 1px dashed rgba(0,0,0,0.2)
+              .info
+                display flex
+                &>div
+                  width 100%
+                  p
+                    margin-bottom 30px
+                  span
+                    margin-left 25px
+                &>div>div
+                  margin-bottom 29px
+                &>div>div>div
+                  display inline-block
+                  width 49%
+                div
+                p
+                  color $font-deep-gray-color
+                  font-size $font-nomal-size
+                  line-height 1
+                  font-weight  300
+                img
+                  height 96px
+                  margin-right 70px
+

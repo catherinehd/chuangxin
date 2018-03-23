@@ -1,0 +1,39 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="pro-dev-detail wrap-box" >
+  <div>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>News & Publication</span>/<span>Newsroom</span>/<span class="bread-title">{{news.ncTitle}}</span>
+      </div>
+    </section>
+    <div class="main">
+      <div class="article">
+        <div class="title">
+          {{news.ncTitle}}
+        </div>
+        <div class="date">
+          <img src="../../../assets/icon/time.svg" />
+          <span class="time">
+              {{news.ncTime}}
+            </span>
+        </div>
+        <div class="expression detail">
+          <div class="brief">
+            <!--<div class="date">
+              <span>ppt: </span>
+              <a target="_blank" href={{news.wsDurl}}>{{news.wsDurl}}</a>
+            </div>-->
+          </div>
+          <div class="top">
+          </div>
+          {{news.ncContent}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-to-top></app-to-top>

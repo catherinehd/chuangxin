@@ -1,0 +1,23 @@
+<header>
+  <div class="container">
+    <div class="logo">
+      <img src="../../../assets/img/logo-01.png" alt="chianICAC" (click)="go('./home')"/>
+    </div>
+    <div class="out-box" *ngIf="isLogin">
+      <img src="../../../assets/img/user.png" />
+      <div class="btn-group">
+        <button (click)="go('./person')" >{{user.userName}}</button>
+        <button (click)="signout()">Sign out</button>
+      </div>
+    </div>
+    <div class="login-box" *ngIf="!isLogin">
+      <div class="btn-group">
+        <button (click)="modal.isSigninShow = true">Sign in</button>
+        <button (click)="go('./register')">Registration</button>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>

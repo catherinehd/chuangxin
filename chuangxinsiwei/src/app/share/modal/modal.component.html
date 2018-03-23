@@ -1,0 +1,44 @@
+<section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow">
+  <div class="container">
+
+    <div class="modal-container" *ngIf="modal.isSigninShow">
+    <span><button (click)="confirm()">
+      <img src="../../../assets/icon/close.svg"></button></span>
+      <div class="title">
+        {{modal.title}}
+      </div>
+      <div class="main">
+        <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
+        <div class="form" [formGroup]="loginForm">
+          <div class="form-field">
+            <input placeholder="Email" type="email" formControlName="email" >
+          </div>
+          <div class="form-field password">
+            <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6" (keydown)="btnSubmit(event)">
+            <div class="btn-group" [class.issafari]="isSafari">
+              <!--<button class="close-btn" (click)="clear('pwd')" *ngIf="loginForm.value.pwd">
+                <img class="icon-close" src="../../../assets/icon/close.svg" />
+              </button>-->
+              <button class="eye-btn"  *ngIf="!isOpenEyesShow" (click)="isOpenEyesShow = true">
+                <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+              </button>
+              <button class="eye-btn" *ngIf="isOpenEyesShow" (click)="isOpenEyesShow = false">
+                <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="button-group">
+            <button (click)="go('./register');modal.isSigninShow = false">Join now</button>
+            <button (click)="go('./person/verify-email');modal.isSigninShow = false">Forgot password?</button>
+          </div>
+          <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="submit" (click)="onSubmit()">
+            Sign in
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>

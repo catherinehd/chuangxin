@@ -1,0 +1,39 @@
+@import "../../assets/css/variable.styl"
+
+.person-sec
+  width 100%
+  background $theme-main-gray-color
+  padding-bottom 203px
+  &>div
+    width 1000px
+    margin 0 auto
+  .main
+    width 1000px
+    margin 0 auto
+    display flex
+    justify-content space-between
+    &>div
+      background $hteme-white-color
+    .left-box
+      padding 20px 0
+      width 250px
+      height 160px
+      .nav-left
+        li
+          padding 23px 24px 23px
+          cursor pointer
+          height 60px
+          position relative
+          div
+            display inline-block
+            font-size $font-nomal-size
+            &:nth-child(2)
+              margin-left 33px
+          img
+            position absolute
+            top 20px
+            width 19px
+            height 20px
+        .active
+          background $theme-main-deep-blue-color
+          color $font-white-color

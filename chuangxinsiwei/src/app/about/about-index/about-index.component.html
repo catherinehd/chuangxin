@@ -1,0 +1,363 @@
+<app-header></app-header>
+<app-navbar [currentTitle]="2"></app-navbar>
+
+<section class="about-index wrap-box" id="test" >
+  <div>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <!--<img src="../../../assets/icon/address1.svg" />-->
+        <span>Home</span>/<span>About ChinaICAC </span>
+      </div>
+    </section>
+  <div class="main">
+    <div class="detail-left">
+      <div class="overview" id="overview">
+        <div class="title">
+          Overview
+        </div>
+        <div class="expression detail">
+          <p>China Institute of College Admission Counseling (China ICAC) is an organization of professionals from all over the world dedicated to serving Chinese students as they make choices about pursuing postsecondary education overseas. </p>
+          <p>China ICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  China ICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
+          <div class="small-title">
+            Our Mission
+          </div>
+          <p class="last-p">China ICAC is dedicated to promoting SPGP in Chinese schools, helping professional development of school-based college counselors who work with Chinese students, and serving more Chinese students and parents who need college counseling.</p>
+        </div>
+      </div>
+
+      <div class="committee" id="committee">
+        <div class="title">
+          Executive Committee
+        </div>
+        <div class="detail">
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/ws.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Shiny Wang</span>
+                <span>王实</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Director of College Counseling </p>
+                <p>Tsinghua University High School</p>
+                <p class="school-tit">Academic Principal</p>
+                <p>Beijing Kaiwen Academy</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll1">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principa...
+                  <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+                  </p>
+                </div>
+                <div *ngIf="showAll1">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling. Member of NACAC & International ACAC, (PD Committee member), Member of International Advisory Committee of College Board, Secretary-General of Beijing Academy for College Counseling. He was one of China's first on-campus counselors to pioneer college admission/ counseling for students. With more than 20 years of teaching as teacher of English and over 10 years of counseling, he is widely recognized as China's expert in college counseling and international education globally. Furthermore, he has written articles on China's international education that were published in many public media including New York Times.
+                  <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/jxb.png" />
+            </div>
+            <div class="expression-box">
+            <div class="name">
+              <span class="englist">Percy Jiang</span>
+              <span>蒋小波</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">Director of College Counseling </p>
+              <p>Keystone Academy</p>
+            </div>
+            <div class="exp">
+              <div *ngIf="!showAll2">
+                <span class="exp-tit">Professional Experience</span>
+                <p>2010-2016: College Counselor, Director of College Counseling, Beijing National Day School</p>
+                <p>2013 – 2016: Government Relations Co...</p>
+                <p>2016 - Present: Director of College Cou...</p>
+                <button (click)="showAll2 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </div>
+              <div *ngIf="showAll2">
+                <span class="exp-tit">Professional Experience</span>
+                <p>2010-2016: College Counselor, Director of College Counseling, Beijing National Day School</p>
+                <p>2013 – 2016: Government Relations Committee, OACAC</p>
+                <p>2016 - Present: Director of College Counseling, Keystone Academy</p>
+                <p>2017: Delegate, Executive Board of International ACAC</p>
+                <button class="packup" (click)="showAll2 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/lm.png" />
+            </div>
+            <div class="expression-box">
+            <div class="name">
+              <span class="englist">Brantley Turner</span>
+              <span>龙梅</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">American Principal </p>
+              <p>Shanghai Qibao Dwight High School</p>
+            </div>
+            <div class="exp">
+              <div *ngIf="!showAll3">
+                <span class="exp-tit">Professional Experience</span>
+                <p>In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB ...
+                <br> Prior to joining Dwight School, Brantley ...
+                <button (click)="showAll3 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+              <p *ngIf="showAll3">
+                <span class="exp-tit">Professional Experience：</span>
+                In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
+                <br>Prior to joining Dwight School, Brantley had many years of experience
+                <br>in market research and international education in China.
+                <br>Originally from New York, Brantley has lived in China for the majority of the past 20 years. She is passionate about exchange between China and the West. She is fluent in written and spoken Mandarin Chinese and lives in Shanghai with her husband and three children.
+              </p>
+            </div>
+            <div class="edu" *ngIf="showAll3">
+              <span class="edu-tit">Education </span>
+              <p>PhD (in-progress), International School of Management, Paris, France. </p>
+              <p>Graduate Certificate from Johns Hopkins-Nanjing University Center for Chinese American Studies,Nanjing, China 2000</p>
+              <p>B.A Brown University, Rhode Island, U.S., 1998</p>
+              <p>
+                High School Diploma from Groton School; Massachusetts, U.S., 1994
+                <button class="packup" (click)="showAll3 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+            </div>
+          </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/mlf.png" />
+            </div>
+            <div class="expression-box">
+            <div class="name">
+              <span class="englist">Shawn Moore</span>
+              <span>莫灵风</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">Director</p>
+              <p>Bard Early College at Houde Academy</p>
+              <p class="school-tit">Chief East Asia Representative</p>
+              <p>Bard College</p>
+              <p class="school-tit">Freelance Musician</p>
+            </div>
+            <div class="exp">
+              <div *ngIf="!showAll4">
+                <span class="exp-tit">Professional Experience</span>
+                <p>2013 – 2016: East Asia Regional Repre...
+                <button (click)="showAll4 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+              <div *ngIf="showAll4">
+                <span class="exp-tit">Professional Experience</span>
+                <p>2013 – 2016: East Asia Regional Representative, Bard College</p>
+                <p>2017 – current: Director, Bard Early College at Houde Academy, </p>
+                <p>2017 – current: Chief East Asia Representative, Bard College,
+                  Professional Violinist
+                  <button class="packup" (click)="showAll4 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/lfm.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Ariel Lin</span>
+                <span>林凡茗</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Associate Director of College Counseling</p>
+                <p>Shanghai World Foreign Language Academy</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll5">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>2013 – Present: College Counselor, Associate Director of College Counseling, Shanghai World Foreign ...</p>
+                  <p>2015 – Present: Technology and Communications  ...
+                    <button (click)="showAll5 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll5">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>2013 – Present: College Counselor, Associate Director of College Counseling, Shanghai World Foreign Language Academy</p>
+                  <p>2015 – Present: Technology and Communications Committee, OACAC
+                    <button class="packup" (click)="showAll5 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="advisor" id="advisor">
+        <div class="title">
+          Advisor Committee
+        </div>
+        <div class="detail">
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/advisor.png" />
+            </div>
+            <div class="expression-box">
+            <div class="name">
+              <span class="englist">Hamilton Gregg</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">College Advisor</p>
+              <p>Harrow Beijing</p>
+              <p class="school-tit">Independent Educational Consultant</p>
+              <p>SangLearning, HGIEC</p>
+            </div>
+            <div class="exp">
+              <div *ngIf="!showAll5">
+                <span class="exp-tit">Professional Experience</span>
+                <p>Hamilton has been a college counselor in a school setting for over 23 years. In addition, he has been an independent ...
+                <button (click)="showAll5 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+              <div *ngIf="showAll5">
+                <span class="exp-tit">Professional Experience</span>
+                <p>Hamilton has been a college counselor in a school setting for over 23 years. In addition, he has been an independent consultant for the last 8 years. Hamilton is a member of International ACAC, NACAC, IECA. CIS. He is also a Certified Educational Planner (CEP).
+                  Hamilton is a past president of International ACAC and currently sit on the NACAC International Initiatives Committee.
+                <button class="packup" (click)="showAll5 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/7.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Barbara Chen</span>
+                <span>陈小芭</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">China Admissions Representative</p>
+                <p>The University of Tulsa</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll6">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Barbara Carletta Chen is the Beijing based China Admissions Representative for The University of Tulsa. She earned her M.S. Ed. in Higher Education from The University of Pennsylvania, a B.A. from Georgetown University, and successfully  ...
+                    <button (click)="showAll6 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll6">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Barbara Carletta Chen is the Beijing based China Admissions Representative for The University of Tulsa. She earned her M.S. Ed. in Higher Education from The University of Pennsylvania, a B.A. from Georgetown University, and successfully completed the University of California, San Diego College Counseling certificate program.</p>
+                  <p>Barbara is a frequent presenter at EducationUSA counseling and admissions workshops and a Distinguished Visiting Faculty Member at The College Board Summer Institute for International Counselors. She is a member of The International Association for College Admission Counselors.
+                    <button class="packup" (click)="showAll6 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/6.png"/>
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Bruce Hammond</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Director of College Counseling</p>
+                <p>Tsinghua University High School International - Chaoyang</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll7">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Bruce has been a teacher, administrator, and college counselor for nearly 30 years.  He served as Director of College Counseling at Tsinghua International School for six years prior to taking the same role at THSI – Chaoyang.  He was previously ...
+                    <button (click)="showAll7 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll7">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Bruce has been a teacher, administrator, and college counselor for nearly 30 years.  He served as Director of College Counseling at Tsinghua International School for six years prior to taking the same role at THSI – Chaoyang.  He was previously at Lake Ridge Academy (OH), Sandia Preparatory School (NM), and High School Affiliated to Nanjing Normal University.  He first came to China in 2008.  Prior to his career in schools, Bruce served as managing editor of the Fiske Guide to Colleges, and he is co-author of four volumes in the Fiske series.  In 2012, he initiated Tsinghua’s “East Meets West” conference.  Bruce received a B.A. from Yale University and an M.A.T. from Brown University.
+                    <button class="packup" (click)="showAll7 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/8.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Xiaofeng Wan</span>
+                <span>万晓峰</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Associate Dean of Admission</p>
+                <p class="school-tit">Coordinator of International Recruitment</p>
+                <p>Amherst College</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll8">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Since 2015, Xiaofeng has been leading the international recruitment efforts at Amherst College where he oversees all aspects of international admissions, including managing the ...
+                    <button (click)="showAll8 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll8">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Since 2015, Xiaofeng has been leading the international recruitment efforts at Amherst College where he oversees all aspects of international admissions, including managing the College’s large number of international applications, recruiting on multiple continents, and chairing the international committee. He is also on the College’s domestic admissions team where he recruits in selective US states. Before joining Amherst, Xiaofeng was a member of the admissions office at the College of the Holy Cross, in Worcester, Massachusetts, where he initiated the institution’s admissions strategies in East Asia, recruited domestically in the US, and served on the admissions committee. Xiaofeng is an active member of International ACAC and NEACAC (New England Association for College Admission Counseling) and has presented at the annual conferences of both associations.</p>
+                  <p>Xiaofeng is deeply passionate about international higher education and is committed to connecting US higher education institutions with China, particularly on the admissions side. In 2013, he earned his Master’s degree in Higher Education Administration from Boston College where he served as a graduate admission assistant at the Lynch Graduate School of Education.</p>
+                  <p>Prior to coming to the US in 2011, he was an English broadcast journalist on China Radio International in Beijing, reporting on domestic and international affairs. Xiaofeng is a native from Qingdao, a beautiful coastal city in China’s Shandong Province, and he loves seafood.
+                    <button class="packup" (click)="showAll8 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="contact-us" id="contact-us">
+        <div class="title">
+          Contact Us
+        </div>
+        <div class="contact-method">
+          <p>If you have any questions or suggestions, please contact us via <a href="mailto:admin@chinaicac.org">admin@chinaicac.org</a></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="nav-right" id="nav-right">
+      <ul>
+        <li [class.active]="isshow1" (click)="about('overview')">
+          Overview
+        </li>
+        <li [class.active]="isshow2" (click)="about('committee')">
+          Executive Committee
+        </li>
+        <li [class.active]="isshow3" (click)="about('advisor')">
+          Advisor Committee
+        </li>
+        <li [class.active]="isshow4" (click)="about('contact-us')">
+          Contact Us
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</section>
+
+<app-to-top></app-to-top>

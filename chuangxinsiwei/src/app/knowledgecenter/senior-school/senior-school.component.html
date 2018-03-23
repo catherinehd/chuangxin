@@ -1,0 +1,54 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="knowledge-center-school wrap-box">
+  <div>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>Knowledge Center</span>/<span>High School</span>
+      </div>
+    </section>
+  <div class="main">
+    <div class="title-search">
+
+
+      <div class="title">
+        High School
+      </div>
+      <div class="search-box form" [formGroup]="searchForm">
+        <div class="form-field">
+          <input placeholder="School name" formControlName="msg" type="text"/>
+        </div>
+        <button (click)="searchSchool()">Search</button>
+      </div>
+    </div>
+    <div class="detail" *ngIf="!isempty">
+      <ul class="school-list">
+        <li class="school-info" (click)="gopage(list.middleTxt)" *ngFor="let list of showLists">
+          <img src={{list.middleImage}} />
+          <div class="name">
+            {{list.middleName}}
+          </div>
+          <div class="addr">
+            {{list.middleCity}} , {{list.middleCountry}}
+          </div>
+        </li>
+      </ul>
+      <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
+    </div>
+
+    <div class="detail empty" *ngIf="isempty">
+      <img src="../../../assets/icon/nonews.svg" />
+      <p>No search results</p>
+      <a (click)="getList()">
+        <img src="../../../assets/icon/left.svg" alt="left" />
+        Returns empty search entries
+      </a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<app-to-top></app-to-top>
+
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>

@@ -1,0 +1,76 @@
+@import "../../../assets/css/variable.styl"
+
+.events-index
+  width 100%
+  background  $theme-main-gray-color
+  padding-bottom 70px
+  &>div
+    width 1000px
+    margin 0 auto
+  .main
+    background #fff
+    width 1000px
+    padding 27px 46px 0px 40px
+    margin 0 auto
+    .title
+      font-size $font-bigger-size
+      font-weight 900
+      padding 0 0 29px
+    .conference-list
+      border-top $default-main-top-border
+      .conference-info
+        display flex
+        padding 30px 0
+        justify-content space-between
+        border-bottom $default-main-top-border
+        .conference-title
+          font-size $font-big-size
+          line-height 26px
+          margin-top -4px
+          letter-spacing 0.3px
+          line-height 22px
+          color $theme-main-deep-blue-color
+        .conference-intro
+          width 609px
+          color $font-gray-color
+          padding 21px 0 21px
+        .conference-img
+          width 270px
+          height 172px
+          overflow hidden
+          img
+            width 100%
+        .conference-more-info
+          width 613px
+          .date
+            font-size $font-small-size
+            color $font-light-gray-color
+            line-height 22px
+            img
+              width 13px
+              margin-right 10px
+            .view-details
+              cursor pointer
+              float right
+              font-size $font-nomal-size
+              color $font-main-deep-blue-color
+    .noConference
+      padding-top 101px
+      padding-bottom 17px
+      text-align center
+      img
+        width 228px
+        height 170px
+      p
+        font-size 22px
+        line-height 1
+        margin-top 19px
+        margin-bottom 61px
+        color $font-light-gray-color
+      a
+        font-size $font-little-big-size
+        color $font-main-deep-blue-color
+        img
+          width 6px
+          height 12px
+          margin-right 9px

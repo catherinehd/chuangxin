@@ -1,0 +1,66 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<main>
+  <section class="wrap-box">
+    <!--<div class="top-img">
+    </div>-->
+    <img class="top-img" src="../../../assets/img/bg-top1.png" />
+    <div class="overview">
+      <img class="overview-img" src="../../../assets/img/overview.png" />
+      <div class="detail-box">
+        <div class="title">
+          Overview
+        </div>
+        <hr>
+        <div class="detail">
+          <p>
+            China Institute of College Admission Counseling (ChinaICAC) is an organization of professionals from all over the world dedicated to serving Chinese students as they make choices about pursuing postsecondary education overseas.
+          </p>
+          <p>
+            ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively brings together high school counselors serving Chinese nationals and college admission officers.
+          </p>
+          <p>
+            ChinaICAC is an independent organization based in China that has no official affiliations with International ACAC or NACAC.
+          </p>
+          <button (click)="go('./aboutChinaIcac/overview')">
+            View details
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="newsroom-box">
+      <div class="newsroom">
+        <div class="title-box">
+          <div class="title">
+            Newsroom
+          </div>
+          <div class="more" (click)="go('./news')">
+            more
+            <img src="../../../assets/icon/more.svg" />
+          </div>
+        </div>
+        <div class="detail">
+          <ul>
+            <li *ngFor="let list of showLists">
+              <div class="small-title">
+                {{list.ncTitle}}
+              </div>
+              <div class="date">
+               {{list.ncTime}}
+              </div>
+              <div class="expression">
+                {{list.ncContent}}
+              </div>
+              <button (click)="go('./news/news-detail/' + list.ncId)">
+                View details
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-to-top></app-to-top>

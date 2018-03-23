@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="events-detail wrap-box" >
+  <div>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>Events</span>/<span>Regional Workshop</span>/<span>{{news.newsTitle}}</span>
+      </div>
+    </section>
+  <div class="main">
+    <div class="article">
+      <div class="title">
+        {{news.newsTitle}}
+      </div>
+      <div class="brief">
+        <div class="address">
+          <img src="../../../assets/icon/address1.svg" />
+          <span>{{news.newsPlace}}</span>
+        </div>
+        <div class="date">
+          <img src="../../../assets/icon/time.svg" />
+          <span>{{news.newsTime}}</span>
+        </div>
+      </div>
+      <div class="expression detail">
+        <div class="top">
+          <div>
+            <img class="eventsIMG" src={{news.newsImage}} />
+          </div>
+        </div>
+        {{news.newsInfo}}
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<app-to-top></app-to-top>
+

@@ -1,0 +1,168 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="about-index wrap-box" >
+  <div>
+  <app-breadcrumb></app-breadcrumb>
+  <div class="main">
+    <div class="detail-left">
+      <div class="committee">
+        <div class="title">
+          Committee
+        </div>
+        <div class="detail">
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/ws.png" />
+            </div>
+            <div class="name">
+              <span class="englist">Shiny Wang</span>
+              <span>王实</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">College President</p>
+              <p>Director of College Counseling of Tsinghua University High School, Academic Principal of Beijing Kaiwen Academy</p>
+            </div>
+            <div class="exp">
+              <p *ngIf="!showAll1">
+                <span>Professional Experience：</span>
+                Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling.
+                Member of NACAC & International ACA...
+                <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+              <p *ngIf="showAll1">
+                <span>Professional Experience：</span>
+                Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling. Member of NACAC & International ACAC, (PD Committee member),
+                <br>Secretary-General of Beijing Academy for College Counseling. He was one of China's first on-campus counselors to pioneer college admission/ counseling for students. With more than 20 years of teaching as teacher of English and over 10 years of counseling, he is widely recognized as China's expert in college counseling and international education globally. Furthermore, he has written articles on China's international education that were published in many public media including New York Times.
+                <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/jxb.png" />
+            </div>
+            <div class="name">
+              <span class="englist">Percy Jiang</span>
+              <span>蒋小波</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">College director</p>
+              <p>Director of College Counseling, Keystone Academy</p>
+            </div>
+            <div class="exp">
+              <p *ngIf="!showAll2">
+                <span>Professional Experience：</span>
+                College Counselor, Director of College Counseling, Beijing National Day School 2010 - 2016
+                Government Relations Committee, OACAC 2013 – 2016
+                Director of College Counseling, Keystone Academy 2016 - Present
+                Delegate, Executive Board of Internatio...
+                <button (click)="showAll2 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+              <p *ngIf="showAll2">
+                <span>Professional Experience：</span>
+                College Counselor, Director of College Counseling, Beijing National Day School 2010 - 2016
+                Government Relations Committee, OACAC 2013 – 2016
+                Director of College Counseling, Keystone Academy 2016 - Present
+                Delegate, Executive Board of International ACAC 2017 - Present
+                <button class="packup" (click)="showAll2 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/lm.png" />
+            </div>
+            <div class="name">
+              <span class="englist">Brantley Turner</span>
+              <span>龙梅</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">American Principal </p>
+              <p>Shanghai Qibao Dwight High School</p>
+            </div>
+            <div class="exp">
+              <p *ngIf="!showAll3">
+                <span>Professional Experience：</span>
+                In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
+                <br>Prior to joining Dwight School, Brantley ...
+                <button (click)="showAll3 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+              <p *ngIf="showAll3">
+                <span>Professional Experience：</span>
+                In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
+                <br>Prior to joining Dwight School, Brantley had many years of experience
+                <br>in market research and international education in China.
+                <br>Originally from New York, Brantley has lived in China for the majority of the past 20 years. She is passionate about exchange between China and the West. She is fluent in written and spoken Mandarin Chinese and lives in Shanghai with her husband and three children.
+              </p>
+            </div>
+            <div class="edu" *ngIf="showAll3">
+              <p><span>Education: </span>PhD (in-progress), International School of Management, Paris, France. </p>
+              <p>Graduate Certificate from Johns Hopkins-Nanjing University Center for Chinese American Studies, </p>
+              <p>Nanjing, China 2000</p>
+              <p>B.A Brown University, Rhode Island, U.S., 1998</p>
+              <p>
+                High School Diploma from Groton School; Massachusetts, U.S., 1994
+                <button class="packup" (click)="showAll3 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/mlf.png" />
+            </div>
+            <div class="name">
+              <span class="englist">Shawn Moore</span>
+              <span>莫灵风</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">Prexy</p>
+              <p>Director, Bard Early College at Houde Academy
+                Chief East Asia Representative, Bard College
+                Freelance Musician
+              </p>
+            </div>
+            <div class="exp">
+              <p *ngIf="!showAll4">
+                <span>Professional Experience：</span>
+                East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
+                Chief East Asia Representative, Bard C...
+                <button (click)="showAll4 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+              <p *ngIf="showAll4">
+                <span>Professional Experience：</span>
+                East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
+                Chief East Asia Representative, Bard College, 2017 – current Professional Violinist
+                <button class="packup" (click)="showAll4 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li [class.active]="isshow1" (click)="go('./aboutChinaIcac/overview')">
+          Overview
+        </li>
+        <li [class.active]="isshow2" (click)="go('./aboutChinaIcac/committee')">
+          Committee
+        </li>
+        <li [class.active]="isshow3" (click)="go('./aboutChinaIcac/advisor')">
+          Advisor
+        </li>
+        <li [class.active]="isshow4" (click)="go('./aboutChinaIcac/contact-us')">
+          Contact us
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  </div>
+</section>
+

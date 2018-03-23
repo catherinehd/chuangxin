@@ -1,0 +1,347 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="register-sec wrap-box">
+  <div class="register-box">
+    <div class="title">
+      ChinaICAC Member registration
+    </div>
+
+
+    <div class="main form" [formGroup]="registerForm">
+      <div class="form-field">
+        <label class="name form-label">
+          You work for
+        </label>
+        <span>
+          <select formControlName="work" (change)="showErr('work')">
+            <option value="" disabled>
+              Please select
+            </option>
+            <option value="0">
+              Secondary／High School
+            </option>
+            <option value="1">
+              College or University
+            </option>
+          </select>
+
+          <div class="wrong" *ngIf="errWork">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{errWork}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="email" type="email" (keyup)="showErr('email')">
+          <div class="wrong" *ngIf="errEmail">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{errEmail}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Verification Code
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="code" type="text" (blur)="showErr('code')">
+          <button class="obtain" [disabled]="!registerForm.value.email || errEmail" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
+          <div class="wrong" *ngIf="errCode">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{errCode}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Password
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="pwd1" [type]="!isOpenEyesShow1 ? 'text' : 'password'" (blur)="showErr('pwd1')" maxlength="15">
+          <div class="btn-group" [class.issafari]="isSafari">
+            <button class="eye-btn" *ngIf="!isOpenEyesShow1" (click)="isOpenEyesShow1 = true">
+              <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+            </button>
+            <button class="eye-btn" *ngIf="isOpenEyesShow1" (click)="isOpenEyesShow1 = false">
+              <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+            </button>
+          </div>
+          <div class="wrong" *ngIf="errPwd1">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPwd1}}</span>
+        </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Repeat password
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="pwd2" [type]="!isOpenEyesShow2 ? 'text' : 'password'" (blur)="showErr('pwd2')" maxlength="15">
+          <div class="btn-group" [class.issafari]="isSafari">
+            <button class="eye-btn" *ngIf="!isOpenEyesShow2" (click)="isOpenEyesShow2 = true" >
+              <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+            </button>
+            <button class="eye-btn"*ngIf="isOpenEyesShow2" (click)="isOpenEyesShow2 = false" >
+              <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+            </button>
+          </div>
+          <div class="wrong" *ngIf="errPwd2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPwd2}}</span>
+        </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Prefix
+        </label>
+        <span>
+          <select formControlName="prefix" (change)="showErr('prefix')">
+            <option disabled value="">
+              Please select
+            </option>
+            <option value="Dr">
+              Dr.
+            </option>
+            <option value="Mr">
+              Mr.
+            </option>
+            <option value="Mrs">
+              Mrs.
+            </option>
+            <option value="Ms">
+              Ms.
+            </option>
+            <option value="Rev">
+              Rev.
+            </option>
+          </select>
+          <div class="wrong" *ngIf="errPrefix">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPrefix}}</span>
+        </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>First Name
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="firstname" (blur)="showErr('fname')" maxlength="60">
+          <div class="wrong" *ngIf="fname">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{fname}}</span>
+        </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Last Name
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="lastname" (blur)="showErr('lname')" maxlength="60">
+          <div class="wrong" *ngIf="lname">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{lname}}</span>
+        </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          Preferred Name
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="preferredname" maxlength="60">
+          <div class="optional">(Optional)</div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>School
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="school" (blur)="showErr('school')" maxlength="60">
+          <div class="wrong" *ngIf="errSchool">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errSchool}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Job Title
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="jobtitle" (blur)="showErr('job')" maxlength="60">
+          <div class="wrong" *ngIf="errJob">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errJob}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="highschool">
+        <label class="name">
+          <span>*</span>CEEB Code
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6" (blur)="showErr('ceeb')">
+          <img class="point" src="../../../assets/icon/point.svg" (mouseover)="showceebdes = true" (mouseout)="showceebdes = false" />
+          <div class="ceeb-detail" *ngIf="showceebdes">
+            CEEB，全称是（美国）大学入学考试委员会，CEEB会给每个高中和大学分配一个代码，这个代码就是CEEB Code。
+          </div>
+          <div class="wrong wrong-code" *ngIf="errCeeb">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errCeeb}}</span>
+          </div>
+        </span>
+      </div>
+
+      <div class="agreement form-field">
+        <label class="agreement-title" for="agreement">
+          Do you own membership of InternationalACAC?
+        </label>
+        <span>
+          <select formControlName="agreement" id="agreement" (change)="showErr('agreement')">
+            <option disabled value="">
+              Please select
+            </option>
+            <option value="yes">
+              Yes
+            </option>
+            <option value="no">
+              No
+            </option>
+          </select>
+          <div class="wrong" *ngIf="errPrefix">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errAgree}}</span>
+        </div>
+        </span>
+      </div>
+
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>First Referee
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')" maxlength="60">
+          <div class="wrong" *ngIf="errrename">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errrename}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Institution
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="reins" (blur)="showErr('reins')" maxlength="60">
+          <div class="wrong" *ngIf="errreins">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errreins}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="remail" (blur)="showErr('remail')" >
+          <div class="wrong" *ngIf="errremail">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errremail}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Second Referee
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="rename2" (blur)="showErr('rename2')" maxlength="60">
+          <div class="wrong" *ngIf="errrename2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errrename2}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Institution
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="reins2" (blur)="showErr('reins2')" maxlength="60">
+          <div class="wrong" *ngIf="errreins2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errreins2}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="remail2" (blur)="showErr('remail2')" >
+          <div class="wrong" *ngIf="errremail2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errremail2}}</span>
+          </div>
+        </span>
+      </div>
+
+
+      <!--<div class="no-ceeb" *ngIf="highschool && hasCode" (click)="hasCode = false">-->
+        <!--没有CEEB Code？-->
+      <!--</div>-->
+
+      <!--<div class="no-ceeb" (click)="hasCode = true" *ngIf="highschool && !hasCode">-->
+        <!--已有CEEB Code？-->
+      <!--</div>-->
+
+      <div class="submit" *ngIf="highschool && hasReferee">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement || !this.registerForm.value.ceebcode " (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+      <div class="submit" *ngIf="!highschool && hasReferee">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement " (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class="submit" *ngIf="highschool && !hasReferee">
+      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2 || !this.registerForm.value.agreement || !this.registerForm.value.ceebcode "   (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
+    <div class="submit" *ngIf="!highschool && !hasReferee">
+      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2 || !this.registerForm.value.agreement "   (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section class="prompt-box" *ngIf="prompt">
+<div class="prompt">
+  <div class="title">
+    PROMPT
+  </div>
+  <div class="detail">
+    <p>Thank you for your application to the ChinaICAC group.  An email regarding your application result will be sent to you within 24 hours. If you have any other questions, please contact <span>admin@chinaicac.org.</span></p>
+    <button (click)="go('./home')">
+      OK, return to home page
+    </button>
+  </div>
+</div>
+</section>

@@ -1,0 +1,116 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<section class="schoolDetail-sec wrap-box">
+  <div class="breadcrumb-box">
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>Knowledge Center</span>/<span>University</span>/<span>{{school.usityName}}</span>
+        <span *ngFor="let list of path"> > {{list}}</span>
+      </div>
+    </section>
+  </div>
+  <div class="main">
+    <div class="top-bg-img">
+    </div>
+    <div class="shade"></div>
+    <div class="school-brief">
+      <div class="school-img">
+        <img src={{school.usityImage}} />
+      </div>
+      <div>
+        <p class="schoolName">{{school.usityName}}</p>
+        <p class="website">Website<span>{{school.usityUrl}}</span></p>
+        <p class="nature">Nature： <span>{{school.usityNature}}</span></p>
+        <p class="region">Region： <span>{{school.usityRegion}}</span></p>
+      </div>
+      <div>
+        <p class="country">Country： <span>{{school.usityCountry}}</span></p>
+        <p class="city">city： <span>{{school.usityCity}}</span></p>
+        <p class="students-num">Online students： <span>{{school.usityOs}}人</span></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="nav">
+        <ul>
+          <li [class.active]="showOverview" (click)="showOverview = true; showRequirements = false; showOfficer = false;this.setFooter();">
+            Overview
+          </li>
+          <li [class.active]="showRequirements" (click)="showOverview = false; showRequirements = true; showOfficer = false;this.setFooter();">
+            Admission requirements
+          </li>
+          <li [class.active]="showOfficer" (click)="showOverview = false; showRequirements = false; showOfficer = true;this.setFooter();">
+            Entrance guidance
+          </li>
+        </ul>
+      </div>
+      <div class="article" *ngIf="showOverview">
+        {{school.usityTxt}}
+      </div>
+
+      <div class="article requirements" *ngIf="showRequirements">
+        <div class="info-container">
+          <ul>
+            <li>
+              <div class="requirements-title">
+                Undergraduate admission conditions
+              </div>
+              <div *ngFor="let list of school.usityinfos">
+                <div>
+                  <span>Time of school</span>
+                  <span>{{list.usityinfoStart}}</span>
+                </div>
+                <div>
+                  <span>Application deadline:</span>
+                  <span>{{list.usityinfoEnd}}</span>
+                </div>
+                <div>
+                  <span>Tuition reference:</span>
+                  <span>{{list.usityinfoTuition}}</span>
+                </div>
+                <div>
+                  <span>Examination results:</span>
+                  <span>{{list.usityinfoScore}}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="article officer" *ngIf="showOfficer">
+        <div class="officer-title">
+          Admissions officer information
+        </div>
+        <div class="info-container">
+          <ul>
+            <li *ngFor="let list of school.usityofficers">
+              <div class="info">
+                <img src="../../../assets/img/user.png">
+                <div>
+                  <p>
+                    Name:
+                    <span>{{list.uofficerName}}</span>
+                  </p>
+                  <div>
+                    Job Title:
+                    <span>{{list.uofficerJob}}</span>
+                  </div>
+                  <div>
+                    Email:
+                    <span>{{list.uofficerMail}}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-to-top></app-to-top>
+
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>
