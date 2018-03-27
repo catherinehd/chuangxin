@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     this.testValid();
     if(!this.loginForm.valid) return;
     this.msg = '';
-    this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
+    this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd,this.loginForm.value.pwd).subscribe(res => {
       res.ok ? this.loginSuccess() : this.showTip(res.msg);
     })
     // this.loginSuccess({

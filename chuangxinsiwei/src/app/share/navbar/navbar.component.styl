@@ -5,14 +5,11 @@ nav
   margin-bottom -180px
   margin-top 120px
   position relative
-  .bg
-    width: 100%;
-    height: 60px;
-    position: absolute;
-    background: $theme-main-deep-blue-color;
   .nav-box
     width 1200px
     margin 0 auto
+    display flex
+    justify-content space-around
     ul
       display flex
       justify-content space-around
@@ -21,11 +18,10 @@ nav
         text-align center
         line-height 18px
         cursor pointer
-        padding 21px 20px
         position relative
-        color $font-white-color
+        color $font-deep-gray-color
         &:hover
-          background #00427d
+          color $font-main-deep-yellow-color
         .toggle
           position absolute
           padding-top 10px
@@ -56,5 +52,4 @@ nav
                 color #fff
                 background #00427d
       .active
-        background #00427d
-        color #ffffff
+        color $font-main-deep-yellow-color

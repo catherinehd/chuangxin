@@ -79,7 +79,7 @@ export class ModalComponent implements OnInit {
     this.testValid();
     if(!this.loginForm.valid) return;
     this.msg = '';
-    this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
+    this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd,this.loginForm.value.pwd).subscribe(res => {
       res.ok ? this.loginSuccess(res.data) : this.showTip(res.msg);
     })
   }
