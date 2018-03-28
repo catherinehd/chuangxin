@@ -48,6 +48,8 @@ import { RegisterNocodeComponent } from './register/register-nocode/register-noc
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './knowledgecenter/search/search.component';
 import { NewsDetailComponent } from './news/news-detail/news-detail.component';
+import { TheoryIndexComponent } from './theory/theory-index/theory-index.component';
+import { ScienceIndexComponent } from './science/science-index/science-index.component';
 
 
 @NgModule({
@@ -55,7 +57,7 @@ import { NewsDetailComponent } from './news/news-detail/news-detail.component';
     BrowserModule,FormsModule, ReactiveFormsModule, HttpClientModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent, LoginComponent, SearchComponent, NewsDetailComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent, LoginComponent, SearchComponent, NewsDetailComponent, TheoryIndexComponent, ScienceIndexComponent,
   ],
   providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService,SearchService, {provide: LocationStrategy,useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]

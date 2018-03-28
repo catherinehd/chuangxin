@@ -37,9 +37,19 @@ import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './knowledgecenter/search/search.component';
 import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 
+import { TheoryIndexComponent } from './theory/theory-index/theory-index.component';
+import { ScienceIndexComponent } from './science/science-index/science-index.component';
+
 
 const appRouters: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
+
+  { path: 'theory/2003', component: TheoryIndexComponent},
+  { path: 'theory/classic', component: TheoryIndexComponent},
+
+  { path: 'science/research', component: ScienceIndexComponent},
+  { path: 'science/patent', component: ScienceIndexComponent},
+
   { path: 'about', component: AboutIndexComponent },
 
       { path: 'aboutChinaIcac/overview', component: AboutIndexComponent },
