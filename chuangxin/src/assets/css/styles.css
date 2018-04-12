@@ -10,7 +10,7 @@ html, body {
   font-family: "Microsoft YaHei","Myriad Set Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   box-sizing: border-box;
   overflow: scroll;
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
   background: #fff;
   font-size: 14px;
   min-width: 1200px;
-  line-height: 1.4285em;
+  line-height: 1.4285;
   color: #343434;
 }
 
@@ -82,11 +82,8 @@ button {
 
 /**************************************************************************************/
 
-.wrap-box {
-  min-height:100%;
-  padding-top: 100px;
-  padding-bottom: 280px !important;
-  background: #fff
+.wrap {
+  background: #f8f8f8;
 }
 
 

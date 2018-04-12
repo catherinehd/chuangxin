@@ -1,0 +1,44 @@
+@import "../../../assets/css/variable.styl"
+
+section
+  width 100%
+  .header
+    padding 6px 0
+    margin 0 auto
+    width 1000px
+    display flex
+    justify-content space-between
+    font-size $font-little-big-size
+    .logo
+      margin-right 40px
+      img
+        width 228px
+        height 88px
+    .top-nav
+      width 606px
+      text-align left
+      .nav-box
+        display flex
+        li
+          padding 57px 23px 10px
+          margin 0 20px
+          position relative
+        .active
+          color $theme-main-yellow-color
+          border-bottom $default-main-bottom-border
+    .func-btns
+      text-align right
+      ul
+        display flex
+        li
+          color $theme-main-light-blue-color
+          margin-top 57px
+          margin-bottom 10px
+          &:nth-child(1)
+            padding 0 18px 0 0
+            border-right 1px solid #bdbdbd
+          &:nth-child(2)
+            padding 0 0 0 18px
+
+
+

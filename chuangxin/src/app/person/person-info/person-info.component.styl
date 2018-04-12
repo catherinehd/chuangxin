@@ -1,0 +1,60 @@
+@import "../../../assets/css/variable.styl"
+
+.detail-info
+  .user-title
+    padding 34px 0 16px 30px
+    border-bottom $default-gray-bottom-border
+    color $theme-main-light-blue-color
+    font-size $font-big-size
+    line-height 1
+  .user-info
+    padding 30px 30px 50px
+    .info-field
+      margin-bottom 13px
+      .blank-name
+        font-size $font-little-big-size
+        line-height 1.38
+        margin-right 10px
+        width 80px
+        display inline-block
+      span:nth-child(2)
+        color $font-gray-color
+        font-size $font-little-big-size
+        line-height 1.38
+        input:not(.sex)
+          width 290px
+          height 30px
+          padding 9px
+        select
+          width 196px
+          height 30px
+          padding 9px
+      .warn
+        color $font-red-color
+        font-size $font-nomal-size
+        line-height 30px
+        margin-left 14px
+        svg
+          width 17px
+          height @width
+          stroke none
+          fill $font-red-color
+          vertical-align middle
+          margin-right 8px
+      &:last-child
+        margin-bottom 0
+    .sex
+      label:nth-child(1)
+        margin-right 36px
+        input
+          margin-right 12px
+  .submit-button
+    padding-left 30px
+    button
+      color $font-white-color
+      background $theme-main-light-blue-color
+      font-size $font-little-big-size
+      width 120px
+      height 32px
+      text-align center
+      border-radius 3px

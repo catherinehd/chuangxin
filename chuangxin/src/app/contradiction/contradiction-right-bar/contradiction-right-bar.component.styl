@@ -1,0 +1,29 @@
+@import "../../../assets/css/variable.styl"
+
+.right-bar
+  width 152px
+  position fixed
+  top 50%
+  //height 260px
+  background #fff
+  .bar-box
+    position relative
+    .line
+      height 100%
+      width 1px
+      border-left 1px dashed #eca72d
+      position absolute
+      left 17px
+    ul
+      padding 15px 0
+      li
+        font-size $font-nomal-size
+        color $font-gray-color
+        line-height 1
+        padding 15px 9px
+      .active
+        color $theme-main-yellow-color
+        img
+          width 16px
+          height @width
+          margin-right 9px

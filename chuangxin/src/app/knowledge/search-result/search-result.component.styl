@@ -1,0 +1,62 @@
+@import "../../../assets/css/variable.styl"
+
+.search-result
+  background-image url('../../../assets/img/shouyebeijing-@2x.png')
+  background-size cover
+  padding 46px 40px
+  .repository-search-result
+    width 1000px
+    margin 0 auto
+    .search-btn-box
+      display flex
+      justify-content space-between
+      .search-btn
+        .search-func-title
+          font-size $font-little-big-size
+          line-height 30px
+          margin-right 12px
+        select
+          height 30px
+          width 260px
+          color $font-light-gray-color
+        button
+          margin-right 65px
+          font-size $font-little-big-size
+          color $hteme-white-color
+          height 30px
+          width 120px
+          background $theme-main-light-blue-color
+          border-radius 3px
+    .repository-search-index
+      margin-top 49px
+      background $hteme-white-color
+      padding 40px 0
+      .index-detail
+        padding 10px 30px 30px
+        p
+          line-height 1.57
+          color $font-gray-color
+          font-size $font-nomal-size
+          text-indent 2em
+        p:not(:last-child)
+          margin-bottom 27px
+    .search-result-box
+      margin-top 49px
+      background $hteme-white-color
+      padding 40px 0
+      .result-list
+        ul
+          li
+            &:nth-child(1)
+              .result-detail
+                padding 0 30px 20px
+            .result-detail
+              padding 30px 30px 20px
+              border-bottom 1px solid rgba(189, 189, 189, 0.4)
+              .result-title
+                font-size $font-little-big-size
+                margin-bottom 16px
+              .result-detail-info
+                font-size $font-nomal-size
+                color $font-gray-color
+

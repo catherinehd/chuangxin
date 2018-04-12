@@ -1,0 +1,93 @@
+@import "../../../assets/css/variable.styl"
+
+.home-sec
+  .top-pic
+    img
+      width 100%
+  .description
+    width 100%
+    text-align center
+    padding-top 69px
+    .des-title
+      color $theme-main-light-blue-color
+      font-size $font-biggest-size
+      padding-bottom 15px
+    hr
+      border 1px solid $theme-main-light-blue-color
+      width 60px
+      margin 0 auto
+    .des-detail
+      font-size $font-nomal-size
+      color $font-gray-color
+      width 940px
+      margin 0 auto
+      padding 40px 0 72px
+      line-height 1.57
+      text-align left
+  .search-class
+    background $theme-main-gray-color
+    background-image url('../../../assets/img/shouyebeijing-@2x.png')
+    background-size cover
+    height 380px
+    padding 40px 0
+    .search-class-box
+      width 1000px
+      margin 0 auto
+      ul
+        display flex
+        justify-content space-around
+        li
+          padding 60px 68px 14px
+          text-align center
+          &:nth-child(1)
+            svg
+              width 62px
+              height 63px
+          &:nth-child(2)
+            svg
+              width 62px
+              height 63px
+          &:nth-child(3)
+            svg
+              width 54px
+              height 56px
+          .svg-box
+            background #fff
+            width 120px
+            height @width
+            border-radius 50%
+            text-align center
+            position relative
+            margin-bottom 20px
+          svg
+            position absolute
+            top 50%
+            left 50%
+            margin-left -31px
+            margin-top -31px
+            fill none
+            stroke $theme-light-yellow-color
+          span
+            font-size $font-nomal-size
+            color $theme-light-gray-color
+            text-align center
+          .gotoSearch-btn
+            text-align center
+            svg
+              width 24px
+              height @width
+              fill $theme-main-light-blue-color
+              stroke none
+              position relative
+              top 0
+              left 0
+              margin 0
+              margin-top 41px
+        .active
+          background #fff
+          box-shadow 0 6px 10px 0 rgba(212, 212, 212, 0.2)
+          .svg-box
+            border 1px solid $theme-main-light-blue-color
+            stroke $theme-main-light-blue-color
+          span
+            color $font-deep-gray-color
