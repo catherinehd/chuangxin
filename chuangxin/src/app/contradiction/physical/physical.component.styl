@@ -1,0 +1,39 @@
+@import "../../../assets/css/variable.styl"
+
+.physical
+  position relative
+  .physical-category-box
+    position absolute
+    top -46px
+    left 0
+    width 100%
+    .physical-category
+      width 1000px
+      margin 0 auto
+      height 46px
+      background rgba(52, 52, 52, 0.7)
+      ul
+        display flex
+        li
+          color #ffffff
+          font-size $font-little-big-size
+          line-height 1
+          padding 15px 26px
+          img
+            width 12px
+            height 6px
+            margin-left 6px
+          .btn-box
+            background $theme-main-yellow-color
+            width 46px
+            height 46px
+            padding 13px
+            svg
+              width 20px
+              height @width
+              stroke #fff
+              fill #fff
+          &:first-child
+            padding 0
+        .active
+          background $theme-main-yellow-color

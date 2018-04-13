@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-physical',
   templateUrl: './physical.component.html',
-  styleUrls: ['./physical.component.styl']
+  styleUrls: ['./physical.component.styl' , '../theory/theory.component.styl']
 })
 export class PhysicalComponent implements OnInit {
 

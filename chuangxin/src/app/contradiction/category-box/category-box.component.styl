@@ -1,0 +1,31 @@
+@import "../../../assets/css/variable.styl"
+
+.top-nav
+  padding 0 30px
+  height 36px
+  position relative
+  border-bottom 1px solid #e7e7e7
+  ul
+    li
+      float left
+      font-size $font-little-big-size
+      color $font-gray-color
+      line-height 1
+      padding 0 0 18px
+      margin 0 20px
+    .active
+      color $theme-nav-light-yellow-color
+      border-bottom 2px solid $theme-nav-light-yellow-color
+  .getMoreCatefory-btn
+    position absolute
+    right 30px
+    top -15px
+    button
+      width 30px
+      height 40px
+      background #f3f3f3
+      svg
+        width 12px
+        height 20px
+        stroke none
+        fill $theme-nav-light-yellow-color

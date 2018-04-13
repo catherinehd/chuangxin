@@ -1,32 +1,33 @@
 @import "../../../assets/css/variable.styl"
 
-.theory
-  background-image url('../../../assets/img/shouyebeijing-@2x.png')
-  background-size cover
-  padding 46px 40px
-  .theory-box
-    width 1000px
-    margin 0 auto
-    padding 30px 0 60px
-    background $hteme-white-color
-    .top-nav
-      padding 0 30px
-      height 36px
-      border-bottom 1px solid #e7e7e7
-      ul
-        li
-          float left
-          font-size $font-little-big-size
-          color $font-gray-color
-          line-height 1
-          padding 0 0 18px
-          margin 0 20px
-        .active
-          color $theme-nav-light-yellow-color
-          border-bottom 2px solid $theme-nav-light-yellow-color
+//.theory
+  //background-image url('../../../assets/img/shouyebeijing-@2x.png')
+  //background-size cover
+  //padding 46px 40px
+  //.theory-box
+    //width 1000px
+    //margin 0 auto
+    //padding 30px 0 60px
+    //background $hteme-white-color
+    //.top-nav
+    //  padding 0 30px
+    //  height 36px
+    //  border-bottom 1px solid #e7e7e7
+    //  ul
+    //    li
+    //      float left
+    //      font-size $font-little-big-size
+    //      color $font-gray-color
+    //      line-height 1
+    //      padding 0 0 18px
+    //      margin 0 20px
+    //    .active
+    //      color $theme-nav-light-yellow-color
+    //      border-bottom 2px solid $theme-nav-light-yellow-color
     .description
       margin 30px 30px 40px
       color $font-gray-color
+      line-height 1.57
     .case
       .case-title
         font-size $font-big-size
@@ -49,14 +50,17 @@
           justify-content space-between
           padding-top 28px
           .left-word
-            .class:not(:last-child)
-              margin-bottom 15px
+            .class
               .small-title
                 font-size $font-little-big-size
+                margin-bottom 5px
               .detail
                 p
                   font-size $font-nomal-size
                   color $font-gray-color
+                  margin-bottom 3px
+            .class:first-child
+              margin-bottom 17px
           .right-pic
             img
               width 246px

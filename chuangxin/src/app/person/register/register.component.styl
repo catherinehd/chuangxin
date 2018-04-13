@@ -1,0 +1,64 @@
+@import "../../../assets/css/variable.styl"
+
+.register-sec
+  padding 20px 0 30px
+  width 100%
+  background #f8f8f8
+  .register-box
+    width 1000px
+    background #fff
+    margin 0 auto
+    .register-title
+      color $theme-main-light-blue-color
+      font-size $font-big-size
+      padding 30px 40px 20px
+      border-bottom $default-border
+    .register-form
+      padding 28px 0 128px
+      .form-field
+        line-height 30px
+        margin-bottom 20px
+        &>span:not(.radio-box)
+          display inline-block
+          &:nth-child(1)
+            font-size $font-little-big-size
+            width 355px
+            text-align right
+            margin-right 20px
+          input,
+          select
+            height 30px
+            width 290px
+            font-size $font-nomal-size
+            padding-left 8px
+            border $default-gray-bottom-border
+          input:-moz-placeholder
+          input::-moz-placeholder
+          input:-ms-placeholder
+            color red
+          select
+            border-radius 0
+            background transparent
+        .radio-box
+          label
+            color $font-gray-color
+            input
+              margin-right 12px
+            &:nth-child(1)
+              margin-right 37px
+        .warn
+          color $font-red-color
+          font-size $font-nomal-size
+          line-height 30px
+          margin-left 14px
+          svg
+            width 17px
+            height @width
+            stroke none
+            fill $font-red-color
+            vertical-align middle
+            margin-right 8px
+
+.star
+  color $font-red-color
+

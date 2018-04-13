@@ -1,0 +1,62 @@
+@import "../../../assets/css/variable.styl"
+
+.pop-wrap
+  width 100%
+  height 100%
+  position fixed
+  left 0
+  top 0
+  background rgba(163, 169, 170, 0.3)
+  .pop-box
+    width 480px
+    height 380px
+    background #ffffff
+    position absolute
+    top 50%
+    left 50%
+    margin-top -190px
+    margin-left -240px
+    .pop-title
+      color $theme-main-light-blue-color
+      font-size $font-big-size
+      text-align center
+      padding 30px 0 20px
+      line-height 1
+      border-bottom $default-border
+      position relative
+      span
+        position absolute
+        right 12px
+        top 12px
+        svg
+          width 19px
+          height @width
+          stroke #a3a9aa
+    .pop-detail
+      padding 30px 50px 9px
+      .login-box
+        .form-field
+          .title
+            display inline-block
+            width 70px
+            font-size $font-little-big-size
+          span
+            input
+              width 300px
+              height 30px
+          &:nth-child(1)
+            padding-bottom 20px
+        .warn
+          color $font-red-color
+          font-size $font-nomal-size
+          line-height 30px
+          margin-left 14px
+          svg
+            width 17px
+            height @width
+            stroke none
+            fill $font-red-color
+            vertical-align middle
+            margin-right 8px
+
+

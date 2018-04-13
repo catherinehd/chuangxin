@@ -28,7 +28,7 @@ body {
   box-sizing: inherit;
 }
 
-ol, ul, li {
+ul{
   list-style: none;
 }
 
