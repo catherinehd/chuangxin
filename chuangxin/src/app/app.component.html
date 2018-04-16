@@ -1,8 +1,10 @@
 
 <p class="offline-tip" *ngIf="isOffline" [style.top.px]="top" (click)="isOffline = false">当前无网络连接</p>
 
-<app-header></app-header>
+<app-header (showLoginPop)="showLogin($event)"></app-header>
 
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>
+
+<app-pop [popmodal]="popmodal" (closePop)="closePop()"></app-pop>

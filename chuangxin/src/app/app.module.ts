@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeModule } from './home/home.module';
 import { PersonModule } from './person/person.module';
@@ -20,7 +21,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule, HomeModule, ShareModule, AppRoutingModule, PersonModule, KnowledgeModule, ContradictionModule
+    BrowserModule, FormsModule, ReactiveFormsModule, HomeModule, ShareModule, AppRoutingModule, PersonModule, KnowledgeModule,
+    ContradictionModule
   ],
   providers: [HttpClientService, AppConfigService],
   bootstrap: [AppComponent]

@@ -7,7 +7,7 @@ export class AppConfigService {
   api: string;
 
   constructor() {
-    this.initConfig('Chuangxin');
+    this.initConfig('创新咖啡厅');
   }
 
   initConfig(appShorthand: string): void {
@@ -15,7 +15,7 @@ export class AppConfigService {
       case 'Chuangxin':
         this.appName = 'Chuangxin';
         this.tel = '123456';
-        this.api = 'http://47.98.102.131';
+        this.api = 'http://47.98.102.131/innovate/web';
         break;
       default:
         break;

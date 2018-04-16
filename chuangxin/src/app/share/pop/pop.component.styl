@@ -42,21 +42,49 @@
             font-size $font-little-big-size
           span
             input
+              padding-left 8px
               width 300px
               height 30px
+            [type=checkbox]
+              width 14px
+              height 14px
+              margin 0
           &:nth-child(1)
             padding-bottom 20px
+          .forgetpwd
+            float right
+            color $theme-main-light-blue-color
+            font-size $font-nomal-size
+        .remmember-forget-box
+          padding 20px 0 30px
+          line-height 1
         .warn
           color $font-red-color
           font-size $font-nomal-size
-          line-height 30px
-          margin-left 14px
+          line-height 17px
           svg
             width 17px
             height @width
             stroke none
             fill $font-red-color
-            vertical-align middle
+            vertical-align top
             margin-right 8px
+        .login-btn
+          padding 37px 0 28px
+          width 100%
+          text-align center
+          button
+            background $theme-main-light-blue-color
+            color #fff
+            font-size $font-little-big-size
+            width 120px
+            height 32px
+            border-radius 3px
+        .tip
+          width 100%
+          color $font-light-gray-color
+          text-align center
+          a
+            color $theme-main-light-blue-color
 
 

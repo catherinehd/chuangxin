@@ -5,26 +5,47 @@
     </div>
     <div class="top-nav">
       <ul class="nav-box">
-        <li class="active">
-          首页
-        </li>
         <li>
-          矛盾矩阵
+          <a routerLink="/home" routerLinkActive="active">首页</a>
         </li>
-        <li>
-          知识库
+        <li (mouseover)="contradictionShow = true" (mouseleave)="contradictionShow = false">
+          <a routerLink="/contradiction" routerLinkActive="active">矛盾矩阵</a>
+          <div class="contradiction-children-box lower-level-menu" *ngIf="contradictionShow">
+            <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+            <div>
+              2003版矛盾
+            </div>
+            <div>
+              经典矛盾
+            </div>
+          </div>
+        </li>
+        <li (mouseover)="repositoryShow = true" (mouseleave)="repositoryShow = false">
+          <a routerLink="/repository" routerLinkActive="active">知识库</a>
+          <div class="repository-children-box lower-level-menu" *ngIf="repositoryShow">
+            <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+            <div routerLink="/repository/functionsearch" routerLinkActive="level2active">
+              功能检索
+            </div>
+            <div routerLink="/repository/propertysearh" routerLinkActive="level2active">
+              属性检索
+            </div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="func-btns">
-      <ul>
-        <li>
+      <ul *ngIf="!inlogin">
+        <li (click)="isLoginShow()">
           登录
         </li>
-        <li>
+        <li routerLink="/register">
           注册
         </li>
       </ul>
+      <div *ngIf="inlogin">
+        欢迎来到创新咖啡厅
+      </div>
     </div>
   </div>
 </section>

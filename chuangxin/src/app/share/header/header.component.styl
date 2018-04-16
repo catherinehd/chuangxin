@@ -3,7 +3,7 @@
 section
   width 100%
   .header
-    padding 6px 0
+    padding 6px 0 1px
     margin 0 auto
     width 1000px
     display flex
@@ -20,12 +20,31 @@ section
       .nav-box
         display flex
         li
-          padding 57px 23px 10px
           margin 0 20px
           position relative
-        .active
-          color $theme-main-yellow-color
-          border-bottom $default-main-bottom-border
+          a
+            display inline-block
+            padding 57px 23px 10px
+            cursor pointer
+          .active
+            color $theme-main-yellow-color
+            border-bottom $default-main-bottom-border
+          .lower-level-menu
+            width 140px
+            position absolute
+            border-radius 3px
+            background #ffffff
+            color $font-gray-color
+            div
+              cursor pointer
+              padding 12px 0 12px 15px
+            .level2active
+              color $theme-main-yellow-color
+            .triggle
+              margin-left 10px
+              display block
+              height 10px
+              text-align left
     .func-btns
       text-align right
       ul
@@ -34,6 +53,7 @@ section
           color $theme-main-light-blue-color
           margin-top 57px
           margin-bottom 10px
+          cursor pointer
           &:nth-child(1)
             padding 0 18px 0 0
             border-right 1px solid #bdbdbd
@@ -42,3 +62,5 @@ section
 
 
 
+:focus
+  outline none

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pop',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopComponent implements OnInit {
 
+  @Input() popmodal: Modal;
+  @Output() closePop = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  close() {
+    this.closePop.emit();
+  }
+
+}
+
+class Modal {
+  constructor(
+    public title?: string,
+    public isLoginShow?: boolean
+  ) {}
 }

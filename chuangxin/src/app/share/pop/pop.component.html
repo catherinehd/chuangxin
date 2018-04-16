@@ -1,8 +1,8 @@
-<div class="pop-wrap">
-  <div class="pop-box">
+<div class="pop-wrap" *ngIf="popmodal.isLoginShow">
+  <div class="pop-box container">
     <div class="pop-title">
-      用户登录
-      <span>
+      {{popmodal.title}}
+      <span (click)="close()">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-guanbi"></use>
             </svg>
@@ -10,7 +10,7 @@
     </div>
     <div class="pop-detail">
 
-      <!--登录-->
+      <!--登录模块-->
       <div class="login-box login-form">
         <div class="username form-field">
           <span class="username-title title">
@@ -28,7 +28,7 @@
             <input type="password" placeholder="请输入密码">
           </span>
         </div>
-        <div class="form-field">
+        <div class="form-field remmember-forget-box">
           <span class="remember">
             <input type="checkbox">
             记住我
@@ -42,7 +42,7 @@
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         密码由6-15位数字或字母组成
-      </div>
+        </div>
         <div class="login-btn">
           <button>
             登录

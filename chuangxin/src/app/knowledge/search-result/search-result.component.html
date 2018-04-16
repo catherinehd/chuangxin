@@ -30,13 +30,13 @@
       </div>
       <div class="search-btn">
         <button>
-          冲突检索
+          效应检索
         </button>
       </div>
     </div>
 
     <!--没有搜索条件时的默认状态-->
-    <div class="repository-search-index">
+    <div class="repository-search-index" *ngIf="!hasResearch">
       <div class="index-detail">
         <p>
           科学原理是数学、物理、化学、几何、生物等自然科学知识的系统学习。效应是发明问题解决理论（TRIZ）中基于知识的工具。将科学原理、系统属性或者现象与其工程应用有机地联系在一起，确定了科学原理和系统属性支配下输入、输出之间的因果关系。
@@ -51,7 +51,7 @@
     </div>
 
     <!--搜索结果-->
-    <div class="search-result-box">
+    <div class="search-result-box" *ngIf="hasResearch && hasResult">
       <div class="result-list">
         <ul>
           <li>
@@ -74,6 +74,10 @@
 
       <!--分页-->
       <app-pager></app-pager>
+    </div>
+
+    <div class="search-result-box" *ngIf="hasResearch && !hasResult">
+      没有结果
     </div>
   </div>
 

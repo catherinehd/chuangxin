@@ -3,20 +3,25 @@
     <div class="register-title">
       用户注册
     </div>
-    <div class="register-form">
+    <div class="register-form form" [formGroup]="registerForm">
       <div class="form-field">
         <span>
           <span class="star">*</span>
           用户名：
         </span>
         <span>
-          <input placeholder="请输入用户名">
+          <input placeholder="请输入用户名" (blur)="test('uname')" formControlName="uname">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="erruname">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入用户名
+      </span>
+      <span class="success" *ngIf="successuname">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -25,13 +30,13 @@
           用户姓名：
         </span>
         <span>
-          <input type="password" placeholder="******">
+          <input type="password" placeholder="请输入姓名" formControlName="name">
         </span>
         <span class="warn">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入用户姓名
       </span>
       </div>
       <div class="form-field">
@@ -40,7 +45,10 @@
           密码：
         </span>
         <span>
-          <input type="password" placeholder="******">
+          <input [type]="showpwd1 ? 'text' : 'password'" placeholder="******" formControlName="pwd1">
+          <svg class="pwd-icon" [class.icon-active]="showpwd1" (click)="showpwd1 = !showpwd1">
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
+          </svg>
         </span>
         <span class="warn">
         <svg>
@@ -55,7 +63,10 @@
           重复密码：
         </span>
         <span>
-          <input>
+          <input [type]="showpwd2 ? 'text' : 'password'" placeholder="******" formControlName="pwd2">
+          <svg class="pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2">
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
+          </svg>
         </span>
         <span class="warn">
         <svg>
@@ -70,13 +81,13 @@
           手机号：
         </span>
         <span>
-          <input placeholder="请输入手机号">
+          <input placeholder="请输入手机号" formControlName="phone">
         </span>
         <span class="warn">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入手机号
       </span>
       </div>
       <div class="form-field">
@@ -85,13 +96,13 @@
           验证码：
         </span>
         <span>
-          <input>
+          <input formControlName="code">
         </span>
         <span class="warn">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入验证码
       </span>
       </div>
       <div class="form-field">
@@ -100,13 +111,13 @@
           邮箱：
         </span>
         <span>
-          <input type="email">
+          <input type="email" formControlName="email">
         </span>
         <span class="warn">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入邮箱
       </span>
       </div>
       <div class="form-field">
@@ -122,7 +133,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请选择性别
       </span>
       </div>
       <div class="form-field">
@@ -131,7 +142,7 @@
           所属领域：
         </span>
         <span>
-          <select>
+          <select formControlName="field">
             <option>
               请选择所属领域
             </option>
@@ -153,7 +164,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请选择所属领域
       </span>
       </div>
       <div class="form-field">
@@ -168,8 +179,15 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        请输入单位名称
       </span>
+      </div>
+    </div>
+
+    <div class="submit-btn-box">
+      <button>注册</button>
+      <div class="tip">
+        点击注册按钮，表示您已经同意我们的<a href="#">《服务条款》</a>
       </div>
     </div>
   </div>
