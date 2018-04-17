@@ -3,26 +3,34 @@
     <div class="line">
     </div>
     <ul>
-      <li class="active">
+      <li routerLink="/contradiction/{{type}}/search" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        矛盾检索
+        <span>矛盾检索</span>
       </li>
-      <li>
+      <li routerLink="/contradiction/{{type}}/theory" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        矛盾原理
+        <span>矛盾原理</span>
       </li>
-      <li>
+      <li routerLink="/contradiction/{{type}}/physical" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        物理矛盾
+        <span>物理矛盾</span>
       </li>
-      <li>
+      <li routerLink="/contradiction/{{type}}/reverse" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        原理反查矛盾
+        <span>原理反查矛盾</span>
       </li>
-      <li>
+      <li routerLink="/contradiction/{{type}}/params" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        48个工程参数
+        <span>48个工程参数</span>
       </li>
     </ul>
+    <div class="toTopBtn">
+      <div class="toTop-icon">
+        <svg>
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-xiangshangshouqi"></use>
+        </svg>
+      </div>
+      <button>返回顶部</button>
+    </div>
   </div>
 </div>

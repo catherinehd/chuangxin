@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContradictionRightBarComponent implements OnInit {
 
+  type: string; // 经典版还是03版
+  localUrl: string; // 当前地址
+
   constructor() { }
 
   ngOnInit() {
+    this.localUrl = location.pathname;
+    if (this.localUrl.indexOf('classical') !== -1) {
+      this.type = 'classical';
+    } else {
+      this.type = '03';
+    }
   }
 
 }

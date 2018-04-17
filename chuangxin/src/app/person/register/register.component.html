@@ -10,7 +10,7 @@
           用户名：
         </span>
         <span>
-          <input placeholder="请输入用户名" (blur)="test('uname')" formControlName="uname">
+          <input placeholder="请输入用户名" (mouseleave)="test('uname')" formControlName="uname">
         </span>
         <span class="warn" *ngIf="erruname">
         <svg>

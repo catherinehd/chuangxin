@@ -14,6 +14,7 @@
       border-left 1px dashed #eca72d
       position absolute
       left 17px
+      z-index -1
     ul
       padding 15px 0
       li
@@ -21,9 +22,29 @@
         color $font-gray-color
         line-height 1
         padding 15px 9px
+        img
+          visibility hidden
+        span
+          padding-left 9px
       .active
         color $theme-main-yellow-color
         img
+          visibility visible
           width 16px
           height @width
-          margin-right 9px
+    .toTopBtn
+      background $theme-main-light-blue-color
+      text-align center
+      padding 9px 0
+      height 52px
+      z-index 1
+      .toTop-icon
+        svg
+          width 25px
+          height 11px
+          fill #fff
+      button
+        color #ffffff
+        font-size $font-nomal-size
+        padding-top 3px
+        line-height 1

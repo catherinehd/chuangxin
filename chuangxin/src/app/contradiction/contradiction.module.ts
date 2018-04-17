@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { ContradictionService } from '../service/contradiction.service';
 
 import { ContradictionRoutingModule } from './contradiction-routing.module';
 import { ShareModule} from '../share/share.module';
@@ -15,8 +18,10 @@ import { CategoryBoxComponent } from './category-box/category-box.component';
 
 @NgModule({
   imports: [
-    CommonModule, ContradictionRoutingModule, ShareModule
+    CommonModule, ContradictionRoutingModule, ShareModule, FormsModule
   ],
-  declarations: [ContradictionIndexComponent, SearchComponent, TheoryComponent, PhysicalComponent, ReverseComponent, ParamsComponent, ContradictionRightBarComponent, CategoryBoxComponent]
+  providers: [ ContradictionService ],
+  declarations: [ContradictionIndexComponent, SearchComponent, TheoryComponent, PhysicalComponent, ReverseComponent,
+    ParamsComponent, ContradictionRightBarComponent, CategoryBoxComponent]
 })
 export class ContradictionModule { }
