@@ -15,7 +15,11 @@ const appRouters: Routes = [
       {path: 'classical',
         children: [
           {path: '', redirectTo: 'search', pathMatch: 'full'},
-          {path: 'search', component: SearchComponent},
+          {path: 'search', component: SearchComponent
+            // children: [
+            //   {path: 'detail/:searchname', component: DetailComponent}
+            // ]
+          },
           {path: 'theory', component: TheoryComponent},
           {path: 'physical', component: PhysicalComponent},
           {path: 'reverse', component: ReverseComponent},
@@ -25,7 +29,11 @@ const appRouters: Routes = [
       {path: '03',
         children: [
           {path: '', redirectTo: 'search', pathMatch: 'full'},
-          {path: 'search', component: SearchComponent},
+          {path: 'search', component: SearchComponent
+            // children: [
+            //   {path: 'detail/:searchname', component: DetailComponent}
+            // ]
+          },
           {path: 'theory', component: TheoryComponent},
           {path: 'physical', component: PhysicalComponent},
           {path: 'reverse', component: ReverseComponent},

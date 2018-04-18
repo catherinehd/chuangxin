@@ -19,6 +19,19 @@
           font-size $font-little-big-size
           line-height 1
           padding 15px 26px
+          position relative
+          cursor pointer
+          &:hover
+            background $theme-main-yellow-color
+          .toggle
+            position absolute
+            background $theme-main-yellow-color
+            top 46px
+            left 0
+            z-index 1
+            width 171px
+            div
+              padding 15px 10px 15px 26px
           img
             width 12px
             height 6px

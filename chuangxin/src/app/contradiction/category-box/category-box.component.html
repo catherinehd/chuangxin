@@ -1,35 +1,8 @@
 <!--分类-->
 <div class="top-nav">
   <ul>
-    <li class="active">
-      分割
-    </li>
-    <li>
-      抽取
-    </li>
-    <li>
-      局部质量
-    </li>
-    <li>
-      不对称
-    </li>
-    <li>
-      合并
-    </li>
-    <li>
-      多用性
-    </li>
-    <li>
-      套装
-    </li>
-    <li>
-      重量补偿
-    </li>
-    <li>
-      预加反作用
-    </li>
-    <li>
-      预操作
+    <li *ngFor="let item of resultList" (click)="choosename(item.name, item.id, item.principleId); choosereversename(item.name, item.id, item.principleId)" [ngClass]="{'active': activeName === item.name }">
+      {{item.principleNum}}.{{item.name}}
     </li>
   </ul>
   <div class="getMoreCatefory-btn">

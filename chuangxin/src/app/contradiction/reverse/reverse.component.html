@@ -2,162 +2,26 @@
 
   <div class="reverse-box contraction-wrap-box">
 
-    <app-category-box></app-category-box>
+    <app-category-box [resultList]="resultNameList" (chooseReverseName)="choosereversename($event)"></app-category-box>
 
     <!--原理反查冲突-->
     <div class="reverse-theory-box">
       <table class="reverse-theory-list">
-        <tr>
+        <tr *ngFor="let item of reverseResult; let i = index">
           <td class="number">
-            1
+            {{i+1}}
           </td>
           <td class="positive">
             改善特性
           </td>
           <td class="weight">
-            运动物体的重量
+            {{item.improve}}
           </td>
           <td class="nagative">
             恶化特性
           </td>
           <td class="size">
-            运动物体的体积
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            2
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            速度
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            3
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            能力损失
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            4
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            运动物体的体积
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            5
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            速度
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            6
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            能力损失
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            7
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            运动物体的体积
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            8
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            速度
-          </td>
-        </tr>
-        <tr>
-          <td class="number">
-            9
-          </td>
-          <td class="positive">
-            改善特性
-          </td>
-          <td class="weight">
-            运动物体的重量
-          </td>
-          <td class="nagative">
-            恶化特性
-          </td>
-          <td class="size">
-            能力损失
+            {{item.deteriorate}}
           </td>
         </tr>
       </table>

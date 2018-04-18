@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContradictionService } from '../../service/contradiction.service';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ export class SearchComponent implements OnInit {
   hasResult: boolean; // 搜索有结果为true
   localUrl: string; // 当前地址
   page: number; // 查询的页数
-  resultList: object[]; // 查询结果列表
+  resultList: any[]; // 查询结果列表
 
   positive: string[]; // 改善特性列表
   nagative: string[]; // 恶化特性列表
@@ -22,9 +23,11 @@ export class SearchComponent implements OnInit {
   searchNagat: string; // 检索的恶化
   state: string; // 经典版为0 ， 03版为1
 
-  resultNameList: string[]; // 搜索结果标题列表
+  resultNameList: object[]; // 搜索结果标题列表
+  resultDetail: string;  // 结果详情
 
-  constructor(private contradictionService: ContradictionService) {
+  constructor(private contradictionService: ContradictionService,
+              private navigateService: NavigateService) {
     this.hasResearch = false;
     this.page = 1;
     this.resultNameList = [];
@@ -78,9 +81,23 @@ export class SearchComponent implements OnInit {
     this.contradictionService.getRearchList(this.searchPosit, this.searchNagat, this.state, this.page).subscribe( res => {
       if (res.msg && res.rows.length) {
         this.resultList = res.rows;
+        this.resultNameList = [];
+        for (let i = 0; i < this.resultList.length; i++) {
+          let name = res.rows[i].principleName;
+          name = name.replace(/（[^）]+）/g, '');
+          this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum});
+        }
+        document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = res.rows[0].principleContent;
       } else {
         this.hasResult = false;
       }
     });
   }
+
+  // 切换标题
+  chooseName(id) {
+    document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[id].principleContent;
+  }
+
 }
+

@@ -10,13 +10,13 @@
           用户名：
         </span>
         <span>
-          <input placeholder="请输入用户名" (mouseleave)="test('uname')" formControlName="uname">
+          <input placeholder="请输入用户名" (blur)="test('uname')" formControlName="uname">
         </span>
         <span class="warn" *ngIf="erruname">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入用户名
+        {{erruname}}
       </span>
       <span class="success" *ngIf="successuname">
         <svg>
@@ -30,13 +30,18 @@
           用户姓名：
         </span>
         <span>
-          <input type="password" placeholder="请输入姓名" formControlName="name">
+          <input placeholder="请输入姓名" (blur)="test('name')" formControlName="name">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errname">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请输入用户姓名
+      </span>
+        <span class="success" *ngIf="successname">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -45,16 +50,21 @@
           密码：
         </span>
         <span>
-          <input [type]="showpwd1 ? 'text' : 'password'" placeholder="******" formControlName="pwd1">
+          <input [type]="showpwd1 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd1')" formControlName="pwd1">
           <svg class="pwd-icon" [class.icon-active]="showpwd1" (click)="showpwd1 = !showpwd1">
               <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
           </svg>
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errpwd1">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         密码由6-15位数字或字母组成
+      </span>
+        <span class="success" *ngIf="successpwd1">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -63,16 +73,21 @@
           重复密码：
         </span>
         <span>
-          <input [type]="showpwd2 ? 'text' : 'password'" placeholder="******" formControlName="pwd2">
+          <input [type]="showpwd2 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd2')" formControlName="pwd2">
           <svg class="pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2">
               <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
           </svg>
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errpwd2">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         密码由6-15位数字或字母组成
+      </span>
+        <span class="success" *ngIf="successpwd2">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -81,13 +96,18 @@
           手机号：
         </span>
         <span>
-          <input placeholder="请输入手机号" formControlName="phone">
+          <input placeholder="请输入手机号" (blur)="test('phone')" formControlName="phone">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errphone">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请输入手机号
+      </span>
+        <span class="success" *ngIf="successphone">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -96,13 +116,18 @@
           验证码：
         </span>
         <span>
-          <input formControlName="code">
+          <input formControlName="code" (blur)="test('code')">
         </span>
-        <span class="warn">
+        <span class="warn"*ngIf="errcode" >
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请输入验证码
+      </span>
+        <span class="success" *ngIf="successcode">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -111,13 +136,18 @@
           邮箱：
         </span>
         <span>
-          <input type="email" formControlName="email">
+          <input type="email" (blur)="test('email')" formControlName="email">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="erremail">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请输入邮箱
+      </span>
+        <span class="success" *ngIf="successemail">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -126,15 +156,9 @@
           性别：
         </span>
         <span class="radio-box">
-          <label for="man"><input type="radio" name="sex" value="man" id="man" checked class="sex">男</label>
-          <label for="woman"><input type="radio" name="sex" value="man" id="woman" class="sex">女</label>
+          <label for="man"><input type="radio" name="sex" value="man" id="man" checked class="sex" >男</label>
+          <label for="woman"><input type="radio" name="sex" value="man" id="woman" class="sex" >女</label>
         </span>
-        <span class="warn">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
-        请选择性别
-      </span>
       </div>
       <div class="form-field">
         <span>
@@ -142,7 +166,7 @@
           所属领域：
         </span>
         <span>
-          <select formControlName="field">
+          <select formControlName="field" (blur)="test('field')">
             <option>
               请选择所属领域
             </option>
@@ -160,11 +184,16 @@
             </option>
           </select>
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errfield">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请选择所属领域
+      </span>
+        <span class="success" *ngIf="successfield">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -173,13 +202,18 @@
           单位名称：
         </span>
         <span>
-          <input placeholder="请输入单位名称">
+          <input placeholder="请输入单位名称" (blur)="test('work')" formControlName="work">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errwork">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
         请输入单位名称
+      </span>
+        <span class="success" *ngIf="successwork">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
     </div>
@@ -187,7 +221,7 @@
     <div class="submit-btn-box">
       <button>注册</button>
       <div class="tip">
-        点击注册按钮，表示您已经同意我们的<a href="#">《服务条款》</a>
+        点击注册按钮，表示您已经同意我们的<a href="./protocol">《服务条款》</a>
       </div>
     </div>
   </div>

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParamsComponent implements OnInit {
 
+  classical: boolean; // 经典为true
+
   constructor() { }
 
   ngOnInit() {
+    if (location.pathname.indexOf('contradiction/03/params') !== -1) {
+      this.classical = false;
+    } else {
+      this.classical = true;
+    }
   }
 
 }
