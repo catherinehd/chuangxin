@@ -29,6 +29,7 @@
         right 12px
         top 12px
         svg
+          cursor pointer
           width 19px
           height @width
           stroke #a3a9aa
@@ -41,6 +42,7 @@
             width 70px
             font-size $font-little-big-size
           span
+            position relative
             input
               padding-left 8px
               width 300px
@@ -49,6 +51,15 @@
               width 14px
               height 14px
               margin 0
+            .pwd-icon
+              width 14px
+              height 11px
+              position absolute
+              top 4px
+              right 10px
+              cursor pointer
+            .icon-active
+              fill $theme-main-light-blue-color
           &:nth-child(1)
             padding-bottom 20px
           .forgetpwd
@@ -80,6 +91,9 @@
             width 120px
             height 32px
             border-radius 3px
+            &[disabled]
+              background #9e9e9e
+              color #fff
         .tip
           width 100%
           color $font-light-gray-color

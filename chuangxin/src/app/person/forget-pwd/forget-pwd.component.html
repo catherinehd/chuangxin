@@ -9,13 +9,18 @@
           手机号：
         </span>
         <span>
-          <input placeholder="请输入手机号">
+          <input #phone placeholder="请输入手机号" (blur)="test('phone', phone.value)">
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errphone">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errphone}}
+      </span>
+        <span class="success" *ngIf="successphone">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -23,16 +28,22 @@
           验证码：
         </span>
         <span>
-          <input type="password" placeholder="******">
-          <button class="code-btn">
-          获取验证码
+          <input #code type="password" placeholder="******" (blur)="test('code', code.value)">
+          <button class="code-btn" (click)="getcode()" [disabled]="!phone">
+            <span *ngIf="!iscounting">获取验证码</span>
+            <span *ngIf="iscounting">{{count}}</span>
         </button>
         </span>
-        <span class="warn">
+        <span class="warn" *ngIf="errcode">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errcode}}
+      </span>
+        <span class="success" *ngIf="successcode">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -40,13 +51,21 @@
           密码：
         </span>
         <span>
-          <input type="password" placeholder="******">
-        </span>
-        <span class="warn">
+        <input #pwd1 [type]="showpwd ? 'text' : 'password'" placeholder="******" (blur)="test('pwd1', pwd1.value)">
+        <svg class="pwd-icon" [class.icon-active]="showpwd" (click)="showpwd = !showpwd">
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
+          </svg>
+      </span>
+        <span class="warn" *ngIf="errpwd1">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errpwd1}}
+      </span>
+        <span class="success" *ngIf="successpwd1">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
       <div class="form-field">
@@ -54,13 +73,21 @@
           重复密码：
         </span>
         <span>
-          <input>
-        </span>
-        <span class="warn">
+        <input #pwd2 [type]="showpwd2 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd2', pwd2.value)">
+        <svg class="pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2">
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
+          </svg>
+      </span>
+        <span class="warn" *ngIf="errpwd2">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errpwd2}}
+      </span>
+        <span class="success" *ngIf="successpwd2">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
+        </svg>
       </span>
       </div>
     </div>
@@ -70,3 +97,5 @@
     </div>
   </div>
 </section>
+
+<app-modal [msg]="msg" *ngIf="msg"></app-modal>

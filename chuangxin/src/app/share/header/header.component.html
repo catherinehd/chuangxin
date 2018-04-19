@@ -43,10 +43,22 @@
           注册
         </li>
       </ul>
-      <div *ngIf="inlogin">
-        欢迎来到创新咖啡厅
+      <div *ngIf="inlogin" class="welcome" (mouseover)="showToggle = true" (mouseleave)="showToggle = false">
+        <div class="tx-box">
+          <svg>
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-touxiang"></use>
+          </svg>
+        </div>
+        <span>欢迎来到创新咖啡厅</span>
+        <div class="toggle" *ngIf="showToggle">
+          <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
+          <div routerLink="/person" routerLinkActive="level2active">个人中心</div>
+          <div (click)="logout()">退出登录</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<app-modal [msg]="msg" *ngIf="msg"></app-modal>
 

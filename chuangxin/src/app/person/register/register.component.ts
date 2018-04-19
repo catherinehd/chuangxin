@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { PersonService } from '../../service/person.service';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.styl']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
+  msg: string; // 注册成功弹窗
   registerForm: FormGroup;
   register: Register = new Register('', '', '', '', '', '', '', '', '', '');
 
   showpwd1: boolean; // true的时候显示密码
   showpwd2: boolean; // true的时候显示重复密码
+  count: number; // 获取验证码后的倒计时
+  iscounting: boolean; // 在倒计时时候为true
+  timer: any; // 计时器
 
   // 错误提示
   erruname: string; // 用户名错误
@@ -36,11 +41,17 @@ export class RegisterComponent implements OnInit {
   successwork: boolean;
 
   constructor(private formBuilder: FormBuilder,
+              private navigateService: NavigateService,
               private personService: PersonService) {
   }
 
   ngOnInit() {
     this.buildForm();
+    this.msg = '';
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
   }
 
   // 创建表单
@@ -101,7 +112,7 @@ export class RegisterComponent implements OnInit {
                 }
               });
             } else {
-              this.erruname = '用户名由6到10位数字和字母构成';
+              this.erruname = '用户名由6-10位数字和字母构成';
               this.successuname = false;
             }
             break;
@@ -120,55 +131,88 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.value.pwd1 === '') {
           this.errpwd1 = '请输入密码';
           this.successpwd1 = false;
-        } else {
+        } else if (this.registerForm.value.pwd1.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
           this.errpwd1 = '';
           this.successpwd1 = true;
+          if (this.registerForm.value.pwd2 && (this.registerForm.value.pwd2 !== this.registerForm.value.pwd1)) {
+            this.errpwd2 = '两次密码不一致';
+            this.successpwd2 = false;
+          } else if (this.registerForm.value.pwd2 && (this.registerForm.value.pwd2 === this.registerForm.value.pwd1)) {
+            this.errpwd2 = '';
+            this.successpwd2 = true;
+          }
+        } else {
+          this.errpwd1 = '密码由6-15位数字或字母组成';
+          this.successpwd1 = false;
         }
         break;
       case 'pwd2':
         // 判断重复密码是否输入正确
         if (this.registerForm.value.pwd2 === '') {
-          this.errpwd2 = '请再次输入密码';
+          this.errpwd2 = '重复密码不能为空';
           this.successpwd2 = false;
-        } else {
+        } else if (this.registerForm.value.pwd2 === this.registerForm.value.pwd1) {
           this.errpwd2 = '';
           this.successpwd2 = true;
+        } else {
+          this.errpwd2 = '两次密码不一致';
+          this.successpwd2 = false;
         }
         break;
       case 'phone':
-        // 判断用户姓名是否输入正确
+        // 判断手机号是否输入正确
         if (this.registerForm.value.phone === '') {
-          this.errphone = '请输入用户名';
+          this.errphone = '手机号不能为空';
           this.successphone = false;
+        } else if (this.registerForm.value.phone.match(/^1[34578]\d{9}$/)) {
+          this.personService.testPhoneNumber(this.registerForm.value.phone).subscribe( res => {
+            if (res.msg === 'OK') {
+              this.errphone = '';
+              this.successphone = true;
+            } else {
+              this.errphone = '手机号已存在';
+              this.successphone = false;
+            }
+          });
         } else {
-          this.errphone = '';
-          this.successphone = true;
+          this.errphone = '手机号格式不正确';
+          this.successphone = false;
         }
         break;
       case 'code':
-        // 判断用户姓名是否输入正确
+        // 判断验证码是否输入正确
         if (this.registerForm.value.code === '') {
-          this.errcode = '请输入用户名';
+          this.errcode = '验证码不能为空';
           this.successcode = false;
         } else {
-          this.errcode = '';
-          this.successcode = true;
+          this.personService.testCode(this.registerForm.value.code, this.registerForm.value.phone).subscribe( res => {
+            if (res.ok) {
+              this.errcode = '';
+              this.successcode = true;
+            } else {
+              this.errcode = '验证码错误';
+              this.successcode = false;
+            }
+          });
         }
         break;
       case 'email':
         // 判断用户姓名是否输入正确
         if (this.registerForm.value.email === '') {
-          this.erremail = '请输入用户名';
+          this.erremail = '邮箱不能为空';
           this.successemail = false;
-        } else {
+        } else if (this.registerForm.value.email.match(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)) {
           this.erremail = '';
           this.successemail = true;
+        } else {
+          this.erremail = '邮箱格式错误';
+          this.successemail = false;
         }
         break;
       case 'field':
         // 判断用户姓名是否输入正确
         if (this.registerForm.value.field === '') {
-          this.errfield = '请输入用户名';
+          this.errfield = '请选择所属领域';
           this.successfield = false;
         } else {
           this.errfield = '';
@@ -178,7 +222,7 @@ export class RegisterComponent implements OnInit {
       case 'work':
         // 判断用户姓名是否输入正确
         if (this.registerForm.value.work === '') {
-          this.errwork = '请输入用户名';
+          this.errwork = '单位名称不能为空';
           this.successwork = false;
         } else {
           this.errwork = '';
@@ -187,6 +231,56 @@ export class RegisterComponent implements OnInit {
         break;
       default:
         break;
+    }
+  }
+
+  // 获取验证码
+  getcode() {
+    this.personService.getCode(this.registerForm.value.phone).subscribe( res => {
+      if (res.ok) {
+        this.counting();
+      } else {
+        this.errcode = res.msg;
+        this.successcode = false;
+      }
+    });
+  }
+
+  // 倒计时
+  counting() {
+    clearInterval(this.timer);
+    this.iscounting = true;
+    this.count = 60;
+    this.timer = setInterval( () => {
+      this.count--;
+      if (this.count <= 0) {
+        clearInterval( this.timer);
+        this.iscounting = false;
+      }
+    }, 1000);
+  }
+
+  // 注册
+  registerMember() {
+    if (!this.registerForm.valid) {
+      return;
+    }
+    if (this.erruname || this.errname || this.errpwd1 || this.errpwd2 || this.errphone || this.errcode || this.erremail ||
+      this.errfield || this.errwork) {
+      return;
+    } else {
+      this.personService.register(this.registerForm.value.uname, this.registerForm.value.name, this.registerForm.value.pwd1,
+        this.registerForm.value.phone, this.registerForm.value.email, this.registerForm.value.sex, this.registerForm.value.field,
+        this.registerForm.value.work, '').subscribe( res => {
+        console.log(res);
+        if (res.ok) {
+          this.msg = '注册成功';
+          setTimeout( () => {
+            this.msg = '';
+            this.navigateService.pushToRoute()
+          }, 3000);
+        }
+      });
     }
   }
 

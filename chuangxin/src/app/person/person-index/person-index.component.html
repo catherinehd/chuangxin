@@ -7,10 +7,10 @@
       <div class="left-nav">
         <div class="nav-title">个人中心</div>
         <ul>
-          <li class="active">
+          <li routerLink="/person/userinfo" routerLinkActive="active">
             个人信息
           </li>
-          <li>
+          <li routerLink="/person/editpwd" routerLinkActive="active">
             修改密码
           </li>
         </ul>
@@ -19,8 +19,7 @@
 
     <!--右边栏-->
     <div class="right-box">
-      <app-person-info></app-person-info>
-      <app-edit-password style="display:none"></app-edit-password>
+      <router-outlet></router-outlet>
     </div>
   </div>
 

@@ -36,7 +36,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入用户姓名
+        {{errname}}
       </span>
         <span class="success" *ngIf="successname">
         <svg>
@@ -59,7 +59,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errpwd1}}
       </span>
         <span class="success" *ngIf="successpwd1">
         <svg>
@@ -82,7 +82,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errpwd2}}
       </span>
         <span class="success" *ngIf="successpwd2">
         <svg>
@@ -102,7 +102,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入手机号
+        {{errphone}}
       </span>
         <span class="success" *ngIf="successphone">
         <svg>
@@ -117,12 +117,16 @@
         </span>
         <span>
           <input formControlName="code" (blur)="test('code')">
+          <button class="code-btn" (click)="getcode()" [disabled]="!this.registerForm.value.phone">
+            <span *ngIf="!iscounting">获取验证码</span>
+            <span *ngIf="iscounting">{{count}}</span>
+          </button>
         </span>
         <span class="warn"*ngIf="errcode" >
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入验证码
+        {{errcode}}
       </span>
         <span class="success" *ngIf="successcode">
         <svg>
@@ -142,7 +146,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入邮箱
+        {{erremail}}
       </span>
         <span class="success" *ngIf="successemail">
         <svg>
@@ -156,8 +160,8 @@
           性别：
         </span>
         <span class="radio-box">
-          <label for="man"><input type="radio" name="sex" value="man" id="man" checked class="sex" >男</label>
-          <label for="woman"><input type="radio" name="sex" value="man" id="woman" class="sex" >女</label>
+          <label for="man"><input type="radio" name="sex" value="男" id="man" class="sex" formControlName="sex">男</label>
+          <label for="woman"><input type="radio" name="sex" value="女" id="woman" class="sex" formControlName="sex">女</label>
         </span>
       </div>
       <div class="form-field">
@@ -171,16 +175,43 @@
               请选择所属领域
             </option>
             <option>
-              请选择所属领域
+              食品农业
             </option>
             <option>
-              请选择所属领域
+              电力通信
             </option>
             <option>
-              请选择所属领域
+              航空航天
             </option>
             <option>
-              请选择所属领域
+              化工领域
+            </option>
+            <option>
+              能源环境
+            </option>
+            <option>
+              建筑运输
+            </option>
+            <option>
+              生活教育
+            </option>
+            <option>
+              机械工业
+            </option>
+            <option>
+              电子信息
+            </option>
+            <option>
+              地质水利
+            </option>
+            <option>
+              医疗保健
+            </option>
+            <option>
+              计算机
+            </option>
+            <option>
+              其他
             </option>
           </select>
         </span>
@@ -188,7 +219,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请选择所属领域
+        {{errfield}}
       </span>
         <span class="success" *ngIf="successfield">
         <svg>
@@ -208,7 +239,7 @@
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        请输入单位名称
+        {{errwork}}
       </span>
         <span class="success" *ngIf="successwork">
         <svg>
@@ -219,10 +250,14 @@
     </div>
 
     <div class="submit-btn-box">
-      <button>注册</button>
+      <button (click)="registerMember()" [disabled]="!this.registerForm.value.uname || !this.registerForm.value.name || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.phone || !this.registerForm.value.code || !this.registerForm.value.email || !this.registerForm.value.field || !this.registerForm.value.work">注册</button>
       <div class="tip">
         点击注册按钮，表示您已经同意我们的<a href="./protocol">《服务条款》</a>
       </div>
     </div>
   </div>
 </section>
+
+<app-modal [msg]="msg" *ngIf="msg"></app-modal>
+
+

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonService } from '../service/person.service';
 
 import { PersonIndexComponent } from './person-index/person-index.component';
-
+import { ShareModule } from '../share/share.module';
 import { PersonRoutingModule } from './person-routing.module';
 import { PersonInfoComponent } from './person-info/person-info.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
@@ -16,7 +16,7 @@ import { ProtocolComponent } from './protocol/protocol.component';
 
 @NgModule({
   imports: [
-    CommonModule, PersonRoutingModule, FormsModule, ReactiveFormsModule
+    CommonModule, PersonRoutingModule, FormsModule, ReactiveFormsModule, ShareModule
   ],
   providers: [ PersonService ],
   declarations: [PersonIndexComponent, PersonInfoComponent, EditPasswordComponent, RegisterComponent, ForgetPwdComponent, LoginComponent, ProtocolComponent]

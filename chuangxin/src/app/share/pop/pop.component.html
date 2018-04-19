@@ -11,13 +11,13 @@
     <div class="pop-detail">
 
       <!--登录模块-->
-      <div class="login-box login-form">
+      <div class="login-box login-form" [formGroup]="loginForm">
         <div class="username form-field">
           <span class="username-title title">
             用户名：
           </span>
           <span>
-            <input placeholder="请输入用户名">
+            <input placeholder="请输入用户名或手机号" formControlName="uname">
           </span>
         </div>
         <div class="password form-field">
@@ -25,34 +25,39 @@
             密  码：
           </span>
           <span>
-            <input type="password" placeholder="请输入密码">
-          </span>
+            <input [type]="showpwd ? 'text' : 'password'" placeholder="请输入密码" formControlName="pwd">
+            <svg class="pwd-icon" [class.icon-active]="showpwd" (click)="showpwd = !showpwd">
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
+            </svg>
+        </span>
         </div>
         <div class="form-field remmember-forget-box">
           <span class="remember">
-            <input type="checkbox">
+            <input type="checkbox" (click)="checkvalue()">
             记住我
           </span>
-          <span class="forgetpwd">
+          <a class="forgetpwd" href="/forgetpwd">
             忘记密码？
-          </span>
+          </a>
         </div>
-        <div class="warn">
+        <div class="warn" *ngIf="errmsg">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errmsg}}
         </div>
         <div class="login-btn">
-          <button>
+          <button (click)="loginFunc()" [disabled]="!this.loginForm.value.uname || !this.loginForm.value.pwd">
             登录
           </button>
         </div>
         <div class="tip">
-          还没有账号？<a href="#">立即注册</a>
+          还没有账号？<a href="/register">立即注册</a>
         </div>
       </div>
 
     </div>
   </div>
 </div>
+
+<app-modal [msg]="loginSuccess" *ngIf="loginSuccess"></app-modal>
