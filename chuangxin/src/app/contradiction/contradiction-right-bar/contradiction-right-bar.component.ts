@@ -10,7 +10,8 @@ export class ContradictionRightBarComponent implements OnInit {
   type: string; // 经典版还是03版
   localUrl: string; // 当前地址
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.localUrl = location.pathname;
@@ -21,4 +22,8 @@ export class ContradictionRightBarComponent implements OnInit {
     }
   }
 
+  toTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 }

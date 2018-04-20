@@ -1,11 +1,13 @@
 <!--分类-->
 <div class="top-nav">
-  <ul>
-    <li *ngFor="let item of resultList" (click)="choosename(item.name, item.id, item.principleId); choosereversename(item.name, item.id, item.principleId)" [ngClass]="{'active': activeName === item.name }">
-      {{item.principleNum}}.{{item.name}}
-    </li>
-  </ul>
-  <div class="getMoreCatefory-btn">
+  <div class="top-nav-box" id="scrollbox">
+    <ul>
+      <li *ngFor="let item of resultList; let num = index" (click)="choosename(item.name, item.id, item.principleId, num); choosereversename(item.name, item.id, item.principleId)" [ngClass]="{'active': activeName === item.name }">
+        {{item.principleNum}}.{{item.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="getMoreCatefory-btn" (click)="getmore()">
     <button>
       <svg>
         <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>

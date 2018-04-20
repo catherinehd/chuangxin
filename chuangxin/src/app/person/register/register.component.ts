@@ -277,7 +277,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.msg = '注册成功';
           setTimeout( () => {
             this.msg = '';
-            this.navigateService.pushToRoute()
+            this.navigateService.pushToRoute('/home');
           }, 3000);
         }
       });

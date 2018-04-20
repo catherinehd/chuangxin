@@ -17,12 +17,11 @@ export class SearchResultComponent implements OnInit {
   searchFunc: string; // 检索的功能
   searchFun: string; // 检索的性状
   localUrl: string; // 当前地址
-  page: number; // 查询的页数
+  page: any = {pageIndex: 1, pageCount: 1};  // 获取当前页和总页数
   resultList: string[]; // 查询结果列表
 
   constructor( private knowledgeService: KnowledgeService) {
     this.hasResearch = false;
-    this.page = 1;
   }
 
   ngOnInit() {
@@ -77,22 +76,31 @@ export class SearchResultComponent implements OnInit {
     }
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
-      this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', this.page).subscribe(res => {
+      this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', this.page.pageIndex).subscribe(res => {
         if (res.msg && res.rows.length) {
           this.resultList = res.rows;
+          this.page.pageCount = Math.floor(res.total / 10) + 1 ;
         } else {
           this.hasResult = false;
         }
       });
     } else {
       // 属性检索
-      this.knowledgeService.getknowledgeRearchList('', '', this.searchFunc,  this.searchFun, this.page).subscribe(res => {
+      this.knowledgeService.getknowledgeRearchList('', '', this.searchFunc,  this.searchFun, this.page.pageIndex).subscribe(res => {
         if (res.msg && res.rows.length) {
           this.resultList = res.rows;
+          this.page.pageCount = Math.floor(res.total / 10) + 1;
         } else {
           this.hasResult = false;
         }
       });
     }
+  }
+
+  onShowPage(page) {
+    this.page.pageIndex = page;
+
+    this.getSearchRult();
+
   }
 }

@@ -25,13 +25,17 @@
             background $theme-main-yellow-color
           .toggle
             position absolute
-            background $theme-main-yellow-color
+            background rgba(52, 52, 52, 0.7)
             top 46px
             left 0
             z-index 1
             width 171px
             div
               padding 15px 10px 15px 26px
+              &:hover
+                background $theme-main-yellow-color
+            .active
+              background $theme-main-yellow-color
           img
             width 12px
             height 6px
@@ -50,3 +54,7 @@
             padding 0
         .active
           background $theme-main-yellow-color
+
+.physical-box
+  position relative
+  padding-top 12px !important

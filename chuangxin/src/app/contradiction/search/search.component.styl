@@ -1,5 +1,7 @@
 @import "../../../assets/css/variable.styl"
 
+.repository-search-result
+  position relative
 .contraction-search-index
   padding 40px 0 228px !important
   .index-detail
@@ -7,20 +9,20 @@
 
 //搜索结果展示
 .search-result-box
-  padding 30px 0 128px !important
+  padding 12px 0 128px 30px !important
   .contraction-result-detail
     .tags
       border-bottom 1px solid rgba(168, 168, 168, 0.48)
-      padding 0 30px 20px 30px
       display flex
+      overflow hidden
       .tags-title
         font-size $font-little-big-size
         line-height 1
+        padding 18px 0
         display inline-block
         width 87px
       .tags-list
-        width 800px
-        height 21px
+        width 890px
         span
           font-size $font-little-big-size
           color $font-gray-color

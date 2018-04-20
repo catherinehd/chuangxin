@@ -23,7 +23,7 @@
         </select>
       </div>
       <div class="search-btn">
-        <button type="submit" (click)="getSearchRult()">
+        <button type="submit" (click)="btnSearch()">
           冲突检索
         </button>
       </div>
@@ -46,7 +46,7 @@
             检索结果：
           </div>
           <div class="tags-list">
-            <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)"></app-category-box>
+            <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
           </div>
         </div>
         <div class="contraction-result-detail-info">
@@ -63,6 +63,9 @@
       </div>
     </div>
 
+    <!--右边的快捷按钮-->
+    <app-contradiction-right-bar></app-contradiction-right-bar>
   </div>
 
 </section>
+

@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientService } from './service/http-client.service';
 import { AppConfigService } from './service/app-config.service';
 import { NavigateService } from './service/navigate.service';
+import { AuthGuard } from './service/auth-guard.service';
 
 import { AppComponent } from './app.component';
 
@@ -26,7 +27,7 @@ import { AppComponent } from './app.component';
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, HomeModule, ShareModule, AppRoutingModule, PersonModule, KnowledgeModule,
     ContradictionModule
   ],
-  providers: [HttpClientService, AppConfigService, NavigateService],
+  providers: [HttpClientService, AppConfigService, NavigateService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,7 @@ export class PhysicalComponent implements OnInit {
   resultNameList: object[]; // 搜索结果标题列表
   resultList: any[]; // 查询结果列表
   toggleShow: boolean; // toggle显示为true;
+  allLoad: boolean;  // 已经获取了全部数据时候为true
 
   constructor(private contradictionService: ContradictionService) {
     this.type = 1;
@@ -53,5 +54,9 @@ export class PhysicalComponent implements OnInit {
   // 切换标题
   chooseName(id) {
     document.getElementsByClassName('case')[0].innerHTML = this.resultList[id].principleContent;
+  }
+
+  // 获取更多的数据
+  getmore() {
   }
 }

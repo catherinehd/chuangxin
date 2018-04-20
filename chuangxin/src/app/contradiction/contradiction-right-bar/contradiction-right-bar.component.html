@@ -21,10 +21,11 @@
       </li>
       <li routerLink="/contradiction/{{type}}/params" routerLinkActive="active">
         <img src="assets/img/yuanxing-2@2x.png" />
-        <span>48个工程参数</span>
+        <span *ngIf="type === '03'">48个工程参数</span>
+        <span  *ngIf="type === 'classical'">39个工程参数</span>
       </li>
     </ul>
-    <div class="toTopBtn">
+    <div class="toTopBtn" (click)="toTop()">
       <div class="toTop-icon">
         <svg>
           <use xlink:href="assets/icon/symbol-defs.svg#icon-xiangshangshouqi"></use>

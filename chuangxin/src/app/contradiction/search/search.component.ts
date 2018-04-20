@@ -26,10 +26,13 @@ export class SearchComponent implements OnInit {
   resultNameList: object[]; // 搜索结果标题列表
   resultDetail: string;  // 结果详情
 
+  allLoad: boolean;  // 已经获取了全部数据时候为true
+
   constructor(private contradictionService: ContradictionService,
               private navigateService: NavigateService) {
     this.hasResearch = false;
     this.page = 1;
+    this.resultList = [];
     this.resultNameList = [];
   }
 
@@ -79,15 +82,19 @@ export class SearchComponent implements OnInit {
       this.state = '1';
     }
     this.contradictionService.getRearchList(this.searchPosit, this.searchNagat, this.state, this.page).subscribe( res => {
-      if (res.msg && res.rows.length) {
-        this.resultList = res.rows;
-        this.resultNameList = [];
-        for (let i = 0; i < this.resultList.length; i++) {
+      if (res.msg === 'ok' && res.rows.length) {
+        this.resultList = this.resultList.concat(res.rows);
+        if (this.page === (res.total / 10)) {
+          this.allLoad = true;
+        } else {
+          this.allLoad = false;
+        }
+        for (let i = 0; i < res.rows.length; i++) {
           let name = res.rows[i].principleName;
           name = name.replace(/（[^）]+）/g, '');
-          this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum});
+          this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum, principleId: res.rows[i].principleId});
         }
-        document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = res.rows[0].principleContent;
+        document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[0].principleContent;
       } else {
         this.hasResult = false;
       }
@@ -99,5 +106,24 @@ export class SearchComponent implements OnInit {
     document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[id].principleContent;
   }
 
+  // 获取更多的数据
+  getmore() {
+    if (!this.allLoad) {
+      this.page++;
+      this.getSearchRult();
+    } else {
+      return;
+    }
+  }
+
+  // 点击冲突检索进行检索
+  btnSearch() {
+    // 进行检索
+    this.page = 1;
+    this.resultList = [];
+    this.resultNameList = [];
+
+    this.getSearchRult();
+  }
 }
 

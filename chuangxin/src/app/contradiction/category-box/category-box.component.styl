@@ -1,17 +1,23 @@
 @import "../../../assets/css/variable.styl"
 
 .top-nav
-  padding 0 30px
-  height 36px
+  width 100%
+  overflow hidden
+  padding 0 110px 0 12px
   position relative
-  //border-bottom 1px solid #e7e7e7
+.top-nav-box
+  height 54px
+  width 100%
+  overflow scroll
+  position relative
   ul
+    width 9999px
     li
       float left
       font-size $font-little-big-size
       color $font-gray-color
       line-height 1
-      padding 0 0 18px
+      padding 18px 0 18px
       margin 0 20px
       cursor pointer
     .active
@@ -20,16 +26,16 @@
     :hover
       color $theme-nav-light-yellow-color
       border-bottom 2px solid $theme-nav-light-yellow-color
-  .getMoreCatefory-btn
-    position absolute
-    right 30px
-    top -15px
-    button
-      width 30px
-      height 40px
-      background #f3f3f3
-      svg
-        width 12px
-        height 20px
-        stroke none
-        fill $theme-nav-light-yellow-color
+.getMoreCatefory-btn
+  position absolute
+  right 30px
+  top 7px
+  button
+    width 30px
+    height 40px
+    background #f3f3f3
+    svg
+      width 12px
+      height 20px
+      stroke none
+      fill $theme-nav-light-yellow-color

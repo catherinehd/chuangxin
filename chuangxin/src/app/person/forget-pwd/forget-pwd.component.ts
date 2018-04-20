@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 import {  PersonService } from '../../service/person.service';
 
 @Component({
@@ -23,16 +24,19 @@ export class ForgetPwdComponent implements OnInit {
   code: string; // 验证码
   phone: string; // 手机号
   msg: string; // 弹窗内容
+  hasphone: boolean;  // 已经填写手机号
 
   iscounting: boolean; // 计时状态
   count: number; // 倒计时
   timer: any; // 计时器
 
-  constructor(private personService: PersonService) {
+  constructor(private personService: PersonService,
+              private navigateService: NavigateService) {
     this.phone = '';
     this.code = '';
     this.pwd1 = '';
     this.pwd2 = '';
+    this.hasphone = false;
   }
 
   ngOnInit() {
@@ -48,6 +52,11 @@ export class ForgetPwdComponent implements OnInit {
         } else if (value.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
           this.errpwd1 = '';
           this.pwd1 = value;
+          if (this.pwd2 && (this.pwd2 !== this.pwd1)) {
+            this.errpwd2 = '两次密码不一致';
+          } else if (this.pwd2 && (this.pwd2 === this.pwd1)) {
+            this.errpwd2 = '';
+          }
         } else {
           this.errpwd1 = '密码由6-15位数字或字母组成';
         }
@@ -82,9 +91,11 @@ export class ForgetPwdComponent implements OnInit {
         // 判断手机号是否输入正确
         if (value === '') {
           this.errphone = '手机号不能为空';
+          this.hasphone = false;
         } else if (value.match(/^1[34578]\d{9}$/)) {
           this.errphone = '';
           this.phone = value;
+          this.hasphone = true;
         } else {
           this.errphone = '手机号格式不对';
         }
@@ -120,12 +131,15 @@ export class ForgetPwdComponent implements OnInit {
 
   // 提交修改
   submit() {
-    this.personService.editPwd(this.pwd1, this.phone).subscribe( res => {
+    if (this.errphone || this.errcode || this.errpwd1 || this.errpwd2) {
+      return;
+    }
+    this.personService.forgetpwd(this.pwd1, this.phone).subscribe( res => {
       if (res.ok) {
         this.msg = res.msg;
         setTimeout( () => {
           this.msg = '';
-          // document.getElementsByTagName('input')[0].value = '';
+          this.navigateService.pushToRoute('./home');
         }, 3000);
       }
     });

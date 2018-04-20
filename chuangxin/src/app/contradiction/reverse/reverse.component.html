@@ -2,7 +2,7 @@
 
   <div class="reverse-box contraction-wrap-box">
 
-    <app-category-box [resultList]="resultNameList" (chooseReverseName)="choosereversename($event)"></app-category-box>
+    <app-category-box [resultList]="resultNameList" (chooseReverseName)="choosereversename($event)" (getMore)="getmore()"></app-category-box>
 
     <!--原理反查冲突-->
     <div class="reverse-theory-box">
@@ -26,7 +26,10 @@
         </tr>
       </table>
     </div>
+    <!--右边的快捷按钮-->
+    <app-contradiction-right-bar></app-contradiction-right-bar>
 
   </div>
 
 </section>
+

@@ -24,27 +24,55 @@ section
           position relative
           a
             display inline-block
-            padding 57px 23px 10px
+            padding 57px 23px 8px
             cursor pointer
           .active
             color $theme-main-yellow-color
             border-bottom $default-main-bottom-border
+          .line
+            position absolute
+            display block
+            width 1px
+            height 20px
+            background #bdbdbd
+            right -20px
+            bottom 12px
           .lower-level-menu
             width 140px
             position absolute
+            top 82px
+            left 0
+            z-index 1
             border-radius 3px
-            background #ffffff
+            background transparent
             color $font-gray-color
-            div
+            padding-top 10px
+            div>div
               cursor pointer
               padding 12px 0 12px 15px
+              &:not(:last-child)
+                border-bottom $default-gray-bottom-border
+              &:hover
+                color $theme-main-yellow-color
             .level2active
               color $theme-main-yellow-color
             .triggle
               margin-left 10px
               display block
-              height 10px
+              height 8px
               text-align left
+              position relative
+              img
+                position absolute
+                top 0
+                left 0
+            .toggle-list-box
+              background #fff
+              border-radius 3px
+          &:hover
+            a
+              color $theme-main-yellow-color
+              border-bottom $default-main-bottom-border
     .func-btns
       text-align right
       ul
@@ -84,8 +112,12 @@ section
           .triggle
             margin-left 10px
             display block
-            height 10px
+            height 8px
             text-align left
+            position relative
+          .toggle-list-box
+            background #fff
+            border-radius 3px
           div
             padding 12px 0 12px 15px
             text-align left

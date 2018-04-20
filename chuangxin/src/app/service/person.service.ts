@@ -82,6 +82,17 @@ export class PersonService {
     });
   }
 
+  // 忘记密码修改密码
+  forgetpwd(np, uPhone) {
+    return this.httpClientService.postMethod({
+      url: 'user/updatePassword/',
+      data: {
+        np: np,
+        uphone: uPhone
+      }
+    });
+  }
+
   // 获取手机验证码
   getCode(uPhone) {
     return this.httpClientService.getMethod({

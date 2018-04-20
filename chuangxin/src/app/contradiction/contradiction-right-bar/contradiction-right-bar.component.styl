@@ -2,12 +2,15 @@
 
 .right-bar
   width 152px
-  position fixed
-  top 50%
-  //height 260px
-  background #fff
+  position absolute
+  top 0
+  right -172px
+  height 100%
+  background transparent
   .bar-box
-    position relative
+    position fixed
+    width 152px
+    background #fff
     .line
       height 100%
       width 1px
@@ -22,6 +25,7 @@
         color $font-gray-color
         line-height 1
         padding 15px 9px
+        cursor pointer
         img
           visibility hidden
         span
@@ -38,6 +42,7 @@
       padding 9px 0
       height 52px
       z-index 1
+      cursor pointer
       .toTop-icon
         svg
           width 25px

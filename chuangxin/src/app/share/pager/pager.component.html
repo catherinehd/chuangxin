@@ -1,5 +1,5 @@
 <ul class="page-list" *ngIf="!noLists">
-  <li *ngIf="currPage !== 1" (click)="goPrePage()">上一页</li>
+  <li *ngIf="currPage !== 1" (click)="goPrePage()" style="width:52px;">上一页</li>
   <li [class.active]="currPage === 1" (click)="goPage(1)">1</li>
 
   <li *ngIf="pageCount > 10 && currPage > 4"><i class="icon-dot">...</i></li>
@@ -10,5 +10,5 @@
 
   <li *ngIf="pageCount != 1" [class.active]="currPage === pageCount" (click)="goPage(pageCount)">{{pageCount}}</li>
 
-  <li *ngIf="currPage !== pageCount" (click)="goNextPage()">下一页</li>
+  <li *ngIf="currPage !== pageCount" (click)="goNextPage()" style="width:52px;">下一页</li>
 </ul>

@@ -60,7 +60,7 @@
       </div>
 
       <!--分页-->
-      <app-pager></app-pager>
+      <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
     </div>
 
     <div class="search-result-box" *ngIf="hasResearch && !hasResult">

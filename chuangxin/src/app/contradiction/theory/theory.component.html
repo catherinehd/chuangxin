@@ -2,7 +2,7 @@
 
   <div class="theory-box contraction-wrap-box">
 
-    <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)"></app-category-box>
+    <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
 
     <!--<p class="description">-->
       <!--将一个物体分成相对独立的部分；使物体分成容易组装及拆卸的部分；增加物体相互独立的程度。例如：用多台个人计算机代替一台大型计算机完成相同的功能；花园中浇花用的软管系统，可根据需要根据快速接头连接成所需的长度；用百叶窗代替整体窗帘。-->
@@ -48,6 +48,9 @@
       <!--</div>-->
     </div>
 
+    <!--右边的快捷按钮-->
+    <app-contradiction-right-bar></app-contradiction-right-bar>
   </div>
 
 </section>
+
