@@ -46,12 +46,31 @@ export class HeaderComponent implements OnInit {
         this.msg = '退出成功';
         setTimeout( () => {
           this.msg = '';
+          this.navigateService.pushToRoute('/home');
         }, 3000);
       }
     });
   }
 
   gopage(url) {
-    this.navigateService.pushToRoute(url);
+    if ((url === '/repository/functionsearch') || (url === '/repository/propertysearh')) {
+      // 判断是否登录
+      this.personService.testIsLogin().subscribe(res => {
+        if (res.ok) {
+          this.inlogin = true;
+          this.navigateService.pushToRoute(url);
+        } else {
+          this.navigateService.storeNextRoute(url);
+          this.showLoginPop.emit('showLoginPop');
+        }
+      })
+      // console.log(this.inlogin);
+      // if (this.inlogin) {
+      //   this.navigateService.pushToRoute(url);
+      // } else {
+      //   this.navigateService.storeNextRoute(url);
+      //   this.showLoginPop.emit('showLoginPop');
+      // }
+    }
   }
 }

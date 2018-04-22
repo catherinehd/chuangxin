@@ -11,8 +11,8 @@ const appRouters: Routes = [
   { path: 'repository', component: KnowledgeIndexComponent,
     children: [
       {path: '', component: KnowledgeDescriptionComponent},
-      {path: 'functionsearch', component: SearchResultComponent, canActivate: [AuthGuard]},
-      {path: 'propertysearh', component: SearchResultComponent, canActivate: [AuthGuard]}
+      {path: 'functionsearch', component: SearchResultComponent },
+      {path: 'propertysearh', component: SearchResultComponent }
     ]
 }
 

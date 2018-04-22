@@ -106,20 +106,30 @@ section
             fill #fff
         .toggle
           position absolute
-          background #ffffff
+          background transparent
           width 140px
           border-radius 3px
+          padding-top 8px
           .triggle
             margin-left 10px
             display block
             height 8px
             text-align left
             position relative
+            img
+              position absolute
+              top 0
+              left 10px
           .toggle-list-box
             background #fff
             border-radius 3px
-          div
-            padding 12px 0 12px 15px
+            &>div
+              padding 12px 0 12px 15px
+              &:hover
+                color $theme-light-yellow-color
+              &:not(:last-child)
+                border-bottom $default-gray-bottom-border
+          >div
             text-align left
           .level2active
             color $theme-main-yellow-color

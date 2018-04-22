@@ -86,6 +86,8 @@ export class PopComponent implements OnInit {
         setTimeout( () => {
           this.loginSuccess = '';
           this.close();
+          // 登录成功后进入下一个路由
+          // this.navigateService.pushToNextRoute();
           location.reload();
         }, 3000);
       } else {
