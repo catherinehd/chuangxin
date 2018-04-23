@@ -83,13 +83,14 @@ export class PopComponent implements OnInit {
         this.errmsg = '';
         this.loginSuccess = '登录成功';
         this.navigateService.clearRouteList();
+        localStorage.setItem('userInfo', this.loginForm.value.uname);
         setTimeout( () => {
           this.loginSuccess = '';
           this.close();
           // 登录成功后进入下一个路由
-          // this.navigateService.pushToNextRoute();
+          this.navigateService.pushToNextRoute();
           location.reload();
-        }, 3000);
+        }, 2000);
       } else {
         this.errmsg = res.msg;
       }

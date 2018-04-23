@@ -25,13 +25,13 @@
             邮箱：
           </span>
       <span>
-            <input type="email" placeholder="{{userInfo.email}}">
+            <input #email type="email" value="{{userInfo.email}}" (change)="test('email', email.value)">
           </span>
-      <span class="warn">
+      <span class="warn" *ngIf="erremail">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{erremail}}
       </span>
     </div>
     <div class="info-field sex">
@@ -39,8 +39,8 @@
             性别：
           </span>
       <span>
-            <label for="man"><input type="radio" name="sex" value="man" id="man" checked class="sex">男</label>
-            <label for="woman"><input type="radio" name="sex" value="man" id="woman" class="sex">女</label>
+            <label for="man"><input type="radio" name="sex" #man value="男" id="man" checked class="sex" (click)="test('sex', man.value)">男</label>
+            <label for="woman"><input type="radio" name="sex" #woman value="女" id="woman" class="sex" (click)="test('sex', woman.value)">女</label>
           </span>
     </div>
     <div class="info-field">
@@ -48,23 +48,53 @@
             所属领域：
           </span>
       <span>
-            <select>
-              <option>
+            <select #field (change)="test('field', field.value)">
+              <option value="食品行业" selected="{{userInfo.field}} === '食品行业'">
                 食品行业
               </option>
-              <option>
-                食品行业
+              <option value="电力通信" selected="{{userInfo.field}} === '电力通信'">
+                电力通信
               </option>
-              <option>
-                食品行业
+              <option value="航空航天" selected="{{userInfo.field}} === '航空航天'">
+                航空航天
+              </option>
+              <option value="化工领域" selected="{{userInfo.field}} === '化工领域'">
+                化工领域
+              </option>
+              <option value="能源环境">
+                能源环境
+              </option>
+              <option value="建筑运输">
+                建筑运输
+              </option>
+              <option value="生活教育">
+                生活教育
+              </option>
+              <option value="机械工业">
+                机械工业
+              </option>
+              <option value="电子信息">
+                电子信息
+              </option>
+              <option value="地质水利">
+                地质水利
+              </option>
+              <option value="医疗保健">
+                医疗保健
+              </option>
+              <option value="计算机">
+                计算机
+              </option>
+              <option value="其他">
+                其他
               </option>
             </select>
           </span>
-      <span class="warn">
+      <span class="warn" *ngIf="errfield">
         <svg>
               <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
             </svg>
-        密码由6-15位数字或字母组成
+        {{errfield}}
       </span>
     </div>
     <div class="info-field">
@@ -72,14 +102,22 @@
             单位名称：
           </span>
       <span>
-            {{userInfo.work}}
+        <input type="text" #work value="{{userInfo.work}}" (change)="test('work', work.value)">
           </span>
+      <span class="warn" *ngIf="errwork">
+        <svg>
+              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+            </svg>
+        {{errwork}}
+      </span>
     </div>
   </div>
 
   <div class="submit-button">
-    <button>
+    <button (click)="submit(userInfo.uname, userInfo.username, userInfo.phone, email.value, sexvalue, field.value, work.value)" [disabled]="erremail || errfield || errwork">
       确认修改
     </button>
   </div>
 </div>
+
+<app-modal [msg]="msg" *ngIf="msg"></app-modal>

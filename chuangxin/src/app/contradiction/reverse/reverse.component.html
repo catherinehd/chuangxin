@@ -5,7 +5,7 @@
     <app-category-box [resultList]="resultNameList" (chooseReverseName)="choosereversename($event)" (getMore)="getmore()"></app-category-box>
 
     <!--原理反查冲突-->
-    <div class="reverse-theory-box">
+    <div class="reverse-theory-box" [appTouchLoading]="!allLoad2" (canLoad)="getMoreList()">
       <table class="reverse-theory-list">
         <tr *ngFor="let item of reverseResult; let i = index">
           <td class="number">

@@ -140,7 +140,7 @@ export class PersonService {
 
   // 确认用户信息修改
   editUserInfo(uName, userName, uPhone, umail, usex, ufield, ucompany) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'user/updateUser',
       data: {
         uName: uName,

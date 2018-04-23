@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-protocol',
@@ -10,6 +11,9 @@ export class ProtocolComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(function() {
+      $('.wrap').css('min-height', $(window).height());
+    }, 0);
   }
 
 }

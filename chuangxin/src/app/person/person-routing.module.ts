@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../service/auth-guard.service';
 
 import { PersonIndexComponent } from './person-index/person-index.component';
 import { RegisterComponent } from './register/register.component';
@@ -13,8 +14,8 @@ const appRouters: Routes = [
   { path: 'person', component: PersonIndexComponent,
     children: [
       {path: '', redirectTo: 'userinfo', pathMatch: 'full'},
-      {path: 'userinfo', component: PersonInfoComponent},
-      {path: 'editpwd', component: EditPasswordComponent}
+      {path: 'userinfo', component: PersonInfoComponent, canActivate: [AuthGuard] },
+      {path: 'editpwd', component: EditPasswordComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: 'register', component: RegisterComponent },

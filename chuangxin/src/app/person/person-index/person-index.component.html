@@ -1,25 +1,26 @@
 <section class="wrap person-sec">
   <!--<div class="bread">首页 > 个人信息</div>-->
-
-  <div class="main">
-    <!--左边栏-->
-    <div class="left-box">
-      <div class="left-nav">
-        <div class="nav-title">个人中心</div>
-        <ul>
-          <li routerLink="/person/userinfo" routerLinkActive="active">
-            个人信息
-          </li>
-          <li routerLink="/person/editpwd" routerLinkActive="active">
-            修改密码
-          </li>
-        </ul>
+  <div class="main-box">
+    <div class="main">
+      <!--左边栏-->
+      <div class="left-box">
+        <div class="left-nav">
+          <div class="nav-title">个人中心</div>
+          <ul>
+            <li routerLink="/person/userinfo" routerLinkActive="active">
+              个人信息
+            </li>
+            <li routerLink="/person/editpwd" routerLinkActive="active">
+              修改密码
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!--右边栏-->
-    <div class="right-box">
-      <router-outlet></router-outlet>
+      <!--右边栏-->
+      <div class="right-box">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 

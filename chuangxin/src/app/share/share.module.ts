@@ -9,11 +9,13 @@ import { PagerComponent } from './pager/pager.component';
 import { PopComponent } from './pop/pop.component';
 import { ModalComponent } from './modal/modal.component';
 
+import { TouchLoadingDirective } from '../directives/touch-loading.directive';
+
 @NgModule({
   imports: [
     CommonModule, RouterModule, FormsModule, ReactiveFormsModule
   ],
-  declarations: [HeaderComponent, FooterComponent, PagerComponent, PopComponent, ModalComponent],
-  exports: [HeaderComponent, FooterComponent, PagerComponent, PopComponent, ModalComponent]
+  declarations: [HeaderComponent, FooterComponent, PagerComponent, PopComponent, ModalComponent, TouchLoadingDirective],
+  exports: [HeaderComponent, FooterComponent, PagerComponent, PopComponent, ModalComponent, TouchLoadingDirective]
 })
 export class ShareModule { }

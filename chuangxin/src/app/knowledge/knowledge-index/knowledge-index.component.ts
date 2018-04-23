@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-knowledge-index',
@@ -13,6 +14,9 @@ export class KnowledgeIndexComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    setTimeout(function() {
+      $('.wrap').css('min-height', $(window).height());
+    }, 0);
   }
 
 }

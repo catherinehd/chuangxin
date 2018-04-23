@@ -29,10 +29,10 @@
           <div class="repository-children-box lower-level-menu" *ngIf="repositoryShow">
             <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
             <div class="toggle-list-box">
-              <div routerLink="/repository/functionsearch" routerLinkActive="level2active">
+              <div routerLink="/repository/functionsearch" routerLinkActive="level2active" (click)="isShowLoginPop()">
                 功能检索
               </div>
-              <div routerLink="/repository/propertysearh" routerLinkActive="level2active">
+              <div routerLink="/repository/propertysearh" routerLinkActive="level2active" (click)="isShowLoginPop()">
                 属性检索
               </div>
             </div>

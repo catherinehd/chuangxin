@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { PersonService } from '../../service/person.service';
 import { NavigateService } from '../../service/navigate.service';
+declare var $: any;
 
 @Component({
   selector: 'app-register',
@@ -48,6 +49,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.buildForm();
     this.msg = '';
+    setTimeout(function() {
+      $('.wrap').css('min-height', $(window).height());
+    }, 0);
   }
 
   ngOnDestroy() {

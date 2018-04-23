@@ -17,6 +17,7 @@ export class ReverseComponent implements OnInit {
 
   reverseResult: any[]; // 反查结果
   state: number; // 0-经典版 1-03版
+  showId: number ; // 目前查看的标题的id
 
   constructor(private contradictionService: ContradictionService) {
     this.page = 1;
@@ -25,7 +26,6 @@ export class ReverseComponent implements OnInit {
     this.resultNameList = [];
     this.reverseResult = [];
     this.allLoad = false;
-    this.allLoad2 = false;
   }
 
   ngOnInit() {
@@ -52,6 +52,7 @@ export class ReverseComponent implements OnInit {
           name = name.replace(/（[^）]+）/g, '');
           this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum, principleId: res.rows[i].principleId});
         }
+        this.showId = res.rows[0].principleId;
         this.getReverse(res.rows[0].principleId, this.state);
       } else {
         // 没有获取到结果
@@ -77,8 +78,11 @@ export class ReverseComponent implements OnInit {
 
   // 切换标题
   choosereversename(id) {
-    this.contradictionService.getReverse(id, this.state, this.page).subscribe(res => {
+    this.contradictionService.getReverse(id, this.state, 1).subscribe(res => {
       this.reverseResult = res.rows;
+      this.page2 = 1;
+      this.showId = id;
+      document.getElementsByClassName('reverse-theory-box')[0].scrollTop = 0;
     });
   }
 
@@ -96,7 +100,7 @@ export class ReverseComponent implements OnInit {
   getMoreList() {
     if (!this.allLoad2) {
       this.page2++;
-      this.getReverse('1', this.state);
+      this.getReverse(this.showId, this.state);
     } else {
       return;
     }

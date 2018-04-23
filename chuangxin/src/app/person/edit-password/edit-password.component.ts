@@ -22,6 +22,11 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
   code: string; // 验证码
   msg: string; // 弹窗内容
 
+  popmodal = {
+    title: '用户登录',
+    isLoginShow: false
+  }
+
   constructor(private personService: PersonService) { }
 
   ngOnInit() {
@@ -42,10 +47,15 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
       case 'pwd1':
         // 判断密码是否输入正确
         if (value === '') {
-          this.errpwd1 = '密码不能为空';
+          this.errpwd1 = '请输入密码';
         } else if (value.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
           this.errpwd1 = '';
           this.pwd1 = value;
+          if (this.pwd2 && (this.pwd2 !== value)) {
+            this.errpwd2 = '两次密码不一致';
+          } else if (this.pwd2 && (this.pwd2 === value)) {
+            this.errpwd2 = '';
+          }
         } else {
           this.errpwd1 = '密码由6-15位数字或字母组成';
         }
@@ -54,7 +64,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
         // 判断重复密码是否输入正确
         if (value === '') {
           this.errpwd2 = '重复密码不能为空';
-        } else if ( value === this.pwd1) {
+        } else if (this.pwd1 === value) {
           this.errpwd2 = '';
           this.pwd2 = value;
         } else {
@@ -84,7 +94,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
   getcode() {
     this.personService.getCode(this.phonenumber).subscribe( res => {
       if (res.ok) {
-        this.gocound();
+        this.gocount();
       } else {
         this.errcode = res.msg;
       }
@@ -92,7 +102,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
   }
 
   // 倒计时
-  gocound() {
+  gocount() {
     clearInterval(this.timer);
     this.iscounting = true;
     this.count = 60;
@@ -112,9 +122,19 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
         this.msg = res.msg;
         setTimeout( () => {
           this.msg = '';
-          // document.getElementsByTagName('input')[0].value = '';
+          this.personService.logOut().subscribe(res2 => {
+            if (res2.ok) {
+              this.popmodal.isLoginShow = true;
+            }
+          });
         }, 3000);
       }
     });
+  }
+
+  closePop() {
+    // 关闭模态框
+    this.popmodal.isLoginShow = false;
+
   }
 }

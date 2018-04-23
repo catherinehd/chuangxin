@@ -18,5 +18,18 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+    function setFooter() {
+      setTimeout(function(){
+        $('.wrap').css("min-height",$(window).height());
+      },0);
+    }
+
+    setFooter();
+
+    window.onresize = function() {
+      setFooter();
+    }
+  </script>
 </body>
 </html>

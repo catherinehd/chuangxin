@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isOffline: boolean;
   title = 'app';
+  inLoginStatus: string;
 
   popmodal = {
     title: '用户登录',
@@ -24,5 +25,11 @@ export class AppComponent {
   closePop() {
     // 关闭模态框
     this.popmodal.isLoginShow = false;
+
+  }
+
+  // 登录框改变登录状态，'1'为已经登录
+  loginStatus(msg) {
+    this.inLoginStatus = msg;
   }
 }

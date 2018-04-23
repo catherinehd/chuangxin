@@ -63,7 +63,7 @@
       <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
     </div>
 
-    <div class="search-result-box" *ngIf="hasResearch && !hasResult">
+    <div class="search-result-box no-result" *ngIf="hasResearch && !hasResult">
       <img src="assets/img/wijiansuo@2x.png" />
       <div class="explain">
         暂无检索到相关冲突原理，换一个试试~

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-contradiction-index',
@@ -10,6 +11,9 @@ export class ContradictionIndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(function() {
+      $('.wrap').css('min-height', $(window).height());
+    }, 0);
   }
 
 }

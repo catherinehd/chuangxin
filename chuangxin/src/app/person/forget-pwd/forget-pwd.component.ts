@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import {  PersonService } from '../../service/person.service';
+declare var $: any;
 
 @Component({
   selector: 'app-forget-pwd',
@@ -39,7 +40,9 @@ export class ForgetPwdComponent implements OnInit {
     this.hasphone = false;
   }
 
-  ngOnInit() {
+  ngOnInit() {setTimeout(function() {
+    $('.wrap').css('min-height', $(window).height());
+  }, 0);
   }
 
 

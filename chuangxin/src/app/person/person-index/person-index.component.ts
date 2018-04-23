@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-person-index',
@@ -10,6 +11,9 @@ export class PersonIndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(function() {
+      $('.wrap').css('min-height', $(window).height());
+    }, 0);
   }
 
 }
