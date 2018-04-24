@@ -14,6 +14,8 @@ export class SearchComponent implements OnInit {
   localUrl: string; // 当前地址
   page: number; // 查询的页数
   resultList: any[]; // 查询结果列表
+  defaultId: number; // 默认查看的标题id
+  defaultName: string; // 默认查看的标题id
 
   positive: string[]; // 改善特性列表
   nagative: string[]; // 恶化特性列表
@@ -27,6 +29,7 @@ export class SearchComponent implements OnInit {
   resultDetail: string;  // 结果详情
 
   allLoad: boolean;  // 已经获取了全部数据时候为true
+  isLoading: boolean;
 
   constructor(private contradictionService: ContradictionService,
               private navigateService: NavigateService) {
@@ -34,6 +37,8 @@ export class SearchComponent implements OnInit {
     this.page = 1;
     this.resultList = [];
     this.resultNameList = [];
+    this.isLoading =  false;
+    this.defaultId = 0;
   }
 
   ngOnInit() {
@@ -81,8 +86,10 @@ export class SearchComponent implements OnInit {
       // 03版
       this.state = '1';
     }
+    this.isLoading = true;
     this.contradictionService.getRearchList(this.searchPosit, this.searchNagat, this.state, this.page).subscribe( res => {
       if (res.msg === 'ok' && res.rows.length) {
+        this.isLoading = false;
         this.resultList = this.resultList.concat(res.rows);
         if (this.page === (res.total / 10)) {
           this.allLoad = true;
@@ -94,15 +101,18 @@ export class SearchComponent implements OnInit {
           name = name.replace(/（[^）]+）/g, '');
           this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum, principleId: res.rows[i].principleId});
         }
-        document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[0].principleContent;
+        // this.defaultName = this.resultNameList[0];
+        document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[this.defaultId].principleContent;
       } else {
         this.hasResult = false;
+        this.isLoading = false;
       }
     });
   }
 
   // 切换标题
   chooseName(id) {
+    this.defaultId = id;
     document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[id].principleContent;
   }
 
@@ -122,7 +132,7 @@ export class SearchComponent implements OnInit {
     this.page = 1;
     this.resultList = [];
     this.resultNameList = [];
-
+    this.defaultId = 0;
     this.getSearchRult();
   }
 }

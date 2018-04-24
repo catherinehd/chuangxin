@@ -24,7 +24,7 @@
       </div>
       <div class="search-btn">
         <button type="submit" (click)="btnSearch()">
-          冲突检索
+          效应检索
         </button>
       </div>
     </form>
@@ -46,10 +46,11 @@
             检索结果：
           </div>
           <div class="tags-list">
-            <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
+            <app-category-box [resultList]="resultNameList" [defaultName]="defaultName" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
           </div>
         </div>
         <div class="contraction-result-detail-info">
+          <app-loading *ngIf="isLoading"></app-loading>
         </div>
       </div>
 

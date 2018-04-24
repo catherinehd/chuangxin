@@ -43,10 +43,12 @@ export class HeaderComponent implements OnInit {
     this.personService.logOut().subscribe( res => {
       if (res.ok) {
         this.inlogin = false;
+        this.navigateService.clearRouteList();
         localStorage.removeItem('userInfo');
         this.msg = '退出成功';
         setTimeout( () => {
           this.msg = '';
+          location.reload();
           this.navigateService.pushToRoute('/home');
         }, 2000);
       }

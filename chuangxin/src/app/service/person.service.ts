@@ -31,7 +31,7 @@ export class PersonService {
   // uCompany 单位名称
   // uWeb 所属网站
   register(uName, userName, pwd, uPhone, umail, usex, ufield, ucompany, uweb) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'user/doRegister',
       data: {
         uName: uName,
@@ -115,7 +115,7 @@ export class PersonService {
 
   // 修改密码
   editPwd(newPwd, uPhone) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'user/updatePassword',
       data: {
         np: newPwd,
@@ -139,7 +139,7 @@ export class PersonService {
   }
 
   // 确认用户信息修改
-  editUserInfo(uName, userName, uPhone, umail, usex, ufield, ucompany) {
+  editUserInfo(uName, userName, uPhone, umail, usex, ufield, ucompany, uId) {
     return this.httpClientService.postMethod({
       url: 'user/updateUser',
       data: {
@@ -149,7 +149,8 @@ export class PersonService {
         uMail: umail,
         uSex: usex,
         uField: ufield,
-        uCompany: ucompany
+        uCompany: ucompany,
+        uId: uId
       }
     });
   }

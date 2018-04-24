@@ -33,8 +33,7 @@
         </div>
         <div class="form-field remmember-forget-box">
           <span class="remember">
-            <input type="checkbox" (click)="checkvalue()">
-            记住我
+            <label for="rem"><input #rem name="rem" type="checkbox" id="rem" (click)="checkvalue($event.target.checked)">记住我</label>
           </span>
           <a class="forgetpwd" href="/forgetpwd">
             忘记密码？

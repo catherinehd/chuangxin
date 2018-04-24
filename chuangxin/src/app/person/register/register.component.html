@@ -161,8 +161,8 @@
           性别：
         </span>
         <span class="radio-box">
-          <label for="man"><input type="radio" name="sex" value="男" id="man" class="sex" formControlName="sex">男</label>
-          <label for="woman"><input type="radio" name="sex" value="女" id="woman" class="sex" formControlName="sex">女</label>
+          <label for="man"><input type="radio" name="sex" value="男" id="man" class="sex" #man checked (click)="chooseSex(man.value)">男</label>
+          <label for="woman"><input type="radio" name="sex" value="女" id="woman" class="sex" #woman (click)="chooseSex(woman.value)">女</label>
         </span>
       </div>
       <div class="form-field">

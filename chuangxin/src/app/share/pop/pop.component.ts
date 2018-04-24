@@ -101,8 +101,12 @@ export class PopComponent implements OnInit {
     this.closePop.emit();
   }
 
-  checkvalue() {
-    console.log(document.getElementsByTagName('input')[2].value);
+  checkvalue(msg) {
+    if (msg === true) {
+      this.remmember = '1';
+    } else {
+      this.remmember = '0';
+    }
   }
 }
 

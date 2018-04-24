@@ -30,7 +30,7 @@
         </span>
         <span>
           <input #code placeholder="请输入验证码" (blur)="test('code', code.value)">
-          <button class="code-btn" (click)="getcode()" [disabled]="!hasphone">
+          <button class="code-btn" (click)="getcode()" [disabled]="!phone.value">
             <span *ngIf="!iscounting">获取验证码</span>
             <span *ngIf="iscounting">{{count}}</span>
         </button>
@@ -93,11 +93,13 @@
       </div>
     </div>
 
-    <div class="submit-btn-box" (click)="submit()">
-      <button [disabled]="!phone || !code || !pwd1 || !pwd2">重置</button>
+    <div class="submit-btn-box">
+      <button (click)="submit()" [disabled]="!phone.value || !code.value || !pwd1.value || !pwd2.value">重置</button>
     </div>
   </div>
   </div>
 </section>
 
 <app-modal [msg]="msg" *ngIf="msg"></app-modal>
+
+<app-pop [popmodal]="popmodal" (closePop)="closePop()" ></app-pop>

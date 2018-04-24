@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-category-box',
@@ -7,7 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CategoryBoxComponent implements OnInit {
 
-  @Input() resultList: string[];
+  @Input() resultList: object[];
+  @Input() defaultName: string;
   @Output() chooseName = new EventEmitter<string>();
   @Output() chooseReverseName = new EventEmitter<string>();
   @Output() getMore = new EventEmitter();
@@ -38,3 +40,4 @@ export class CategoryBoxComponent implements OnInit {
     this.getMore.emit();
   }
 }
+

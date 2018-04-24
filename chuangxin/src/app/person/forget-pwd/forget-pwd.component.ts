@@ -31,6 +31,12 @@ export class ForgetPwdComponent implements OnInit {
   count: number; // 倒计时
   timer: any; // 计时器
 
+  popmodal = {
+    title: '用户登录',
+    isLoginShow: false
+  }
+
+
   constructor(private personService: PersonService,
               private navigateService: NavigateService) {
     this.phone = '';
@@ -142,9 +148,19 @@ export class ForgetPwdComponent implements OnInit {
         this.msg = res.msg;
         setTimeout( () => {
           this.msg = '';
-          this.navigateService.pushToRoute('./home');
+          for (let i = 0 ; i < $('input').length; i++) {
+            $('input')[i].value = '';
+          }
+          clearInterval(this.timer);
+          this.iscounting = false;
+          this.popmodal.isLoginShow = true;
         }, 3000);
       }
     });
+  }
+
+  closePop() {
+    // 关闭模态框
+    this.popmodal.isLoginShow = false;
   }
 }

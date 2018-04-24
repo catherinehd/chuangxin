@@ -13,7 +13,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   msg: string; // 注册成功弹窗
   registerForm: FormGroup;
-  register: Register = new Register('', '', '', '', '', '', '', '', '', '');
+  register: Register = new Register('', '', '', '', '', '', '', '', '');
+  sex: string;
 
   showpwd1: boolean; // true的时候显示密码
   showpwd2: boolean; // true的时候显示重复密码
@@ -49,6 +50,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.buildForm();
     this.msg = '';
+    this.sex = '男';
     setTimeout(function() {
       $('.wrap').css('min-height', $(window).height());
     }, 0);
@@ -85,9 +87,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
-      'sex': [this.register.sex, [
-        Validators.required,
-      ]],
       'field': [this.register.field, [
         Validators.required,
       ]],
@@ -105,7 +104,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             if (this.registerForm.value.uname === '') {
               this.erruname = '用户名不能为空';
               this.successuname = false;
-            } else if (this.registerForm.value.uname.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/)) {
+            } else if (this.registerForm.value.uname.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{1,20}$/)) {
               this.personService.testUserName(this.registerForm.value.uname).subscribe(res => {
                 if (res.msg) {
                   this.erruname = '';
@@ -116,7 +115,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 }
               });
             } else {
-              this.erruname = '用户名由6-10位数字和字母构成';
+              this.erruname = '用户名由数字和字母构成';
               this.successuname = false;
             }
             break;
@@ -274,9 +273,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     } else {
       this.personService.register(this.registerForm.value.uname, this.registerForm.value.name, this.registerForm.value.pwd1,
-        this.registerForm.value.phone, this.registerForm.value.email, this.registerForm.value.sex, this.registerForm.value.field,
+        this.registerForm.value.phone, this.registerForm.value.email, this.sex, this.registerForm.value.field,
         this.registerForm.value.work, '').subscribe( res => {
-        console.log(res);
         if (res.ok) {
           this.msg = '注册成功';
           setTimeout( () => {
@@ -288,6 +286,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
 
+  chooseSex(msg) {
+    this.sex = msg;
+  }
 }
 
 class Register {
@@ -299,7 +300,6 @@ class Register {
     public phone: string,
     public code: string,
     public email: string,
-    public sex: string,
     public field: string,
     public work: string
   ) {}

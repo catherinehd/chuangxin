@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersonService } from '../../service/person.service';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-edit-password',
@@ -27,7 +28,8 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
     isLoginShow: false
   }
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService,
+              private navigateService: NavigateService) { }
 
   ngOnInit() {
     this.showpwd = false;
@@ -124,6 +126,10 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
           this.msg = '';
           this.personService.logOut().subscribe(res2 => {
             if (res2.ok) {
+              localStorage.removeItem('userInfo');
+              this.navigateService.clearRouteList();
+              this.iscounting = false;
+              clearInterval(this.timer);
               this.popmodal.isLoginShow = true;
             }
           });
@@ -135,6 +141,8 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
   closePop() {
     // 关闭模态框
     this.popmodal.isLoginShow = false;
+    location.reload();
+    this.navigateService.pushToRoute('./home');
 
   }
 }

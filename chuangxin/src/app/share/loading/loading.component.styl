@@ -1,0 +1,45 @@
+@keyframes fade-in
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+@keyframes uil-default-anim
+  0%
+    opacity 1
+  100%
+    opacity 0
+
+.loading
+  position relative
+  width 20px
+  height @width
+  transform: translate3d(-50%, -50%, 0) scale(0.1);
+  div
+    position absolute
+    top 76px
+    left 92px
+    width 16px
+    height 48px
+    background #929292
+    border-radius 8px
+    animation: uil-default-anim 1s linear infinite
+    for n in 1 2 3 4 5 6 7 8 9 10
+      &:nth-of-type({n})
+        animation-delay (0.1*(n - 1) - 1)s
+        transform rotate(36*(n - 1)deg) translate(0,-60px)
+
+.loading-box
+  display flex
+  justify-content center
+  align-items center
+  margin-top 16px
+  overflow hidden
+  p
+    color #929292
+    font-size 14px
+    margin-left 1rem
+
+
+.app-loading
+  margin-top 35vh
