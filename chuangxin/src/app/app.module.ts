@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HashLocationStrategy,LocationStrategy} from '@angular/common';
 
 import { HomeModule } from './home/home.module';
 import { PersonModule } from './person/person.module';
@@ -27,7 +28,7 @@ import { AppComponent } from './app.component';
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, HomeModule, ShareModule, AppRoutingModule, PersonModule, KnowledgeModule,
     ContradictionModule
   ],
-  providers: [HttpClientService, AppConfigService, NavigateService, AuthGuard],
+  providers: [HttpClientService, AppConfigService, NavigateService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

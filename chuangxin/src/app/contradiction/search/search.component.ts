@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.localUrl = location.pathname;
+    this.localUrl = location.hash;
     if (this.localUrl.indexOf('classical/seach') !== -1) {
       // 经典
       this.contradictionService.getClassicalList().subscribe( res => {

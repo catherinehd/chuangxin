@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 declare var $: any;
 
 @Component({
@@ -6,20 +6,42 @@ declare var $: any;
   templateUrl: './category-box.component.html',
   styleUrls: ['./category-box.component.styl']
 })
-export class CategoryBoxComponent implements OnInit {
+export class CategoryBoxComponent implements OnInit, OnChanges {
 
-  @Input() resultList: object[];
+  @Input() resultList: any;
   @Input() defaultName: string;
   @Output() chooseName = new EventEmitter<string>();
   @Output() chooseReverseName = new EventEmitter<string>();
   @Output() getMore = new EventEmitter();
 
   activeName: string; // 被选中的内容标题
+  timer: any;
 
   constructor() {
   }
 
   ngOnInit() {
+    if (this.resultList.length) {
+      this.activeName = this.resultList[0].name;
+    } else {
+      setTimeout( () => {
+        this.activeName = this.resultList[0].name;
+      }, 1000);
+    }
+  }
+
+  ngOnChanges(changes) {
+    if (changes.resultList.currentValue !== changes.resultList.previousValue) {
+      if (this.resultList.length) {
+        this.activeName = this.resultList[0].name;
+      } else {
+        setTimeout( () => {
+          if (this.resultList.length) {
+            this.activeName = this.resultList[0].name;
+          }
+        }, 1000);
+      }
+    }
   }
 
   // 默认选中第一个标题，通过数组排列选中
@@ -41,3 +63,11 @@ export class CategoryBoxComponent implements OnInit {
   }
 }
 
+class ResultList {
+  constructor(
+    name: string,
+    id: string,
+    principleId: string,
+    principleNum: string
+  ) {}
+}

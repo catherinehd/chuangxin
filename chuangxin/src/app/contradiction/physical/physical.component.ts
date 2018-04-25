@@ -14,12 +14,14 @@ export class PhysicalComponent implements OnInit {
   resultList: any[]; // 查询结果列表
   toggleShow: boolean; // toggle显示为true;
   allLoad: boolean;  // 已经获取了全部数据时候为true
+  isLoading: boolean;
 
   constructor(private contradictionService: ContradictionService) {
     this.type = 1;
     this.state = '1';
     this.resultNameList = [];
     this.toggleShow = false;
+    this.isLoading =  false;
   }
 
   ngOnInit() {
@@ -35,8 +37,10 @@ export class PhysicalComponent implements OnInit {
 
   // 获取对应分离下的物理矛盾
   getPhysicalResult() {
+    this.isLoading =  true;
     this.contradictionService.getPhysical(this.state).subscribe( res => {
       if (res.msg && res.data.length) {
+        this.isLoading =  false;
         this.resultList = res.data;
         this.resultNameList = [];
         for (let i = 0; i < this.resultList.length; i++) {
@@ -46,6 +50,7 @@ export class PhysicalComponent implements OnInit {
         }
         document.getElementsByClassName('case')[0].innerHTML = this.resultList[0].principleContent;
       } else {
+        this.isLoading =  false;
         // 没有原理
       }
     });

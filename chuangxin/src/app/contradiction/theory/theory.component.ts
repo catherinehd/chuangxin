@@ -12,12 +12,14 @@ export class TheoryComponent implements OnInit {
   resultList: any[]; // 查询结果列表
   page: number;
   allLoad: boolean;  // 已经获取了全部数据时候为true
+  isLoading: boolean;
 
   constructor(private contradictionService: ContradictionService) {
     this.page = 1;
     this.resultList = [];
     this.resultNameList = [];
     this.allLoad = false;
+    this.isLoading =  false;
   }
 
   ngOnInit() {
@@ -26,6 +28,31 @@ export class TheoryComponent implements OnInit {
 
   // 获取矛盾原理
   getTheory() {
+    this.isLoading = true;
+    this.contradictionService.getTheory(this.page).subscribe(res => {
+      if (res.msg && res.rows.length) {
+        this.isLoading = false;
+        this.resultList = this.resultList.concat(res.rows);
+        if (this.page === res.total) {
+          this.allLoad = true;
+        } else {
+          this.allLoad = false;
+        }
+        for (let i = 0; i < res.rows.length; i++) {
+          let name = res.rows[i].principleName;
+          name = name.replace(/（[^）]+）/g, '');
+          this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum, principleId: res.rows[i].principleId});
+        }
+        document.getElementsByClassName('case')[0].innerHTML = this.resultList[0].principleContent;
+      } else {
+        // 没有原理
+        this.isLoading = false;
+      }
+    });
+  }
+
+  // 只获取名称
+  getTheoryNameOnly() {
     this.contradictionService.getTheory(this.page).subscribe(res => {
       if (res.msg && res.rows.length) {
         this.resultList = this.resultList.concat(res.rows);
@@ -39,7 +66,6 @@ export class TheoryComponent implements OnInit {
           name = name.replace(/（[^）]+）/g, '');
           this.resultNameList.push({id: i, name: name, principleNum: res.rows[i].principleNum, principleId: res.rows[i].principleId});
         }
-        document.getElementsByClassName('case')[0].innerHTML = this.resultList[0].principleContent;
       } else {
         // 没有原理
       }
@@ -55,7 +81,7 @@ export class TheoryComponent implements OnInit {
   getmore() {
     if (!this.allLoad) {
       this.page++;
-      this.getTheory();
+      this.getTheoryNameOnly();
     } else {
       return;
     }

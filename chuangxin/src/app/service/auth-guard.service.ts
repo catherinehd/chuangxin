@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // localStorage.setItem('backUrl', state.url);
     this.navigateService.storeNextRoute(state.url);
-    this.navigateService.push(location.pathname);
+    this.navigateService.push(location.hash.slice(1));
     // 可判断用户是否登录来进行路由守卫;
     if (localStorage.getItem('userInfo')) {
       return true;

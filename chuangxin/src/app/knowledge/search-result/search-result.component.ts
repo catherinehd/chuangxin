@@ -19,13 +19,14 @@ export class SearchResultComponent implements OnInit {
   localUrl: string; // 当前地址
   page: any = {pageIndex: 1, pageCount: 1};  // 获取当前页和总页数
   resultList: string[]; // 查询结果列表
+  isLoading: boolean;
 
   constructor( private knowledgeService: KnowledgeService) {
     this.hasResearch = false;
   }
 
   ngOnInit() {
-    this.localUrl = location.pathname;
+    this.localUrl = location.hash;
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
       this.getFuncSearchFuncList();
@@ -36,6 +37,7 @@ export class SearchResultComponent implements OnInit {
       this.funs = ['全部领域', '粉末', '场', '气体', '液体', '固体'];
     }
     this.fun = this.funs[0];
+    this.isLoading =  false;
   }
 
   // 获取功能检索的功能列表
@@ -60,7 +62,7 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
-  getSearchRult() {
+  getSearchRult(showpage) {
     // 进行检索
     this.hasResearch = true;
     this.hasResult = true;
@@ -74,24 +76,29 @@ export class SearchResultComponent implements OnInit {
     } else {
       this.searchFun = this.fun;
     }
+    this.isLoading = true;
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
-      this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', this.page.pageIndex).subscribe(res => {
+      this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', showpage).subscribe(res => {
         if (res.msg && res.rows.length) {
           this.resultList = res.rows;
+          this.isLoading = false;
           this.page.pageCount = Math.floor(res.total / 10) + 1 ;
         } else {
           this.hasResult = false;
+          this.isLoading = false;
         }
       });
     } else {
       // 属性检索
-      this.knowledgeService.getknowledgeRearchList('', '', this.searchFunc,  this.searchFun, this.page.pageIndex).subscribe(res => {
+      this.knowledgeService.getknowledgeRearchList('', '', this.searchFunc,  this.searchFun, showpage).subscribe(res => {
         if (res.msg && res.rows.length) {
+          this.isLoading = false;
           this.resultList = res.rows;
           this.page.pageCount = Math.floor(res.total / 10) + 1;
         } else {
           this.hasResult = false;
+          this.isLoading = false;
         }
       });
     }
@@ -100,7 +107,7 @@ export class SearchResultComponent implements OnInit {
   onShowPage(page) {
     this.page.pageIndex = page;
 
-    this.getSearchRult();
+    this.getSearchRult(this.page.pageIndex);
 
   }
 }

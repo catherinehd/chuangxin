@@ -171,47 +171,47 @@
           所属领域：
         </span>
         <span>
-          <select formControlName="field" (blur)="test('field')">
-            <option>
+          <select formControlName="field" (change)="test('field')">
+            <option disabled value="">
               请选择所属领域
             </option>
-            <option>
+            <option value="食品农业">
               食品农业
             </option>
-            <option>
+            <option value="电力通信">
               电力通信
             </option>
-            <option>
+            <option value="航空航天">
               航空航天
             </option>
-            <option>
+            <option value="化工领域">
               化工领域
             </option>
-            <option>
+            <option value="能源环境">
               能源环境
             </option>
-            <option>
+            <option value="建筑运输">
               建筑运输
             </option>
-            <option>
+            <option value="生活教育">
               生活教育
             </option>
-            <option>
+            <option value="机械工业">
               机械工业
             </option>
-            <option>
+            <option value="电子信息">
               电子信息
             </option>
-            <option>
+            <option value="地质水利">
               地质水利
             </option>
-            <option>
+            <option value="医疗保健">
               医疗保健
             </option>
-            <option>
+            <option value="计算机">
               计算机
             </option>
-            <option>
+            <option value="其他">
               其他
             </option>
           </select>
@@ -253,7 +253,7 @@
     <div class="submit-btn-box">
       <button (click)="registerMember()" [disabled]="!this.registerForm.value.uname || !this.registerForm.value.name || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.phone || !this.registerForm.value.code || !this.registerForm.value.email || !this.registerForm.value.field || !this.registerForm.value.work">注册</button>
       <div class="tip">
-        点击注册按钮，表示您已经同意我们的<a href="./protocol">《服务条款》</a>
+        点击注册按钮，表示您已经同意我们的<a href="#/protocol">《服务条款》</a>
       </div>
     </div>
   </div>

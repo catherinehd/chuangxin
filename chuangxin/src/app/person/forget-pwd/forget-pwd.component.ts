@@ -145,7 +145,7 @@ export class ForgetPwdComponent implements OnInit {
     }
     this.personService.forgetpwd(this.pwd1, this.phone).subscribe( res => {
       if (res.ok) {
-        this.msg = res.msg;
+        this.msg = '重置密码成功';
         setTimeout( () => {
           this.msg = '';
           for (let i = 0 ; i < $('input').length; i++) {

@@ -14,7 +14,7 @@ export class ContradictionRightBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.localUrl = location.pathname;
+    this.localUrl = location.hash;
     if (this.localUrl.indexOf('classical') !== -1) {
       this.type = 'classical';
     } else {

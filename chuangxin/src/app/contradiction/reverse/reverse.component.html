@@ -5,7 +5,7 @@
     <app-category-box [resultList]="resultNameList" (chooseReverseName)="choosereversename($event)" (getMore)="getmore()"></app-category-box>
 
     <!--原理反查冲突-->
-    <div class="reverse-theory-box" [appTouchLoading]="!allLoad2" (canLoad)="getMoreList()">
+    <div class="reverse-theory-box" [appTouchLoading]="!allLoad2" (canLoad)="getMoreList()" *ngIf="!isLoading">
       <table class="reverse-theory-list">
         <tr *ngFor="let item of reverseResult; let i = index">
           <td class="number">
@@ -25,7 +25,13 @@
           </td>
         </tr>
       </table>
+      <app-loading *ngIf="isLoading2"></app-loading>
     </div>
+
+    <div class="reverse-theory-box" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+
     <!--右边的快捷按钮-->
     <app-contradiction-right-bar></app-contradiction-right-bar>
 

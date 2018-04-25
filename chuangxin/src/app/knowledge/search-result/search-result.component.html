@@ -23,7 +23,7 @@
         </select>
       </div>
       <div class="search-btn">
-        <button type="submit" (click)="getSearchRult()">
+        <button type="submit" (click)="getSearchRult('1')">
           效应检索
         </button>
       </div>
@@ -45,7 +45,7 @@
     </div>
 
     <!--搜索结果-->
-    <div class="search-result-box" *ngIf="hasResearch && hasResult">
+    <div class="search-result-box" *ngIf="!isLoading && hasResearch && hasResult">
       <div class="result-list">
         <ul>
           <li *ngFor="let item of resultList">
@@ -63,11 +63,16 @@
       <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
     </div>
 
-    <div class="search-result-box no-result" *ngIf="hasResearch && !hasResult">
+    <div class="search-result-box no-result" *ngIf="!isLoading && hasResearch && !hasResult">
       <img src="assets/img/wijiansuo@2x.png" />
       <div class="explain">
         暂无检索到相关冲突原理，换一个试试~
       </div>
+    </div>
+
+    <!--loading-->
+    <div class="search-result-box no-result" *ngIf="isLoading">
+      <app-loading></app-loading>
     </div>
   </div>
 

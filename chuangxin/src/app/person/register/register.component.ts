@@ -239,6 +239,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   // 获取验证码
   getcode() {
+    if (this.errphone) {
+      return;
+    }
     this.personService.getCode(this.registerForm.value.phone).subscribe( res => {
       if (res.ok) {
         this.counting();

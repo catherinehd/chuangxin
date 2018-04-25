@@ -12,7 +12,7 @@ export class ParamsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (location.pathname.indexOf('contradiction/03/params') !== -1) {
+    if (location.hash.indexOf('contradiction/03/params') !== -1) {
       this.classical = false;
     } else {
       this.classical = true;

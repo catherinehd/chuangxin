@@ -119,6 +119,9 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
   // 提交修改
   submit() {
+    if (this.errpwd2 || this.errpwd1 || this.errcode) {
+      return;
+    }
     this.personService.editPwd(this.pwd1, this.phonenumber).subscribe( res => {
       if (res.ok) {
         this.msg = res.msg;
