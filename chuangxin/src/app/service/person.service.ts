@@ -125,9 +125,9 @@ export class PersonService {
   }
 
   // 用户是否有登录
-  testIsLogin() {
+  testIsLogin(ticket) {
     return this.httpClientService.getMethod({
-      url: 'user/center',
+      url: 'user/center/' + ticket,
     });
   }
 

@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   count: number; // 获取验证码后的倒计时
   iscounting: boolean; // 在倒计时时候为true
   timer: any; // 计时器
+  isSafari: boolean; // 是safari的时候改变password的样式
 
   // 错误提示
   erruname: string; // 用户名错误
@@ -54,10 +55,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
     setTimeout(function() {
       $('.wrap').css('min-height', $(window).height());
     }, 0);
+    this.browser();
   }
 
   ngOnDestroy() {
     clearInterval(this.timer);
+  }
+
+  browser() {
+    if (navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
+      this.isSafari = true;
+    } else {
+      this.isSafari = false;
+    }
   }
 
   // 创建表单

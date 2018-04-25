@@ -26,11 +26,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.personService.testIsLogin().subscribe(res => {
-      if (res.ok) {
-        this.inlogin = true;
-      }
-    });
+    if (localStorage.getItem('cxtoken')) {
+      this.personService.testIsLogin(localStorage.getItem('cxtoken')).subscribe(res => {
+        if (res.ok) {
+          this.inlogin = true;
+        } else {
+          this.inlogin = false;
+        }
+      });
+    } else {
+      this.inlogin = false;
+    }
   }
 
   isLoginShow() {
@@ -45,6 +51,7 @@ export class HeaderComponent implements OnInit {
         this.inlogin = false;
         this.navigateService.clearRouteList();
         localStorage.removeItem('userInfo');
+        localStorage.removeItem('cxtoken');
         this.msg = '退出成功';
         setTimeout( () => {
           this.msg = '';

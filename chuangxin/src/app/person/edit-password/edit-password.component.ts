@@ -22,6 +22,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
   pwd2: string; // 重复密码
   code: string; // 验证码
   msg: string; // 弹窗内容
+  isSafari: boolean; // 是safari的时候改变password的样式
 
   popmodal = {
     title: '用户登录',
@@ -35,13 +36,23 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
     this.showpwd = false;
     this.showpwd2 = false;
     this.msg = '';
-    this.personService.testIsLogin().subscribe( res => {
-      this.phonenumber = res.data.uPhone;
+    this.personService.testIsLogin(localStorage.getItem('cxtoken')).subscribe( res => {
+      const user = JSON.parse(res.data);
+      this.phonenumber = user.uPhone;
     });
+    this.browser();
   }
 
   ngOnDestroy() {
     clearInterval(this.timer);
+  }
+
+  browser() {
+    if (navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
+      this.isSafari = true;
+    } else {
+      this.isSafari = false;
+    }
   }
 
   test(msg, value) {
@@ -130,6 +141,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
           this.personService.logOut().subscribe(res2 => {
             if (res2.ok) {
               localStorage.removeItem('userInfo');
+              localStorage.removeItem('cxtoken');
               this.navigateService.clearRouteList();
               this.iscounting = false;
               clearInterval(this.timer);

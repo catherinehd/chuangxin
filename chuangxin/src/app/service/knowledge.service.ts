@@ -9,20 +9,20 @@ export class KnowledgeService {
   // 获取功能检索的功能搜索列表
   getFuncList() {
     return this.httpClientService.getMethod({
-      url: 'effect/queryeffectAttribute',
+      url: 'effect/queryeffectFunction',
     });
   }
 
   // 获取属性检索的功能搜索列表
   getPropertySearchFuncList() {
     return this.httpClientService.getMethod({
-      url: 'effect/queryeffectFunction',
+      url: 'effect/queryeffectAttribute',
     });
   }
 
   // 搜索结果
   getknowledgeRearchList(func, status, func2, status2, page) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'effect/queryEffectList/' + page,
       data: {
         fun: func,

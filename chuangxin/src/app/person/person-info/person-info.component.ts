@@ -24,9 +24,10 @@ export class PersonInfoComponent implements OnInit {
 
   ngOnInit() {
     this.msg = '';
-    this.personService.testIsLogin().subscribe(res => {
+    this.personService.testIsLogin(localStorage.getItem('cxtoken')).subscribe(res => {
       if (res.ok) {
-        this.userPhone = res.data.uPhone;
+        const user = JSON.parse(res.data);
+        this.userPhone = user.uPhone;
         this.personService.editUserPhoneNumber(this.userPhone).subscribe( res2 => {
           if (res2.ok) {
             this.userInfo.phone = res2.data.uPhone;

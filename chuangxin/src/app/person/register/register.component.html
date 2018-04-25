@@ -52,7 +52,7 @@
         </span>
         <span>
           <input [type]="showpwd1 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd1')" formControlName="pwd1">
-          <svg class="pwd-icon" [class.icon-active]="showpwd1" (click)="showpwd1 = !showpwd1">
+          <svg class="pwd-icon" [class.icon-active]="showpwd1" [class.issafari]="isSafari"  (click)="showpwd1 = !showpwd1">
               <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
           </svg>
         </span>
@@ -75,7 +75,7 @@
         </span>
         <span>
           <input [type]="showpwd2 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd2')" formControlName="pwd2">
-          <svg class="pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2">
+          <svg class="pwd-icon" [class.icon-active]="showpwd2" [class.issafari]="isSafari"  (click)="showpwd2 = !showpwd2">
               <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
           </svg>
         </span>

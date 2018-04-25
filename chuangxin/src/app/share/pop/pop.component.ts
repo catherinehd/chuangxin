@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { PersonService } from '../../service/person.service';
 import { NavigateService } from '../../service/navigate.service';
+import { HttpClientService } from '../../service/http-client.service';
 
 @Component({
   selector: 'app-pop',
@@ -20,9 +21,11 @@ export class PopComponent implements OnInit {
   showpwd: boolean; // 显示密码为true;
   remmember: string; // 0-不记住， 1-记住
   loginSuccess: string; // 登录成功为文字
+  isSafari: boolean; // 是safari的时候改变password的样式
 
   constructor(private formBuilder: FormBuilder,
               private navigateService: NavigateService,
+              private httpClientService: HttpClientService,
               private personService: PersonService) { }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class PopComponent implements OnInit {
     this.buildForm();
     this.remmember = '0';
     this.loginSuccess = '';
+    this.browser();
   }
 
   buildForm() {
@@ -46,6 +50,14 @@ export class PopComponent implements OnInit {
         Validators.maxLength(15)
       ]]
     });
+  }
+
+  browser() {
+    if (navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
+      this.isSafari = true;
+    } else {
+      this.isSafari = false;
+    }
   }
 
   // 检验表单格式
@@ -80,10 +92,16 @@ export class PopComponent implements OnInit {
   loginFunc() {
     this.personService.login(this.loginForm.value.uname, this.loginForm.value.pwd, this.remmember).subscribe( res => {
       if (res.ok) {
+        console.log(res);
         this.errmsg = '';
         this.loginSuccess = '登录成功';
         this.navigateService.clearRouteList();
         localStorage.setItem('userInfo', this.loginForm.value.uname);
+        localStorage.setItem('cxtoken', res.data);
+        // this.httpClientService.refreshHeaders({
+        //   'Cookie': '',
+        //   'Content-Type': 'application/x-www-form-urlencoded',
+        // });
         setTimeout( () => {
           this.loginSuccess = '';
           this.close();

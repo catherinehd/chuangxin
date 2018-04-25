@@ -18,7 +18,7 @@ export class HttpClientService {
   refreshHeaders(token): void {
     this.headers = new HttpHeaders({
       // 'Authorization': 'Bearer ' + token,
-      //'local':'true',
+      // 'local':'true',
       'Content-Type': 'application/x-www-form-urlencoded',
     });
   }
@@ -53,24 +53,24 @@ export class HttpClientService {
 
   getMethod(options: Options): Observable<any> {
     const headers = this.headers;
-    //options.withCredentials = true;
+    // options.withCredentials = true;
     const params = new HttpParams({
       fromString: this.setParams(options.data)
     });
-    const httpOptions = !options.type ? {headers, params,withCredentials : true} : this.setHttpOptions(options.type, {headers, params, withCredentials : true});
+    const httpOptions = !options.type ? {headers, params, withCredentials : true} : this.setHttpOptions(options.type, {headers, params, withCredentials : true});
     return this.httpClient.get(this.setUrl(options), httpOptions);
   }
 
   postMethod(options: Options): Observable<any> {
     const headers = this.headers;
-    //options.withCredentials = true;
-    const httpOptions = !options.type ? {headers,withCredentials : true} : this.setHttpOptions(options.type, {headers,withCredentials : true});
+    // options.withCredentials = true;
+    const httpOptions = !options.type ? {headers, withCredentials : true} : this.setHttpOptions(options.type, {headers, withCredentials : true});
     return this.httpClient.post(this.setUrl(options), this.setParams(options.data),  httpOptions);
   }
 
   putMethod(options: Options): Observable<any> {
     const headers = this.headers;
-    //options.withCredentials = true;
+    // options.withCredentials = true;
     const httpOptions = !options.type ? {headers, withCredentials : true} : this.setHttpOptions(options.type, {headers, withCredentials : true});
     return this.httpClient.put(this.setUrl(options), this.setParams(options.data), httpOptions);
   }

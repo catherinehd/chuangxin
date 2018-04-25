@@ -30,11 +30,11 @@ export class SearchResultComponent implements OnInit {
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
       this.getFuncSearchFuncList();
-      this.funs = ['全部领域', '改变', '稳定', '减少', '增加', '测量'];
+      this.funs = ['全部领域', '粉末', '场', '气体', '液体', '固体'];
     } else {
       // 属性检索
       this.getPropertySearchFuncList();
-      this.funs = ['全部领域', '粉末', '场', '气体', '液体', '固体'];
+      this.funs = ['全部领域', '改变', '稳定', '减少', '增加', '测量'];
     }
     this.fun = this.funs[0];
     this.isLoading =  false;

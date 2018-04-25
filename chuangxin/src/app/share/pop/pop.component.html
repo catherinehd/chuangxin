@@ -26,7 +26,7 @@
           </span>
           <span>
             <input [type]="showpwd ? 'text' : 'password'" placeholder="请输入密码" formControlName="pwd">
-            <svg class="pwd-icon" [class.icon-active]="showpwd" (click)="showpwd = !showpwd">
+            <svg class="pwd-icon" [class.icon-active]="showpwd" [class.issafari]="isSafari" (click)="showpwd = !showpwd">
               <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
             </svg>
         </span>

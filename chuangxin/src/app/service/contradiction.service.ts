@@ -22,7 +22,7 @@ export class ContradictionService {
 
   // 搜索结果
   getRearchList(func, funs, state, page) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'principle/queryPrincipleList/' + page,
       data: {
         fun: func,

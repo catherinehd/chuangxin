@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     this.navigateService.storeNextRoute(state.url);
     this.navigateService.push(location.hash.slice(1));
     // 可判断用户是否登录来进行路由守卫;
-    if (localStorage.getItem('userInfo')) {
+    if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
       return true;
     } else {
       this.navigateService.popRoute();
