@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from '../service/auth-guard.service';
+
 import { ContradictionIndexComponent } from './contradiction-index/contradiction-index.component';
 import { SearchComponent } from './search/search.component';
 import { TheoryComponent } from './theory/theory.component';
@@ -15,29 +17,29 @@ const appRouters: Routes = [
       {path: 'classical',
         children: [
           {path: '', redirectTo: 'search', pathMatch: 'full'},
-          {path: 'search', component: SearchComponent
+          {path: 'search', component: SearchComponent, canActivate: [AuthGuard]
             // children: [
             //   {path: 'detail/:searchname', component: DetailComponent}
             // ]
           },
-          {path: 'theory', component: TheoryComponent},
-          {path: 'physical', component: PhysicalComponent},
-          {path: 'reverse', component: ReverseComponent},
-          {path: 'params', component: ParamsComponent},
+          {path: 'theory', component: TheoryComponent, canActivate: [AuthGuard]},
+          {path: 'physical', component: PhysicalComponent, canActivate: [AuthGuard]},
+          {path: 'reverse', component: ReverseComponent, canActivate: [AuthGuard]},
+          {path: 'params', component: ParamsComponent, canActivate: [AuthGuard]},
         ]
       },
       {path: '03',
         children: [
           {path: '', redirectTo: 'search', pathMatch: 'full'},
-          {path: 'search', component: SearchComponent
+          {path: 'search', component: SearchComponent, canActivate: [AuthGuard]
             // children: [
             //   {path: 'detail/:searchname', component: DetailComponent}
             // ]
           },
-          {path: 'theory', component: TheoryComponent},
-          {path: 'physical', component: PhysicalComponent},
-          {path: 'reverse', component: ReverseComponent},
-          {path: 'params', component: ParamsComponent},
+          {path: 'theory', component: TheoryComponent, canActivate: [AuthGuard]},
+          {path: 'physical', component: PhysicalComponent, canActivate: [AuthGuard]},
+          {path: 'reverse', component: ReverseComponent, canActivate: [AuthGuard]},
+          {path: 'params', component: ParamsComponent, canActivate: [AuthGuard]},
         ]
       }
     ]}

@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit {
 
   // 没有登录的时候显示登录框
   isShowLoginPop() {
-    if (localStorage.getItem('userInfo')) {
+    if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
       return;
     } else {
       this.isLoginShow();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-contradiction-right-bar',
@@ -11,6 +12,14 @@ export class ContradictionRightBarComponent implements OnInit {
   localUrl: string; // 当前地址
 
   constructor() {
+    window.onscroll = function () {
+      const i = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop || 0;
+      console.log(i);
+      $('.bar-box').css('top', 418 - i );
+      if (i >= 418) {
+        $('.bar-box').css('top', 0 );
+      }
+    };
   }
 
   ngOnInit() {

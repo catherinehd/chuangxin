@@ -92,7 +92,6 @@ export class PopComponent implements OnInit {
   loginFunc() {
     this.personService.login(this.loginForm.value.uname, this.loginForm.value.pwd, this.remmember).subscribe( res => {
       if (res.ok) {
-        console.log(res);
         this.errmsg = '';
         this.loginSuccess = '登录成功';
         this.navigateService.clearRouteList();
@@ -125,6 +124,12 @@ export class PopComponent implements OnInit {
     } else {
       this.remmember = '0';
     }
+  }
+
+  gopage(url) {
+    this.navigateService.push(location.hash);
+    this.navigateService.pushToRoute(url);
+    this.popmodal.isLoginShow = false;
   }
 }
 

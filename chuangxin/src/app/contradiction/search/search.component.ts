@@ -43,18 +43,19 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.localUrl = location.hash;
-    if (this.localUrl.indexOf('classical/seach') !== -1) {
+    if (this.localUrl.indexOf('classical') !== -1) {
       // 经典
       this.contradictionService.getClassicalList().subscribe( res => {
-        if (res.msg) {
+        if (res.msg === 'OK') {
           this.positive = res.data;
-          this.nagative = res.data;
+          this.positive.unshift('选择全部');
+          this.nagative = this.positive;
         }
       });
     } else {
       // 03版本
       this.contradictionService.getThirdList().subscribe( res => {
-        if (res.msg) {
+        if (res.msg === 'OK') {
           this.positive = res.data;
           this.positive.unshift('选择全部');
           this.nagative = this.positive;

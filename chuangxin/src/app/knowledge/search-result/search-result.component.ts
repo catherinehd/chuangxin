@@ -8,6 +8,8 @@ import { KnowledgeService } from '../../service/knowledge.service';
 })
 export class SearchResultComponent implements OnInit {
 
+  functionSearch: boolean; // 功能检索
+  propertySearch: boolean; // 属性检索
   hasResearch: boolean; // 有进行搜索为true。默认为false。
   hasResult: boolean; // 搜索有结果为true
   funcs: string[]; // 实现功能选项列表
@@ -29,10 +31,14 @@ export class SearchResultComponent implements OnInit {
     this.localUrl = location.hash;
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
+      this.functionSearch = true;
+      this.propertySearch = false;
       this.getFuncSearchFuncList();
       this.funs = ['全部领域', '粉末', '场', '气体', '液体', '固体'];
     } else {
       // 属性检索
+      this.functionSearch = false;
+      this.propertySearch = true;
       this.getPropertySearchFuncList();
       this.funs = ['全部领域', '改变', '稳定', '减少', '增加', '测量'];
     }
@@ -43,7 +49,7 @@ export class SearchResultComponent implements OnInit {
   // 获取功能检索的功能列表
   getFuncSearchFuncList() {
     this.knowledgeService.getFuncList().subscribe( res => {
-      if (res.msg) {
+      if (res.msg === 'ok') {
         this.funcs = res.rows;
         this.funcs.unshift('全部功能');
         this.func = this.funcs[0];
@@ -54,9 +60,9 @@ export class SearchResultComponent implements OnInit {
   // 获取属性检索的功能列表
   getPropertySearchFuncList() {
     this.knowledgeService.getPropertySearchFuncList().subscribe( res => {
-      if (res.msg) {
+      if (res.msg === 'ok') {
         this.funcs = res.rows;
-        this.funcs.unshift('全部功能');
+        this.funcs.unshift('全部属性');
         this.func = this.funcs[0];
       }
     });
@@ -80,7 +86,7 @@ export class SearchResultComponent implements OnInit {
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
       this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', showpage).subscribe(res => {
-        if (res.msg && res.rows.length) {
+        if (res.msg === 'ok' && res.rows.length) {
           this.resultList = res.rows;
           this.isLoading = false;
           this.page.pageCount = Math.floor(res.total / 10) + 1 ;
@@ -92,7 +98,7 @@ export class SearchResultComponent implements OnInit {
     } else {
       // 属性检索
       this.knowledgeService.getknowledgeRearchList('', '', this.searchFunc,  this.searchFun, showpage).subscribe(res => {
-        if (res.msg && res.rows.length) {
+        if (res.msg === 'ok' && res.rows.length) {
           this.isLoading = false;
           this.resultList = res.rows;
           this.page.pageCount = Math.floor(res.total / 10) + 1;

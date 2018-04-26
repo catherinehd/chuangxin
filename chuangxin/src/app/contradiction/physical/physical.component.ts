@@ -39,7 +39,7 @@ export class PhysicalComponent implements OnInit {
   getPhysicalResult() {
     this.isLoading =  true;
     this.contradictionService.getPhysical(this.state).subscribe( res => {
-      if (res.msg && res.data.length) {
+      if (res.msg === 'OK' && res.data.length) {
         this.isLoading =  false;
         this.resultList = res.data;
         this.resultNameList = [];

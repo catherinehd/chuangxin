@@ -3,12 +3,15 @@
 .top-nav
   width 100%
   overflow hidden
-  padding 0 110px 0 12px
   position relative
-.top-nav-box
   height 54px
+#second-top-nav
+  padding 0 110px 0 12px
+.top-nav-box
+  height 71px
   width 100%
-  overflow scroll
+  overflow-x scroll
+  overflow-y hidden
   position relative
   ul
     width 9999px
@@ -26,9 +29,9 @@
     :hover
       color $theme-nav-light-yellow-color
       border-bottom 2px solid $theme-nav-light-yellow-color
-.getMoreCatefory-btn
+.getMoreCatefory-btn-left
+.getMoreCatefory-btn-right
   position absolute
-  right 30px
   top 7px
   button
     width 30px
@@ -39,3 +42,7 @@
       height 20px
       stroke none
       fill $theme-nav-light-yellow-color
+.getMoreCatefory-btn-right
+  right 30px
+.getMoreCatefory-btn-left
+  left 30px

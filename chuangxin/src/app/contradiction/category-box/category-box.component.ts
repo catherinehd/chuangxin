@@ -9,6 +9,7 @@ declare var $: any;
 export class CategoryBoxComponent implements OnInit, OnChanges {
 
   @Input() resultList: any;
+  @Input() nomore: boolean;
   @Input() defaultName: string;
   @Output() chooseName = new EventEmitter<string>();
   @Output() chooseReverseName = new EventEmitter<string>();
@@ -16,6 +17,8 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
 
   activeName: string; // 被选中的内容标题
   timer: any;
+  leftbtn: boolean; // 左边按钮是否显示
+  rightbtn: boolean; // 右边按钮是否显示
 
   constructor() {
   }
@@ -28,6 +31,8 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
         this.activeName = this.resultList[0].name;
       }, 1000);
     }
+    this.leftbtn = false;
+    this.rightbtn = true;
   }
 
   ngOnChanges(changes) {
@@ -57,9 +62,29 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
   }
 
   // 获取更多
-  getmore() {
-    document.getElementById('scrollbox').scrollLeft += 870;
-    this.getMore.emit();
+  getmore(msg) {
+    // console.log(this.nomore);
+    // if ( this.nomore ) {
+    //   this.rightbtn = false;
+    // }
+    if (msg === 'right') {
+      document.getElementById('scrollbox').scrollLeft += 670;
+      this.leftbtn = true;
+      $('#second-top-nav').css('padding-left', '110px');
+      this.getMore.emit();
+    } else if (msg === 'left') {
+      if (document.getElementById('scrollbox').scrollLeft === 0) {
+        this.leftbtn = false;
+        $('#second-top-nav').css('padding-left', '12px');
+        return;
+      } else {
+        document.getElementById('scrollbox').scrollLeft -= 670;
+        this.rightbtn = true;
+      }
+    } else {
+      return;
+    }
+    // console.log(document.getElementById('scrollbox').scrollLeft);
   }
 }
 

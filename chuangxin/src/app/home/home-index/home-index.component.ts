@@ -27,14 +27,11 @@ export class HomeIndexComponent implements OnInit {
   }
 
   gopage(url) {
-    if (url === './repository/functionsearch') {
-      if (localStorage.getItem('userInfo')) {
-        this.navigateServeice.pushToRoute(url);
-      } else {
-        this.popmodal.isLoginShow = true;
-      }
+    if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
+      this.navigateServeice.pushToRoute(url);
     }
-    this.navigateServeice.pushToRoute(url);
+    this.navigateServeice.storeNextRoute(url);
+    this.popmodal.isLoginShow = true;
   }
 
   closePop() {

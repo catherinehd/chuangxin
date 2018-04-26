@@ -18,7 +18,6 @@
       border-left 1px dashed #eca72d
       position absolute
       left 17px
-      z-index -1
     ul
       padding 15px 0
       li
@@ -40,10 +39,14 @@
     .toTopBtn
       background $theme-main-light-blue-color
       text-align center
-      padding 9px 0
+      padding 6px 0 11px
       height 52px
       z-index 1
       cursor pointer
+      position absolute
+      bottom -52px
+      left 0
+      width 152px
       .toTop-icon
         svg
           width 25px
@@ -52,5 +55,5 @@
       button
         color #ffffff
         font-size $font-nomal-size
-        padding-top 3px
+        padding-top 4px
         line-height 1

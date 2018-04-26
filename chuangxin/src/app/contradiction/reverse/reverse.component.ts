@@ -45,7 +45,7 @@ export class ReverseComponent implements OnInit {
   getNameList() {
     this.isLoading =  true;
     this.contradictionService.getTheory(this.page).subscribe(res => {
-      if (res.msg && res.rows.length) {
+      if (res.msg === 'ok' && res.rows.length) {
         this.isLoading =  false;
         this.resultList = this.resultList.concat(res.rows);
         if (this.page === res.total) {
@@ -70,7 +70,7 @@ export class ReverseComponent implements OnInit {
   // 只获取名称列表
   getNameListOnly() {
     this.contradictionService.getTheory(this.page).subscribe(res => {
-      if (res.msg && res.rows.length) {
+      if (res.msg === 'ok' && res.rows.length) {
         this.resultList = this.resultList.concat(res.rows);
         if (this.page === res.total) {
           this.allLoad = true;
@@ -92,7 +92,7 @@ export class ReverseComponent implements OnInit {
   getReverse(id, state) {
     this.isLoading2 =  true;
     this.contradictionService.getReverse(id, state, this.page2).subscribe(res => {
-      if (res.msg && res.rows.length) {
+      if (res.msg === 'ok' && res.rows.length) {
         this.isLoading2 =  false;
         this.reverseResult = this.reverseResult.concat(res.rows);
         if (this.page2 === res.total) {

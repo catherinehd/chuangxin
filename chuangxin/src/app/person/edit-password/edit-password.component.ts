@@ -61,7 +61,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
         // 判断密码是否输入正确
         if (value === '') {
           this.errpwd1 = '请输入密码';
-        } else if (value.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
+        } else if (value.match(/^[0-9A-Za-z]{6,15}$/)) {
           this.errpwd1 = '';
           this.pwd1 = value;
           if (this.pwd2 && (this.pwd2 !== value)) {

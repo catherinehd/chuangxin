@@ -114,9 +114,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
             if (this.registerForm.value.uname === '') {
               this.erruname = '用户名不能为空';
               this.successuname = false;
-            } else if (this.registerForm.value.uname.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{1,20}$/)) {
+            } else if (this.registerForm.value.uname.match(/^[0-9A-Za-z]{1,20}$/)) {
               this.personService.testUserName(this.registerForm.value.uname).subscribe(res => {
-                if (res.msg) {
+                if (res.ok) {
                   this.erruname = '';
                   this.successuname = true;
                 } else {
@@ -125,7 +125,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 }
               });
             } else {
-              this.erruname = '用户名由数字和字母构成';
+              this.erruname = '用户名只能由数字字母组成';
               this.successuname = false;
             }
             break;
@@ -144,7 +144,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         if (this.registerForm.value.pwd1 === '') {
           this.errpwd1 = '请输入密码';
           this.successpwd1 = false;
-        } else if (this.registerForm.value.pwd1.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
+        } else if (this.registerForm.value.pwd1.match(/^[0-9A-Za-z]{6,15}$/)) {
           this.errpwd1 = '';
           this.successpwd1 = true;
           if (this.registerForm.value.pwd2 && (this.registerForm.value.pwd2 !== this.registerForm.value.pwd1)) {
@@ -179,7 +179,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.successphone = false;
         } else if (this.registerForm.value.phone.match(/^1[34578]\d{9}$/)) {
           this.personService.testPhoneNumber(this.registerForm.value.phone).subscribe( res => {
-            if (res.msg === 'OK') {
+            if (res.ok) {
               this.errphone = '';
               this.successphone = true;
             } else {
@@ -290,6 +290,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerForm.value.work, '').subscribe( res => {
         if (res.ok) {
           this.msg = '注册成功';
+          this.personService.login(this.registerForm.value.uname, this.registerForm.value.pwd, '0').subscribe( res => {
+            if (res.ok) {
+              this.navigateService.clearRouteList();
+              localStorage.setItem('userInfo', this.registerForm.value.uname);
+              localStorage.setItem('cxtoken', res.data);
+            }
+          });
           setTimeout( () => {
             this.msg = '';
             this.navigateService.pushToRoute('/home');

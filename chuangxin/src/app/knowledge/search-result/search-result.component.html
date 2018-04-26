@@ -3,8 +3,11 @@
   <div class="repository-search-result">
     <form class="search-btn-box" #searchForm="ngForm">
       <div class="search-btn form-group">
-        <span class="search-func-title">
+        <span class="search-func-title" *ngIf="functionSearch">
           实现的功能：
+        </span>
+        <span class="search-func-title" *ngIf="propertySearch">
+          属性：
         </span>
         <select id="func" name="func" [(ngModel)]="func">
           <option *ngFor="let item of funcs" [value]="item">
@@ -13,8 +16,11 @@
         </select>
       </div>
       <div class="search-btn form-group">
-        <span class="search-func-title">
+        <span class="search-func-title" *ngIf="functionSearch">
           对象性状：
+        </span>
+        <span class="search-func-title" *ngIf="propertySearch">
+          响应性状：
         </span>
         <select id="funs" name="funs" [(ngModel)]="fun">
           <option *ngFor="let item of funs" [value]="item">
@@ -50,7 +56,7 @@
         <ul>
           <li *ngFor="let item of resultList">
             <div class="result-detail">
-              <div class="result-title">{{item.effectName}}</div>
+              <div class="result-title"><span class="num">{{item.effectNum}}</span>{{item.effectName}}<span class="en">( {{item.effectEnglish}} )</span></div>
               <div class="result-detail-info">
                 {{item.effectContent}}
               </div>
@@ -66,7 +72,7 @@
     <div class="search-result-box no-result" *ngIf="!isLoading && hasResearch && !hasResult">
       <img src="assets/img/wijiansuo@2x.png" />
       <div class="explain">
-        暂无检索到相关冲突原理，换一个试试~
+        暂无搜索到相应的效应，换一个试试~
       </div>
     </div>
 

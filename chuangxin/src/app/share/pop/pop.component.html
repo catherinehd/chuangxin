@@ -22,7 +22,7 @@
         </div>
         <div class="password form-field">
           <span class="password-title title">
-            密  码：
+            密 &nbsp; 码：
           </span>
           <span>
             <input [type]="showpwd ? 'text' : 'password'" placeholder="请输入密码" formControlName="pwd">
@@ -35,7 +35,7 @@
           <span class="remember">
             <label for="rem"><input #rem name="rem" type="checkbox" id="rem" (click)="checkvalue($event.target.checked)">记住我</label>
           </span>
-          <a class="forgetpwd" href="/forgetpwd">
+          <a class="forgetpwd" a href="javascript:void(0)" (click)="gopage('/forgetpwd')">
             忘记密码？
           </a>
         </div>
@@ -51,7 +51,7 @@
           </button>
         </div>
         <div class="tip">
-          还没有账号？<a href="/register">立即注册</a>
+          还没有账号？<a href="javascript:void(0)" (click)="gopage('/register')">立即注册</a>
         </div>
       </div>
 
