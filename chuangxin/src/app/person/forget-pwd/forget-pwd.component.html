@@ -10,18 +10,14 @@
           手机号：
         </span>
         <span>
-          <input #phone placeholder="请输入手机号" (blur)="test('phone', phone.value)">
+          <input #phone placeholder="请输入手机号" (keyup)="setValue(phone.value)" (blur)="test('phone', phone.value)">
         </span>
         <span class="warn" *ngIf="errphone">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+          <i class="icon-tishi"></i>
         {{errphone}}
       </span>
         <span class="success" *ngIf="successphone">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
-        </svg>
+          <i class="icon-zhengque"></i>
       </span>
       </div>
       <div class="form-field">
@@ -36,15 +32,11 @@
         </button>
         </span>
         <span class="warn" *ngIf="errcode">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+          <i class="icon-tishi"></i>
         {{errcode}}
       </span>
         <span class="success" *ngIf="successcode">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
-        </svg>
+        <i class="icon-zhengque"></i>
       </span>
       </div>
       <div class="form-field">
@@ -52,21 +44,15 @@
           密码：
         </span>
         <span>
-        <input #pwd1 [type]="showpwd ? 'text' : 'password'" placeholder="******" (blur)="test('pwd1', pwd1.value)">
-        <svg class="pwd-icon" [class.icon-active]="showpwd" (click)="showpwd = !showpwd">
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
-          </svg>
+        <input #pwd1 [type]="showpwd ? 'text' : 'password'" placeholder="请输入密码" (blur)="test('pwd1', pwd1.value)">
+          <i class="icon-xianshi pwd-icon" [class.icon-active]="showpwd" (click)="showpwd = !showpwd"></i>
       </span>
         <span class="warn" *ngIf="errpwd1">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+          <i class="icon-tishi"></i>
         {{errpwd1}}
       </span>
         <span class="success" *ngIf="successpwd1">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
-        </svg>
+        <i class="icon-zhengque"></i>
       </span>
       </div>
       <div class="form-field">
@@ -74,21 +60,15 @@
           重复密码：
         </span>
         <span>
-        <input #pwd2 [type]="showpwd2 ? 'text' : 'password'" placeholder="******" (blur)="test('pwd2', pwd2.value)">
-        <svg class="pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2">
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-xianshi"></use>
-          </svg>
+        <input #pwd2 [type]="showpwd2 ? 'text' : 'password'" [disabled]="!pwd1.value" placeholder="请再次输入密码" (blur)="test('pwd2', pwd2.value)">
+          <i class="icon-xianshi pwd-icon" [class.icon-active]="showpwd2" (click)="showpwd2 = !showpwd2" ></i>
       </span>
         <span class="warn" *ngIf="errpwd2">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+          <i class="icon-tishi"></i>
         {{errpwd2}}
       </span>
         <span class="success" *ngIf="successpwd2">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-zhengque"></use>
-        </svg>
+        <i class="icon-zhengque"></i>
       </span>
       </div>
     </div>

@@ -10,7 +10,7 @@ export class PersonService {
 
   // 登录
   login(uName, uPwd, uRem) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'user/doLogin',
       data: {
         uName: uName,
@@ -63,7 +63,7 @@ export class PersonService {
 
   // 注册用户名是否被占用
   testUserName(uName) {
-    return this.httpClientService.getMethod({
+    return this.httpClientService.postMethod({
       url: 'user/checkuname/' + uName,
     });
   }

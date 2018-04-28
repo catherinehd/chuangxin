@@ -14,7 +14,6 @@ export class ContradictionRightBarComponent implements OnInit {
   constructor() {
     window.onscroll = function () {
       const i = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop || 0;
-      console.log(i);
       $('.bar-box').css('top', 418 - i );
       if (i >= 418) {
         $('.bar-box').css('top', 0 );

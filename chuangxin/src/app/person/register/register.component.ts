@@ -56,6 +56,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       $('.wrap').css('min-height', $(window).height());
     }, 0);
     this.browser();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   ngOnDestroy() {
@@ -114,19 +116,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
             if (this.registerForm.value.uname === '') {
               this.erruname = '用户名不能为空';
               this.successuname = false;
-            } else if (this.registerForm.value.uname.match(/^[0-9A-Za-z]{1,20}$/)) {
+            } else if (this.registerForm.value.uname.match(/^[0-9]*$/)) {
+              this.erruname = '用户名不能由纯数字组成';
+              this.successuname = false;
+            } else if (this.registerForm.value.uname.length > 20) {
+              // 不能超过20位数
+              this.erruname = '用户名长度不能超过20个字符';
+              this.successuname = false;
+            } else {
               this.personService.testUserName(this.registerForm.value.uname).subscribe(res => {
                 if (res.ok) {
                   this.erruname = '';
                   this.successuname = true;
                 } else {
                   this.erruname = '用户名已存在';
-                  this.successcode = false;
+                  this.successuname = false;
                 }
               });
-            } else {
-              this.erruname = '用户名只能由数字字母组成';
-              this.successuname = false;
             }
             break;
       case 'name':
@@ -290,17 +296,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerForm.value.work, '').subscribe( res => {
         if (res.ok) {
           this.msg = '注册成功';
-          this.personService.login(this.registerForm.value.uname, this.registerForm.value.pwd, '0').subscribe( res => {
-            if (res.ok) {
+          this.personService.login(this.registerForm.value.uname, this.registerForm.value.pwd1, '0').subscribe( res2 => {
+            if (res2.ok) {
               this.navigateService.clearRouteList();
               localStorage.setItem('userInfo', this.registerForm.value.uname);
               localStorage.setItem('cxtoken', res.data);
+              setTimeout( () => {
+                this.msg = '';
+                location.reload();
+                this.navigateService.pushToRoute('/home');
+              }, 3000);
             }
           });
-          setTimeout( () => {
-            this.msg = '';
-            this.navigateService.pushToRoute('/home');
-          }, 3000);
         }
       });
     }

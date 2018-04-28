@@ -63,10 +63,11 @@ export class HeaderComponent implements OnInit {
   }
 
   // 没有登录的时候显示登录框
-  isShowLoginPop() {
+  isShowLoginPop(url) {
     if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
       return;
     } else {
+      this.navigateService.storeNextRoute(url);
       this.isLoginShow();
     }
   }

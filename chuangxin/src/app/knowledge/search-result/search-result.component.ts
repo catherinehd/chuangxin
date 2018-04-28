@@ -69,10 +69,11 @@ export class SearchResultComponent implements OnInit {
   }
 
   getSearchRult(showpage) {
+    this.page.pageIndex = showpage;
     // 进行检索
     this.hasResearch = true;
     this.hasResult = true;
-    if (this.func === '全部功能') {
+    if (this.func === '全部功能' || this.func === '全部属性') {
       this.searchFunc = '';
     } else {
       this.searchFunc = this.func;

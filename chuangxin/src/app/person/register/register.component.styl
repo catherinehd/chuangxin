@@ -36,6 +36,8 @@
               padding-left 8px
               border $default-gray-bottom-border
               -webkit-appearance none
+              -moz-appearance none
+              background #fff
             input:-moz-placeholder
             input::-moz-placeholder
             input:-ms-placeholder
@@ -44,14 +46,13 @@
               border-radius 0
               background transparent
           .pwd-icon
-            width 14px
-            height 11px
+            font-size 11px
             position absolute
-            top 10px
+            top 9px
             right 10px
             cursor pointer
           .icon-active
-            fill $theme-main-light-blue-color
+            color $theme-main-light-blue-color
           .issafari
             right 25px
           .radio-box
@@ -67,14 +68,11 @@
             font-size $font-nomal-size
             line-height 30px
             margin-left 14px
-            svg
-              width 17px
-              height @width
-              stroke none
-              fill $font-red-color
+            i
+              font-size 14px
               vertical-align middle
-              margin-right 8px
           .success
+            color #16b84b
             svg
               fill #16b84b
 

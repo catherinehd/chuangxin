@@ -3,9 +3,10 @@
     <div class="pop-title">
       {{popmodal.title}}
       <span (click)="close()">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-guanbi"></use>
-            </svg>
+        <!--<svg>-->
+              <!--<use xlink:href="assets/icon/symbol-defs.svg#icon-guanbi"></use>-->
+            <!--</svg>-->
+        <i class="icon-guanbi"></i>
       </span>
     </div>
     <div class="pop-detail">
@@ -32,19 +33,21 @@
         </span>
         </div>
         <div class="form-field remmember-forget-box">
-          <span class="remember">
-            <label for="rem"><input #rem name="rem" type="checkbox" id="rem" (click)="checkvalue($event.target.checked)">记住我</label>
+          <!--<span class="remember">-->
+            <!--<label for="rem"><input #rem name="rem" type="checkbox" id="rem" (click)="checkvalue($event.target.checked)">记住我</label>-->
+          <!--</span>-->
+          <span class="warn" *ngIf="errmsg">
+            <i class="icon-tishi"></i>
+            <span>{{errmsg}}</span>
           </span>
           <a class="forgetpwd" a href="javascript:void(0)" (click)="gopage('/forgetpwd')">
             忘记密码？
           </a>
         </div>
-        <div class="warn" *ngIf="errmsg">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
-        {{errmsg}}
-        </div>
+        <!--<div class="warn" *ngIf="errmsg">-->
+          <!--<i class="icon-tishi"></i>-->
+        <!--{{errmsg}}-->
+        <!--</div>-->
         <div class="login-btn">
           <button (click)="loginFunc()" [disabled]="!this.loginForm.value.uname || !this.loginForm.value.pwd">
             登录

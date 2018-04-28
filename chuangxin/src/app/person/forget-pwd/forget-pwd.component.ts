@@ -13,13 +13,13 @@ export class ForgetPwdComponent implements OnInit {
   showpwd: boolean; // 显示密码为true
   showpwd2: boolean; // 显示密码为true
   errpwd1: string;
-  successpwd1: string;
+  successpwd1: boolean;
   errpwd2: string;
-  successpwd2: string;
+  successpwd2: boolean;
   errcode: string;
-  successcode: string;
+  successcode: boolean;
   errphone: string
-  successphone: string;
+  successphone: boolean;
   pwd1: string; // 密码
   pwd2: string; // 重复密码
   code: string; // 验证码
@@ -46,52 +46,92 @@ export class ForgetPwdComponent implements OnInit {
     this.hasphone = false;
   }
 
-  ngOnInit() {setTimeout(function() {
+  ngOnInit() {
+    setTimeout(function() {
     $('.wrap').css('min-height', $(window).height());
   }, 0);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
+  setValue(value) {
+    this.phone = value;
+  }
 
   test(msg, value) {
     switch (msg) {
       case 'pwd1':
         // 判断密码是否输入正确
         if (value === '') {
-          this.errpwd1 = '密码不能为空';
-        } else if (value.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)) {
-          this.errpwd1 = '';
-          this.pwd1 = value;
-          if (this.pwd2 && (this.pwd2 !== this.pwd1)) {
-            this.errpwd2 = '两次密码不一致';
-          } else if (this.pwd2 && (this.pwd2 === this.pwd1)) {
-            this.errpwd2 = '';
-          }
+          this.errpwd1 = '重复密码不能为空';
+          this.successpwd1 = false;
         } else {
-          this.errpwd1 = '密码由6-15位数字或字母组成';
+          if (value.match(/^[0-9A-Za-z]{6,15}$/)) {
+            if (this.pwd2 && value === this.pwd2) {
+              this.pwd1 = value;
+              this.successpwd1 = true;
+              this.successpwd2 = true;
+              this.errpwd2 = '';
+              this.errpwd1 = '';
+            }  else if (this.pwd2 && value !== this.pwd2) {
+              this.pwd1 = value;
+              this.errpwd1 = '';
+              this.errpwd2 = '两次密码不一致';
+              this.successpwd2 = false;
+              this.successpwd1 = true;
+            } else {
+              this.pwd1 = value;
+              this.errpwd1 = '';
+              this.successpwd1 = true;
+              return;
+            }
+          } else {
+            this.errpwd1 = '密码由6-15位数字或字母组成';
+            this.successpwd1 = false;
+          }
         }
         break;
       case 'pwd2':
         // 判断重复密码是否输入正确
         if (value === '') {
           this.errpwd2 = '重复密码不能为空';
-        } else if ( value === this.pwd1) {
-          this.errpwd2 = '';
-          this.pwd2 = value;
+          this.successpwd2 = false;
         } else {
-          this.errpwd2 = '两次密码不一致';
+          if (value.match(/^[0-9A-Za-z]{6,15}$/)) {
+            if (this.pwd1 && value === this.pwd1) {
+              this.pwd2 = value;
+              this.successpwd2 = true;
+              this.errpwd2 = '';
+            }  else if (this.pwd1 && value !== this.pwd1) {
+              this.pwd2 = value;
+              this.errpwd2 = '两次密码不一致';
+              this.successpwd2 = false;
+            } else {
+              this.pwd2 = value;
+              this.errpwd2 = '';
+              this.successpwd2 = true;
+              return;
+            }
+          } else {
+            this.errpwd2 = '密码由6-15位数字或字母组成';
+            this.successpwd2 = false;
+          }
         }
         break;
       case 'code':
         // 判断验证码是否输入正确
         if (value === '') {
           this.errcode = '验证码不能为空';
+          this.successcode = false;
         } else {
           this.personService.testCode(value, this.phone).subscribe( res => {
             if (res.ok) {
               this.errcode = '';
               this.code = value;
+              this.successcode = true;
             } else {
               this.errcode = '验证码错误';
+              this.successcode = false;
             }
           });
         }
@@ -101,12 +141,22 @@ export class ForgetPwdComponent implements OnInit {
         if (value === '') {
           this.errphone = '手机号不能为空';
           this.hasphone = false;
+          this.successphone = false;
         } else if (value.match(/^1[34578]\d{9}$/)) {
-          this.errphone = '';
-          this.phone = value;
-          this.hasphone = true;
+          this.personService.userNameUsed(value).subscribe(res => {
+            if (res.ok) {
+              this.errphone = '';
+              this.phone = value;
+              this.hasphone = true;
+              this.successphone = true;
+            } else {
+              this.errphone = '该手机号未注册';
+              this.hasphone = true;
+            }
+          });
         } else {
           this.errphone = '手机号格式不对';
+          this.successphone = false;
         }
         break;
       default:
@@ -115,6 +165,9 @@ export class ForgetPwdComponent implements OnInit {
   }
 
   getcode() {
+    if (this.errphone) {
+      return;
+    }
     this.personService.getCode(this.phone).subscribe( res => {
       if (res.ok) {
         this.gocound();

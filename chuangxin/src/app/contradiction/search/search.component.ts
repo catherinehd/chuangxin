@@ -92,7 +92,7 @@ export class SearchComponent implements OnInit {
       if (res.msg === 'ok' && res.rows.length) {
         this.isLoading = false;
         this.resultList = this.resultList.concat(res.rows);
-        if (this.page === (res.total / 10)) {
+        if (this.page === Math.ceil(res.total / 10)) {
           this.allLoad = true;
         } else {
           this.allLoad = false;
@@ -105,8 +105,12 @@ export class SearchComponent implements OnInit {
         // this.defaultName = this.resultNameList[0];
         document.getElementsByClassName('contraction-result-detail-info')[0].innerHTML = this.resultList[this.defaultId].principleContent;
       } else {
-        this.hasResult = false;
-        this.isLoading = false;
+        if (this.page === 1) {
+          this.hasResult = false;
+          this.isLoading = false;
+        } else {
+          return;
+        }
       }
     });
   }

@@ -33,6 +33,8 @@ export class ReverseComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     if (location.hash.indexOf('contradiction/03') !== -1) {
       this.state = 1;
     } else {

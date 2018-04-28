@@ -28,9 +28,7 @@
             <input #email type="email" value="{{userInfo.email}}" (change)="test('email', email.value)">
           </span>
       <span class="warn" *ngIf="erremail">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+        <i class="icon-tishi"></i>
         {{erremail}}
       </span>
     </div>
@@ -91,9 +89,7 @@
             </select>
           </span>
       <span class="warn" *ngIf="errfield">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+        <i class="icon-tishi"></i>
         {{errfield}}
       </span>
     </div>
@@ -105,9 +101,7 @@
         <input type="text" #work value="{{userInfo.work}}" (change)="test('work', work.value)">
           </span>
       <span class="warn" *ngIf="errwork">
-        <svg>
-              <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
-            </svg>
+        <i class="icon-tishi"></i>
         {{errwork}}
       </span>
     </div>

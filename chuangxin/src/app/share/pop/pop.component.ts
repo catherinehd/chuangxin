@@ -66,10 +66,13 @@ export class PopComponent implements OnInit {
       case 'uname':
         if (this.loginForm.value.uname === '') {
           this.errmsg = '用户名不能为空';
-        } else if (this.loginForm.value.uname.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/)) {
-          this.errmsg = '';
+        } else if (this.loginForm.value.uname.match(/^[0-9]*$/)) {
+          this.errmsg = '用户名不能由纯数字组成';
+        } else if (this.loginForm.value.uname.length > 20) {
+          // 不能超过20位数
+          this.errmsg = '用户名长度不能超过20个字符';
         } else {
-          this.errmsg = '用户名由6-10位数字和字母构成';
+          this.errmsg = '';
         }
         break;
       case 'pwd':

@@ -12,6 +12,8 @@ export class ParamsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     if (location.hash.indexOf('contradiction/03/params') !== -1) {
       this.classical = false;
     } else {

@@ -9,18 +9,21 @@ declare var $: any;
 export class CategoryBoxComponent implements OnInit, OnChanges {
 
   @Input() resultList: any;
-  @Input() nomore: boolean;
   @Input() defaultName: string;
   @Output() chooseName = new EventEmitter<string>();
   @Output() chooseReverseName = new EventEmitter<string>();
   @Output() getMore = new EventEmitter();
 
   activeName: string; // 被选中的内容标题
-  timer: any;
   leftbtn: boolean; // 左边按钮是否显示
   rightbtn: boolean; // 右边按钮是否显示
 
+  lastName: string; // 最后一个标题
+
   constructor() {
+    this.lastName = '';
+    this.rightbtn = true;
+    this.leftbtn = false;
   }
 
   ngOnInit() {
@@ -31,20 +34,20 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
         this.activeName = this.resultList[0].name;
       }, 1000);
     }
-    this.leftbtn = false;
-    this.rightbtn = true;
   }
 
   ngOnChanges(changes) {
-    if (changes.resultList.currentValue !== changes.resultList.previousValue) {
-      if (this.resultList.length) {
-        this.activeName = this.resultList[0].name;
-      } else {
-        setTimeout( () => {
-          if (this.resultList.length) {
-            this.activeName = this.resultList[0].name;
-          }
-        }, 1000);
+    if (changes.resultList.currentValue && changes.resultList.previousValue) {
+      if (changes.resultList.currentValue !== changes.resultList.previousValue) {
+        if (this.resultList.length) {
+          this.activeName = this.resultList[0].name;
+        } else {
+          setTimeout( () => {
+            if (this.resultList.length) {
+              this.activeName = this.resultList[0].name;
+            }
+          }, 1000);
+        }
       }
     }
   }
@@ -63,15 +66,20 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
 
   // 获取更多
   getmore(msg) {
-    // console.log(this.nomore);
-    // if ( this.nomore ) {
-    //   this.rightbtn = false;
-    // }
     if (msg === 'right') {
       document.getElementById('scrollbox').scrollLeft += 670;
       this.leftbtn = true;
       $('#second-top-nav').css('padding-left', '110px');
       this.getMore.emit();
+      // if (this.lastName === $('#second-top-nav').find('li:last-child')[0].innerText) {
+      //   let w = 0;
+      //   for (let i = 0 ; i < this.resultList.length; i++) {
+      //     w += $('#second-top-nav').find('li')[i].clientWidth;
+      //   }
+      //   $('#nameList-box').width(w);
+      // } else {
+      //   this.lastName = $('#second-top-nav').find('li:last-child')[0].innerText;
+      // }
     } else if (msg === 'left') {
       if (document.getElementById('scrollbox').scrollLeft === 0) {
         this.leftbtn = false;
@@ -84,7 +92,6 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
     } else {
       return;
     }
-    // console.log(document.getElementById('scrollbox').scrollLeft);
   }
 }
 

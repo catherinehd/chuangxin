@@ -14,7 +14,6 @@ export class TheoryComponent implements OnInit {
   allLoad: boolean;  // 已经获取了全部数据时候为true
   isLoading: boolean;
   total: number; // 总页数
-  nomore: boolean; // 没有更多的标题
 
   constructor(private contradictionService: ContradictionService) {
     this.page = 1;
@@ -22,7 +21,6 @@ export class TheoryComponent implements OnInit {
     this.resultNameList = [];
     this.allLoad = false;
     this.isLoading =  false;
-    this.nomore = false;
   }
 
   ngOnInit() {
@@ -57,10 +55,6 @@ export class TheoryComponent implements OnInit {
 
   // 只获取名称，不设置主要内容显示
   getTheoryNameOnly() {
-    // if (this.page > this.total) {
-    //   this.nomore = true;
-    //   return;
-    // }
     this.contradictionService.getTheory(this.page).subscribe(res => {
       if (res.msg === 'ok' && res.rows.length) {
         this.resultList = this.resultList.concat(res.rows);

@@ -20,7 +20,7 @@
           对象性状：
         </span>
         <span class="search-func-title" *ngIf="propertySearch">
-          响应性状：
+          相应操作：
         </span>
         <select id="funs" name="funs" [(ngModel)]="fun">
           <option *ngFor="let item of funs" [value]="item">
@@ -29,7 +29,7 @@
         </select>
       </div>
       <div class="search-btn">
-        <button type="submit" (click)="getSearchRult('1')">
+        <button type="submit" (click)="getSearchRult(1)">
           效应检索
         </button>
       </div>
