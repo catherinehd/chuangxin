@@ -31,7 +31,9 @@ export class CategoryBoxComponent implements OnInit, OnChanges {
       this.activeName = this.resultList[0].name;
     } else {
       setTimeout( () => {
-        this.activeName = this.resultList[0].name;
+        if (this.resultList.length) {
+          this.activeName = this.resultList[0].name;
+        }
       }, 1000);
     }
   }

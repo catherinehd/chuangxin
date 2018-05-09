@@ -4,27 +4,27 @@
     <form class="search-btn-box" #searchForm="ngForm">
       <div class="search-btn form-group">
         <span class="search-func-title" *ngIf="functionSearch">
-          实现的功能：
+          对象性状：
         </span>
         <span class="search-func-title" *ngIf="propertySearch">
-          属性：
+          拟采取的操作：
         </span>
-        <select id="func" name="func" [(ngModel)]="func">
-          <option *ngFor="let item of funcs" [value]="item">
-            {{item}}
+        <select id="funs" name="funs" [(ngModel)]="fun">
+          <option *ngFor="let item of funs; let i = index" [value]="item">
+            {{i + 1}} {{item}}
           </option>
         </select>
       </div>
       <div class="search-btn form-group">
         <span class="search-func-title" *ngIf="functionSearch">
-          对象性状：
+          拟实现的功能：
         </span>
         <span class="search-func-title" *ngIf="propertySearch">
-          相应操作：
+          属性：
         </span>
-        <select id="funs" name="funs" [(ngModel)]="fun">
-          <option *ngFor="let item of funs" [value]="item">
-            {{item}}
+        <select id="func" name="func" [(ngModel)]="func">
+          <option *ngFor="let item of funcs; let i = index" [value]="item">
+            {{i + 1}} {{item}}
           </option>
         </select>
       </div>

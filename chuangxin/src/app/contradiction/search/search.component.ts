@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
       this.contradictionService.getClassicalList().subscribe( res => {
         if (res.msg === 'OK') {
           this.positive = res.data;
-          this.positive.unshift('选择全部');
+          // this.positive.unshift('请选择');
           this.nagative = this.positive;
         }
       });
@@ -57,13 +57,13 @@ export class SearchComponent implements OnInit {
       this.contradictionService.getThirdList().subscribe( res => {
         if (res.msg === 'OK') {
           this.positive = res.data;
-          this.positive.unshift('选择全部');
+          // this.positive.unshift('请选择');
           this.nagative = this.positive;
         }
       });
     }
-    this.posit = '选择全部';
-    this.nagat = '选择全部';
+    this.posit = '请选择';
+    this.nagat = '请选择';
   }
 
   getSearchRult() {
@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit {
     }
     this.isLoading = true;
     this.contradictionService.getRearchList(this.searchPosit, this.searchNagat, this.state, this.page).subscribe( res => {
-      if (res.msg === 'ok' && res.rows.length) {
+      if (res.msg === 'ok' && res.rows && res.rows.length) {
         this.isLoading = false;
         this.resultList = this.resultList.concat(res.rows);
         if (this.page === Math.ceil(res.total / 10)) {

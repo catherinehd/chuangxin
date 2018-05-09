@@ -4,26 +4,28 @@
     <form class="search-btn-box" #searchForm="ngForm">
       <div class="search-btn form-group">
         <span class="search-func-title">
-          改善特性：
+          (目标)待改善的参数：
         </span>
         <select id="func" name="func" [(ngModel)]="posit">
-          <option *ngFor="let item of positive" [value]="item">
-            {{item}}
+          <option disabled [value]="'请选择'">请选择</option>
+          <option *ngFor="let item of positive; let i = index" [value]="item">
+            {{i + 1}} {{item}}
           </option>
         </select>
       </div>
       <div class="search-btn form-group">
         <span class="search-func-title">
-          恶化特性：
+          (偏好)可能恶化的参数：
         </span>
         <select id="funs" name="funs" [(ngModel)]="nagat">
-          <option *ngFor="let item of nagative" [value]="item">
-            {{item}}
+          <option disabled [value]="'请选择'">请选择</option>
+          <option *ngFor="let item of nagative; let i = index" [value]="item">
+            {{i + 1}} {{item}}
           </option>
         </select>
       </div>
       <div class="search-btn">
-        <button type="submit" (click)="btnSearch()">
+        <button type="submit" (click)="btnSearch()" [disabled]="posit === '请选择' || nagat === '请选择'">
           矛盾检索
         </button>
       </div>
