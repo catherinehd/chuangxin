@@ -42,9 +42,12 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.localUrl = location.hash;
     if (this.localUrl.indexOf('classical') !== -1) {
       // 经典
+      this.state = '0';
       this.contradictionService.getClassicalList().subscribe( res => {
         if (res.msg === 'OK') {
           this.positive = res.data;
@@ -54,6 +57,7 @@ export class SearchComponent implements OnInit {
       });
     } else {
       // 03版本
+      this.state = '1';
       this.contradictionService.getThirdList().subscribe( res => {
         if (res.msg === 'OK') {
           this.positive = res.data;

@@ -37,52 +37,26 @@
 
   <div class="physical-box contraction-wrap-box">
 
-    <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
-
-    <!--<p class="description">-->
-      <!--将一个物体分成相对独立的部分；使物体分成容易组装及拆卸的部分；增加物体相互独立的程度。例如：用多台个人计算机代替一台大型计算机完成相同的功能；花园中浇花用的软管系统，可根据需要根据快速接头连接成所需的长度；用百叶窗代替整体窗帘。-->
-    <!--</p>-->
-
-    <!--具体案例-->
-    <div class="case">
-      <app-loading *ngIf="isLoading"></app-loading>
-      <!--<div class="case-title">-->
-        <!--相关案例-->
-      <!--</div>-->
-      <!--<div class="case-info">-->
-        <!--<div class="case-name">-->
-          <!--现代化的组合家具-->
-        <!--</div>-->
-        <!--<hr/>-->
-        <!--<div class="case-box">-->
-          <!--<div class="left-word">-->
-            <!--<div class="class">-->
-              <!--<div class="small-title">-->
-                <!--IP1-1：讲一个对象分解成多个相互独立的部分-->
-              <!--</div>-->
-              <!--<div class="detail">-->
-                <!--<p>	 将学生分成不同的班级，不同的年纪，以便实施教学。</p>-->
-                <!--<p>	将企业的办公区与制造车间分开。</p>-->
-                <!--<p>	面向对象的程序设计，是将程序分割成单个能够起到子程序作用的单元或对象。</p>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="class">-->
-              <!--<div class="small-title">-->
-                <!--IP1-1：讲一个对象分解成多个相互独立的部分-->
-              <!--</div>-->
-              <!--<div class="detail">-->
-                <!--<p>	将学生分成不同的班级，不同的年纪，以便实施教学。</p>-->
-                <!--<p>	将企业的办公区与制造车间分开。</p>-->
-                <!--<p>	面向对象的程序设计，是将程序分割成单个能够起到子程序作用的单元或对象。</p>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="right-pic">-->
-            <!--<img src="assets/img/tupian@2x.png"/>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
+    <div class="des">
+      <p *ngIf="type === 1">如果在物理矛盾中，对待某一参数的互斥要求存在于不同的空间中，也即在某空间中要求该参数为A，在另外一个空间中要求该参数为-A，则可以使用空间分离原理解决物理矛盾。</p>
+      <p *ngIf="type === 2">如果在物理矛盾中，对待某一参数的互斥要求存在于不同的时间内，也即在某时间段内要求该参数为A，在另外的时间段内要求该参数为-A，则可以使用时间分离原理解决物理矛盾。</p>
+      <p *ngIf="type === 3">如果在物理矛盾中，对待某一参数的互斥要求存在于不同的条件下，也即在某条件存在时要求该参数为A，在另外的条件存在时要求该参数为-A，则可以使用条件分离原理解决物理矛盾。需要指明的是，条件分离原理是对以上空间、时间和系统级别三种分离原理的总结和提炼，是解决物理矛盾的最根本思想，不同的时间、空间、整体和部分都可以看做是条件，将其单独列为分离原理是因为其使用频率相对较高。</p>
+      <p *ngIf="type === 4">如果在物理矛盾中，对待某一参数的互斥要求存在于系统不同的层次下（包括了超系统、系统、子系统等不同级别），也即在某一层次下要求该参数为A，在上一层次或者下一层次则要求该参数为-A，则可以使用系统级别分离原理解决物理矛盾。</p>
     </div>
+
+    <div class="detail-box">
+      <app-category-box [resultList]="resultNameList" (chooseName)="chooseName($event)" (getMore)="getmore()"></app-category-box>
+
+      <!--<p class="description">-->
+      <!--将一个物体分成相对独立的部分；使物体分成容易组装及拆卸的部分；增加物体相互独立的程度。例如：用多台个人计算机代替一台大型计算机完成相同的功能；花园中浇花用的软管系统，可根据需要根据快速接头连接成所需的长度；用百叶窗代替整体窗帘。-->
+      <!--</p>-->
+
+      <!--具体案例-->
+      <div class="case">
+        <app-loading *ngIf="isLoading"></app-loading>
+      </div>
+    </div>
+
     <!--右边的快捷按钮-->
     <app-contradiction-right-bar></app-contradiction-right-bar>
   </div>

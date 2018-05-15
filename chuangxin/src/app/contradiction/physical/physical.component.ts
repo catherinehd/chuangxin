@@ -26,6 +26,8 @@ export class PhysicalComponent implements OnInit {
 
   ngOnInit() {
     this.getPhysicalResult();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   // 选择分离方式

@@ -28,21 +28,25 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.localUrl = location.hash;
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
       this.functionSearch = true;
       this.propertySearch = false;
       this.getFuncSearchFuncList();
-      this.funs = ['全部领域', '粉末', '场', '气体', '液体', '固体'];
+      this.funcs = ['粉末', '场', '气体', '液体', '固体'];
+      this.func = '请选择';
     } else {
       // 属性检索
       this.functionSearch = false;
       this.propertySearch = true;
       this.getPropertySearchFuncList();
-      this.funs = ['全部领域', '改变', '稳定', '减少', '增加', '测量'];
+      this.funs = ['改变', '稳定', '减少', '增加', '测量'];
+      this.fun = '请选择';
     }
-    this.fun = this.funs[0];
+    // this.fun = '请选择';
     this.isLoading =  false;
   }
 
@@ -50,9 +54,9 @@ export class SearchResultComponent implements OnInit {
   getFuncSearchFuncList() {
     this.knowledgeService.getFuncList().subscribe( res => {
       if (res.msg === 'ok') {
-        this.funcs = res.rows;
-        this.funcs.unshift('全部功能');
-        this.func = this.funcs[0];
+        this.funs = res.rows;
+        // this.funcs.unshift('全部功能');
+        this.fun = '请选择';
       }
     });
   }
@@ -62,8 +66,8 @@ export class SearchResultComponent implements OnInit {
     this.knowledgeService.getPropertySearchFuncList().subscribe( res => {
       if (res.msg === 'ok') {
         this.funcs = res.rows;
-        this.funcs.unshift('全部属性');
-        this.func = this.funcs[0];
+        // this.funcs.unshift('全部属性');
+        this.func = '请选择';
       }
     });
   }
@@ -86,7 +90,7 @@ export class SearchResultComponent implements OnInit {
     this.isLoading = true;
     if (this.localUrl.indexOf('functionsearch') !== -1) {
       // 功能检索
-      this.knowledgeService.getknowledgeRearchList(this.searchFunc,  this.searchFun, '', '', showpage).subscribe(res => {
+      this.knowledgeService.getknowledgeRearchList(this.searchFun,  this.searchFunc, '', '', showpage).subscribe(res => {
         if (res.msg === 'ok' && res.rows.length) {
           this.resultList = res.rows;
           this.isLoading = false;
@@ -113,7 +117,9 @@ export class SearchResultComponent implements OnInit {
 
   onShowPage(page) {
     this.page.pageIndex = page;
-
+    this.isLoading = true;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.getSearchRult(this.page.pageIndex);
 
   }

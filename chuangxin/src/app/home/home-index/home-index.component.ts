@@ -28,6 +28,11 @@ export class HomeIndexComponent implements OnInit {
 
   gopage(url) {
     if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
+      if (url.indexOf('contradiction') !== -1) {
+        $('#contradiction').addClass('active');
+      } else {
+        $('#repository').addClass('active');
+      }
       this.navigateServeice.pushToRoute(url);
     }
     this.navigateServeice.storeNextRoute(url);

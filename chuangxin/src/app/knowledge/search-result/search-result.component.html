@@ -4,12 +4,13 @@
     <form class="search-btn-box" #searchForm="ngForm">
       <div class="search-btn form-group">
         <span class="search-func-title" *ngIf="functionSearch">
-          对象性状：
+          拟实现的功能：
         </span>
         <span class="search-func-title" *ngIf="propertySearch">
           拟采取的操作：
         </span>
         <select id="funs" name="funs" [(ngModel)]="fun">
+          <option disabled [value]="'请选择'">请选择</option>
           <option *ngFor="let item of funs; let i = index" [value]="item">
             {{i + 1}} {{item}}
           </option>
@@ -17,19 +18,20 @@
       </div>
       <div class="search-btn form-group">
         <span class="search-func-title" *ngIf="functionSearch">
-          拟实现的功能：
+          对象性状：
         </span>
         <span class="search-func-title" *ngIf="propertySearch">
-          属性：
+          期望改变的属性：
         </span>
         <select id="func" name="func" [(ngModel)]="func">
+          <option disabled [value]="'请选择'">请选择</option>
           <option *ngFor="let item of funcs; let i = index" [value]="item">
             {{i + 1}} {{item}}
           </option>
         </select>
       </div>
       <div class="search-btn">
-        <button type="submit" (click)="getSearchRult(1)">
+        <button type="submit" (click)="getSearchRult(1)" [disabled]="fun === '请选择' || func === '请选择'">
           效应检索
         </button>
       </div>
@@ -37,15 +39,26 @@
 
     <!--没有搜索条件时的默认状态-->
     <div class="repository-search-index" *ngIf="!hasResearch">
-      <div class="index-detail">
+      <div class="index-detail" *ngIf="functionSearch">
         <p>
-          科学原理是数学、物理、化学、几何、生物等自然科学知识的系统学习。效应是发明问题解决理论（TRIZ）中基于知识的工具。将科学原理、系统属性或者现象与其工程应用有机地联系在一起，确定了科学原理和系统属性支配下输入、输出之间的因果关系。
+          “吾生也有涯，而知也无涯。以有涯随无涯，殆已！”每一个人掌握知识的范围和能力总是有限的，一个普通工程师通常最多只掌握本领域的近百个效应，能熟练应用的更少，而遇到的问题却是无限的。TRIZ效应知识库为解决工程师行业领域、个人精力、知识和经验的局限性方面问题提供了强有力的帮助。
         </p>
         <p>
-           TRIZ中推荐了一些常用的效应原理，并将专利作为效应知识库中效应的主要信息源。效应是通过专利分析找出专利中产品所实现的技术功能和用于实现技术功能的科学原理之间的相关性的基础上形成的，它将物理、化学、几何等不同领域的科学原理与其工程应用有机的结合在一起。到目前为止，人类已经总结出了大量的物理、化学和几何效应，每一个效应都可能是一大批问题的解决方案。
+          TRIZ知识库的功能检索是TRIZ知识库中的一个重要部分，它将工程师需要实现的“功能”进行了标准化。以使用者拟实现功能（如：震动、吸收、集聚等35种）为基础，将对象的性状分为五类（粉末、场、气体等五种），通过“拟实现功能+性状”的操作组合从而检索出使用者想要实现功能的具体效应原理。
         </p>
         <p>
-            通过大量专利分析，TRIZ发现只有百分之一的专利是真正的首创，剩下的都是在前人已知的想法或概念基础上，加上新奇方法产生的。任意一个发明问题的解决方法都可能已经存在，通过专利分析，效应确定了专利中产品的功能与实现该功能的科学原理之间的相关性，用于确定产品设计中的原理解。从本质上解释了功能实现的科学依据，有利于高级别创新解的产生。
+          效应库的检索方式和海量的只是储存能有效地克服使用者行业和领域知识不足的缺陷。随着CAI技术的发展，知识库的作用日益显著，过去只有专家学者才能使用的高深技术和渊博知识资源，现已成为所有人易学好用的创新工具，从TRIZ知识库中广泛获取知识，可以快速提升科技人员的创新能力，是实施三级、四级，乃至五级发明的有效途径。
+        </p>
+      </div>
+      <div class="index-detail" *ngIf="propertySearch">
+        <p>
+          “吾生也有涯，而知也无涯。以有涯随无涯，殆已！”每一个人掌握知识的范围和能力总是有限的，一个普通工程师通常最多只掌握本领域的近百个效应，能熟练应用的更少，而遇到的问题却是无限的。
+        </p>
+        <p>
+          TRIZ知识库的属性检索是TRIZ知识库中的一个重要部分，它将工程师需要实现的“属性（Attribute）”进行了标准化。以使用者期望改变的属性（亮度、颜色、温度等35种）为基础，再进行拟采取的操作（如：改变、稳定、减少等5种），最终通过“拟采取的操作+期望改变的属性”的操作组合从而检索出使用者想要改变该属性的具体效应原理。
+        </p>
+        <p>
+          效应库的检索方式和海量的只是储存能有效地克服使用者行业和领域知识不足的缺陷。随着CAI技术的发展，知识库的作用日益显著，过去只有专家学者才能使用的高深技术和渊博知识资源，现已成为所有人易学好用的创新工具，从TRIZ知识库中广泛获取知识，可以快速提升科技人员的创新能力，是实施三级、四级，乃至五级发明的有效途径。
         </p>
       </div>
     </div>

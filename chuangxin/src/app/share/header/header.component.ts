@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PersonService } from '../../service/person.service';
 import { NavigateService } from '../../service/navigate.service';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -49,10 +50,11 @@ export class HeaderComponent implements OnInit {
     if (location.hash.indexOf('/contradiction') !== -1) {
       this.contradictionActive = true;
       this.repositoryActive = false;
+      $('#contradiction').addClass('active');
     } else if (location.hash.indexOf('/repository') !== -1) {
-      console.log('a');
       this.contradictionActive = false;
       this.repositoryActive = true;
+      $('#repository').addClass('active');
     }
   }
 
@@ -66,6 +68,7 @@ export class HeaderComponent implements OnInit {
     this.personService.logOut().subscribe( res => {
       if (res.ok) {
         this.inlogin = false;
+        this.setActive();
         this.navigateService.clearRouteList();
         localStorage.removeItem('userInfo');
         localStorage.removeItem('cxtoken');
@@ -85,24 +88,39 @@ export class HeaderComponent implements OnInit {
       this.contradictionActive = false;
       this.repositoryActive = false;
     }
+    // 如果已经登录
     if (localStorage.getItem('userInfo') && localStorage.getItem('cxtoken')) {
       if (url.indexOf('contradiction') !== -1) {
         this.contradictionActive = true;
         this.repositoryActive = false;
+        $('#contradiction').addClass('active');
+        $('#repository').removeClass('active');
       } else if (url.indexOf('repository') !== -1) {
         this.contradictionActive = false;
         this.repositoryActive = true;
+        $('#repository').addClass('active');
+        $('#contradiction').removeClass('active');
       } else {
+        $('#repository').removeClass('active');
+        $('#contradiction').removeClass('active');
         return;
       }
       return;
     } else {
-      this.navigateService.storeNextRoute(url);
-      this.isLoginShow();
+      // 没有登录
+      if (url !== '/home') {
+        this.navigateService.storeNextRoute(url);
+        this.isLoginShow();
+      }
     }
   }
 
   // 跳转页面
   goPage(url) {
+  }
+
+  setActive() {
+    $('#repository').removeClass('active');
+    $('#contradiction').removeClass('active');
   }
 }

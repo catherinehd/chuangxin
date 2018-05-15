@@ -10,7 +10,7 @@
           <span class="line"></span>
         </li>
         <li (mouseover)="contradictionShow = true" (mouseleave)="contradictionShow = false">
-          <a href="javascript:void(0)" [ngClass]="{'active': contradictionActive === true }">矛盾矩阵</a>
+          <a id="contradiction" href="javascript:void(0)" >矛盾矩阵</a>
           <span class="line"></span>
           <div class="contradiction-children-box lower-level-menu" *ngIf="contradictionShow">
             <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
@@ -25,7 +25,7 @@
           </div>
         </li>
         <li (mouseover)="repositoryShow = true" (mouseleave)="repositoryShow = false">
-          <a href="javascript:void(0)" [ngClass]="{'active': repositoryActive === true }">知识库</a>
+          <a id="repository" href="javascript:void(0)" >知识库</a>
           <div class="repository-children-box lower-level-menu" *ngIf="repositoryShow">
             <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
             <div class="toggle-list-box">
@@ -53,11 +53,11 @@
         <div class="tx-box">
           <i class="icon-touxiang"></i>
         </div>
-        <span>{{userName}}</span>
+        您好！ <span>{{userName}}</span>
         <div class="toggle" *ngIf="showToggle">
           <span class="triggle"><img src="../../../assets/img/nav.png" /></span>
           <div class="toggle-list-box">
-            <div routerLink="/person" routerLinkActive="level2active">个人中心</div>
+            <div routerLink="/person" routerLinkActive="level2active" (click)="setActive()">个人中心</div>
             <div (click)="logout()">退出登录</div>
           </div>
         </div>
